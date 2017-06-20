@@ -1,3 +1,4 @@
-[![Build Status](https://img.shields.io/travis/declanelcocks/template.svg?style=flat-square)](https://travis-ci.org/declanelcocks/template)
-
-[![Coverage Status](https://img.shields.io/coveralls/declanelcocks/template.svg?style=flat-square)](https://coveralls.io/github/declanelcocks/template?branch=master)
+<p align="center">
+  <a href="https://travis-ci.org/declanelcocks/template"><img src="https://img.shields.io/travis/declanelcocks/template.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/declanelcocks/template/branch/staging"><img src="https://img.shields.io/codecov/c/github/declanelcocks/template/staging.svg?style=flat-square" alt="Coverage Status" /></a>
+</p>
