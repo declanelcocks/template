@@ -17,21 +17,26 @@ const StyledButton = styled(Button)`
   padding: ${ifProp('hasText', '0 0.4375em', 0)};
   flex: 0 0 2.5em;
   box-sizing: border-box;
+
   ${ifProp('collapsed', css`
     overflow: hidden;
     transition: max-width 250ms ease-in-out;
     will-change: max-width;
+
     & .text {
       display: none;
     }
+
     &:hover {
       max-width: 100%;
+
       & .text {
         display: block;
         animation: ${fadeIn} 250ms;
       }
     }
   `)}
+
   ${ifProp('responsive', css`
     @media screen and (max-width: ${prop('breakpoint')}px) {
       width: auto;
@@ -42,6 +47,7 @@ const StyledButton = styled(Button)`
 
 const Text = styled.span`
   padding: 0.4375em;
+
   @media screen and (max-width: ${prop('breakpoint')}px) {
     display: ${ifProp('responsive', 'none !important')};
   }

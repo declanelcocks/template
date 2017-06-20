@@ -20,7 +20,8 @@ const styles = css`
   border: 1px solid ${ifProp('invalid', palette('danger', 2), palette('grayscale', 3))};
   border-radius: 2px;
 
-  &[type=checkbox], &[type=radio] {
+  &[type=checkbox],
+  &[type=radio] {
     display: inline-block;
     border: 0;
     border-radius: 0;

@@ -26,8 +26,8 @@ const backgroundColor = ifProp('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 
 const styles = css`
   position: relative;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     position: absolute;
     pointer-events: none;
     display: block;
@@ -36,19 +36,19 @@ const styles = css`
     will-change: ${opposite};
   }
 
-  &:hover:before,
-  &:focus:before {
+  &:hover::before,
+  &:focus::before {
     opacity: 1;
     ${opposite}: calc(100% + 1rem);
   }
 
-  &:hover:after,
-  &:focus:after {
+  &:hover::after,
+  &:focus::after {
     opacity: 1;
     ${opposite}: 100%;
   }
 
-  &:before {
+  &::before {
     content: attr(data-title);
     font-family: ${font('primary')};
     white-space: nowrap;
@@ -77,7 +77,7 @@ const styles = css`
     }}
   }
 
-  &:after {
+  &::after {
     ${opposite}: calc(100% + 1rem);
     ${perpendicular}: 50%;
     border: solid transparent;

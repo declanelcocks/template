@@ -16,6 +16,7 @@ const margin = ({ hasText, right }) => {
 const StyledIcon = styled(Icon)`
   font-size: ${fontSize};
   margin: ${margin};
+
   @media screen and (max-width: 420px) {
     margin: ${({ responsive }) => responsive && 0};
   }

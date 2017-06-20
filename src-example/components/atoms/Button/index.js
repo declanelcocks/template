@@ -36,13 +36,15 @@ const styles = css`
   background-color: ${backgroundColor};
   color: ${foregroundColor};
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: ${hoverBackgroundColor};
     color: ${hoverForegroundColor};
   }
 
   &:focus {
-    outline: none
+    outline: none;
   }
 `
 

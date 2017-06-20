@@ -18,6 +18,7 @@ const Wrapper = styled(Block)`
   justify-content: center;
   padding: 2rem;
   box-sizing: border-box;
+
   @media screen and (max-width: 640px) {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
@@ -28,6 +29,7 @@ const InnerWrapper = styled.div`
   display: flex;
   width: 100%;
   max-width: ${size('maxWidth')};
+
   @media screen and (max-width: 640px) {
     flex-wrap: wrap;
   }
@@ -39,9 +41,11 @@ const Section = styled.section`
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
+
   &:first-child {
     flex: none;
   }
+
   @media screen and (max-width: 640px) {
     padding: 0.25rem;
     width: 100%;
@@ -55,6 +59,7 @@ const Text = styled(Paragraph)`
   line-height: 1.35em;
   width: 100%;
   letter-spacing: 0.05em;
+
   @media screen and (max-width: 640px) {
     text-align: center;
     font-size: 1rem;
@@ -64,6 +69,7 @@ const Text = styled(Paragraph)`
 const ButtonGroup = styled.div`
   margin-top: 2rem;
   display: flex;
+
   > :not(:first-child) {
     margin-left: 0.5rem;
   }
@@ -72,6 +78,7 @@ const ButtonGroup = styled.div`
 const Instructions = styled.div`
   width: 100%;
   margin-top: 2rem;
+
   @media screen and (max-width: 640px) {
     margin-top: 1rem;
   }

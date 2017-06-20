@@ -43,7 +43,7 @@ const Range = styled.input`
     outline: none;
   }
 
-  ${''/* Thumb */}
+  ${/* Thumb */''}
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -54,7 +54,8 @@ const Range = styled.input`
     border-radius: ${borderRadius};
     cursor: pointer;
     margin-top: -0.53em;
-    transition: background .15s ease-in-out;
+    transition: background 0.15s ease-in-out;
+
     &:hover {
       background: ${hoverThumbColor};
     }
@@ -67,7 +68,8 @@ const Range = styled.input`
     border: ${border};
     border-radius: ${borderRadius};
     cursor: pointer;
-    transition: background .15s ease-in-out;
+    transition: background 0.15s ease-in-out;
+
     &:hover {
       background: ${hoverThumbColor};
     }
@@ -81,7 +83,7 @@ const Range = styled.input`
     border-radius: ${borderRadius};
   }
 
-  ${''/* Track */}
+  ${/* Track */''}
 
   &::-webkit-slider-runnable-track {
     width: 100%;
@@ -116,12 +118,13 @@ const Range = styled.input`
   &::-ms-fill-upper {
     background: ${barColor};
     border: ${border};
-    border-radius: ${borderRadius}
+    border-radius: ${borderRadius};
   }
 `
 
 const Text = styled.span`
   padding: 0.4375em;
+
   @media screen and (max-width: ${prop('breakpoint')}px) {
     display: ${ifProp('responsive', 'none !important')};
   }

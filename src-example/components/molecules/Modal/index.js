@@ -22,9 +22,11 @@ const overlayStyles = css`
   z-index: 9999;
   transition: opacity 250ms ease-in-out;
   opacity: 0;
+
   &[class*="after-open"] {
     opacity: 1;
   }
+
   &[class*="before-close"] {
     opacity: 0;
   }
@@ -52,13 +54,16 @@ const ModalBox = styled(ReactModal)`
   max-width: calc(640px - 1rem);
   max-height: calc(100% - 1rem);
   padding-top: ${({ hasHeader }) => hasHeader ? 0 : '1rem'};
+
   @media screen and (max-width: 640px) {
     width: calc(100% - 1rem);
     min-width: 0;
   }
+
   &[class*="after-open"] {
     transform: translate(-50%, -50%);
   }
+
   &[class*="before-close"] {
     transform: translate(-50%, 100%);
   }
@@ -68,6 +73,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 1rem;
+
   > *:first-child {
     flex: 1;
   }

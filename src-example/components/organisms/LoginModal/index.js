@@ -8,6 +8,7 @@ import { Modal } from 'containers'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+
   > * {
     margin-bottom: 0.5rem;
   }
