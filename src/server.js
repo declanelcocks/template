@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import 'babel-polyfill'
-import path from 'path'
-import express from 'express'
+import express from 'services/express'
+import { Router } from 'express'
 import cors from 'cors'
+import csrf from 'csurf'
 import mongoose from 'mongoose'
 import api from 'api'
 
@@ -52,13 +53,11 @@ const renderHtml = ({
 
 mongoose.connect(mongo.uri)
 
-const app = express()
+const router = new Router()
+router.use('/api', cors(), api)
+router.use(csrf({ cookie: true }))
 
-app.use('/api', cors(), api)
-
-app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
-
-app.use((req, res, next) => {
+router.use((req, res, next) => {
   const location = req.url
   const store = configureStore({}, { api: apiService.create() })
   const context = {}
@@ -81,13 +80,15 @@ app.use((req, res, next) => {
   }).catch(next)
 })
 
-app.use((err, req, res, next) => {
+router.use((err, req, res, next) => {
   const sheet = new ServerStyleSheet()
   const content = renderToStaticMarkup(sheet.collectStyles(<Error />))
   res.status(500).send(renderHtml({ content, sheet }))
   console.error(err)
   next(err)
 })
+
+const app = express(router)
 
 app.listen(port, (error) => {
   const boldBlue = text => `\u001b[1m\u001b[34m${text}\u001b[39m\u001b[22m`
