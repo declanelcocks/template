@@ -3,7 +3,6 @@ import 'babel-polyfill'
 import express from 'services/express'
 import { Router } from 'express'
 import cors from 'cors'
-import csrf from 'csurf'
 import mongoose from 'mongoose'
 import api from 'api'
 
@@ -55,7 +54,6 @@ mongoose.connect(mongo.uri)
 
 const router = new Router()
 router.use('/api', cors(), api)
-router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
   const location = req.url

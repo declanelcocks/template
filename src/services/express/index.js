@@ -4,6 +4,7 @@ import compression from 'compression'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import expressValidator from 'express-validator'
 import path from 'path'
 import { env } from 'config'
 
@@ -35,6 +36,7 @@ export default (routes) => {
 
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
+  app.use(expressValidator())
   app.use(routes)
 
   return app

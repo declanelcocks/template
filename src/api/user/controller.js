@@ -23,6 +23,36 @@ export const currentUser = (req, res) => {
   )
 }
 
+export const signup = (req, res) => {
+  req.assert('name', 'Name cannot be blank').notEmpty()
+  req.assert('email', 'Email is not valid').isEmail()
+  req.assert('email', 'Email cannot be blank').notEmpty()
+  req.assert('password', 'Password must be at least 4 characters long').len(4)
+  req.sanitize('email').normalizeEmail({ remove_dots: false })
+
+  const errors = req.validationErrors()
+
+  if (errors) return res.status(400).send(errors)
+
+  return User.findOne({ email: req.body.email }, (err, user) => {
+    if (user) {
+      return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' })
+    }
+
+    const newUser = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    })
+
+    return newUser.save((err) => {
+      if (err) return res.status(400).send({ error: err })
+
+      return res.send({ token: generateToken(newUser), user: newUser })
+    })
+  })
+}
+
 export const authGithub = (req, res) => {
   const accessTokenUrl = 'https://github.com/login/oauth/access_token'
   const userUrl = 'https://api.github.com/user'
