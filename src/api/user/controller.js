@@ -53,6 +53,27 @@ export const signup = (req, res) => {
   })
 }
 
+export const login = (req, res, next) => {
+  req.assert('email', 'Email is not valid').isEmail()
+  req.assert('email', 'Email cannot be blank').notEmpty()
+  req.assert('password', 'Password cannot be blank').notEmpty()
+  req.sanitize('email').normalizeEmail({ remove_dots: false })
+
+  const errors = req.validationErrors()
+
+  if (errors) return res.status(400).send(errors)
+
+  return User.findOne({ email: req.body.email }, (err, user) => {
+    if (!user) return res.status(401).send({ msg: `The email address ${req.body.email} is not associated with any account.` })
+
+    return user.comparePassword(req.body.password, (err, isMatch) => {
+      if (!isMatch) return res.status(401).send({ msg: 'Invalid email or password' })
+
+      return res.send({ token: generateToken(user), user: user.toJSON() })
+    })
+  })
+}
+
 export const authGithub = (req, res) => {
   const accessTokenUrl = 'https://github.com/login/oauth/access_token'
   const userUrl = 'https://api.github.com/user'
