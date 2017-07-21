@@ -66,7 +66,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "http://localhost:3001/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 106);
+/******/ 	return __webpack_require__(__webpack_require__.s = 107);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -232,6 +232,7 @@ var router = new _express.Router();
 
 router.get('/users', _middleware.ensureAuth, _controller.currentUser);
 router.post('/auth/signup', _controller.signup);
+router.post('/auth/login', _controller.login);
 router.post('/auth/github', _controller.authGithub);
 router.get('/auth/github/callback', _controller.authGithubCallback);
 
@@ -315,7 +316,7 @@ var _temp = function () {
 
 
 // https://github.com/diegohaz/arc/wiki/Selectors
-var upperFirst = __webpack_require__(89);
+var upperFirst = __webpack_require__(90);
 
 var req = __webpack_require__(78);
 
@@ -733,19 +734,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _serializeJavascript = __webpack_require__(103);
+var _serializeJavascript = __webpack_require__(104);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
 var _styledComponents = __webpack_require__(2);
 
-var _server = __webpack_require__(94);
+var _server = __webpack_require__(95);
 
 var _reactRedux = __webpack_require__(6);
 
-var _reactRouter = __webpack_require__(96);
+var _reactRouter = __webpack_require__(97);
 
-var _reactRouterServer = __webpack_require__(99);
+var _reactRouterServer = __webpack_require__(100);
 
 var _config = __webpack_require__(4);
 
@@ -985,9 +986,9 @@ var _temp = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.authGithubCallback = exports.authGithub = exports.signup = exports.currentUser = exports.generateToken = undefined;
+exports.authGithubCallback = exports.authGithub = exports.login = exports.signup = exports.currentUser = exports.generateToken = undefined;
 
-var _request = __webpack_require__(102);
+var _request = __webpack_require__(103);
 
 var _request2 = _interopRequireDefault(_request);
 
@@ -995,7 +996,7 @@ var _jsonwebtoken = __webpack_require__(18);
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
-var _moment = __webpack_require__(90);
+var _moment = __webpack_require__(91);
 
 var _moment2 = _interopRequireDefault(_moment);
 
@@ -1048,6 +1049,27 @@ var signup = exports.signup = function signup(req, res) {
       if (err) return res.status(400).send({ error: err });
 
       return res.send({ token: generateToken(newUser), user: newUser });
+    });
+  });
+};
+
+var login = exports.login = function login(req, res, next) {
+  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('email', 'Email cannot be blank').notEmpty();
+  req.assert('password', 'Password cannot be blank').notEmpty();
+  req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+  var errors = req.validationErrors();
+
+  if (errors) return res.status(400).send(errors);
+
+  return _.User.findOne({ email: req.body.email }, function (err, user) {
+    if (!user) return res.status(401).send({ msg: 'The email address ' + req.body.email + ' is not associated with any account.' });
+
+    return user.comparePassword(req.body.password, function (err, isMatch) {
+      if (!isMatch) return res.status(401).send({ msg: 'Invalid email or password' });
+
+      return res.send({ token: generateToken(user), user: user.toJSON() });
     });
   });
 };
@@ -1130,6 +1152,8 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(currentUser, 'currentUser', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
 
   __REACT_HOT_LOADER__.register(signup, 'signup', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+
+  __REACT_HOT_LOADER__.register(login, 'login', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
 
   __REACT_HOT_LOADER__.register(authGithub, 'authGithub', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
 
@@ -1234,7 +1258,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(97);
+var _reactRouterDom = __webpack_require__(98);
 
 var _styledComponents = __webpack_require__(2);
 
@@ -1462,7 +1486,7 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _Link = __webpack_require__(98);
+var _Link = __webpack_require__(99);
 
 var _Link2 = _interopRequireDefault(_Link);
 
@@ -1898,7 +1922,7 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _reactModal = __webpack_require__(95);
+var _reactModal = __webpack_require__(96);
 
 var _reactModal2 = _interopRequireDefault(_reactModal);
 
@@ -2282,7 +2306,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _composer = __webpack_require__(105);
+var _composer = __webpack_require__(106);
 
 var theme = {}; // https://github.com/diegohaz/arc/wiki/Styling
 
@@ -2599,9 +2623,9 @@ exports.parseEndpoint = exports.parseSettings = exports.parseJSON = exports.chec
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-__webpack_require__(87);
+__webpack_require__(88);
 
-var _queryString = __webpack_require__(93);
+var _queryString = __webpack_require__(94);
 
 var _merge = __webpack_require__(19);
 
@@ -2782,7 +2806,7 @@ var _compression = __webpack_require__(82);
 
 var _compression2 = _interopRequireDefault(_compression);
 
-var _morgan = __webpack_require__(91);
+var _morgan = __webpack_require__(92);
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
@@ -2794,11 +2818,11 @@ var _bodyParser = __webpack_require__(81);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _expressValidator = __webpack_require__(107);
+var _expressValidator = __webpack_require__(87);
 
 var _expressValidator2 = _interopRequireDefault(_expressValidator);
 
-var _path = __webpack_require__(92);
+var _path = __webpack_require__(93);
 
 var _path2 = _interopRequireDefault(_path);
 
@@ -2869,7 +2893,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(22);
 
-var _reduxSaga = __webpack_require__(101);
+var _reduxSaga = __webpack_require__(102);
 
 var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
@@ -3035,13 +3059,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _camelCase = __webpack_require__(88);
+var _camelCase = __webpack_require__(89);
 
 var _camelCase2 = _interopRequireDefault(_camelCase);
 
 var _redux = __webpack_require__(22);
 
-var _reduxForm = __webpack_require__(100);
+var _reduxForm = __webpack_require__(101);
 
 var _reduxSagaThunk = __webpack_require__(23);
 
@@ -3208,7 +3232,7 @@ exports.loginGoogle = loginGoogle;
 exports.prepareGoogle = prepareGoogle;
 exports.watchSocialLoginGoogle = watchSocialLoginGoogle;
 
-var _simpleLoadScript = __webpack_require__(104);
+var _simpleLoadScript = __webpack_require__(105);
 
 var _simpleLoadScript2 = _interopRequireDefault(_simpleLoadScript);
 
@@ -3936,128 +3960,128 @@ module.exports = require("express-force-ssl");
 /* 87 */
 /***/ (function(module, exports) {
 
-module.exports = require("isomorphic-fetch");
+module.exports = require("express-validator");
 
 /***/ }),
 /* 88 */
 /***/ (function(module, exports) {
 
-module.exports = require("lodash/camelCase");
+module.exports = require("isomorphic-fetch");
 
 /***/ }),
 /* 89 */
 /***/ (function(module, exports) {
 
-module.exports = require("lodash/upperFirst");
+module.exports = require("lodash/camelCase");
 
 /***/ }),
 /* 90 */
 /***/ (function(module, exports) {
 
-module.exports = require("moment");
+module.exports = require("lodash/upperFirst");
 
 /***/ }),
 /* 91 */
 /***/ (function(module, exports) {
 
-module.exports = require("morgan");
+module.exports = require("moment");
 
 /***/ }),
 /* 92 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("morgan");
 
 /***/ }),
 /* 93 */
 /***/ (function(module, exports) {
 
-module.exports = require("query-string");
+module.exports = require("path");
 
 /***/ }),
 /* 94 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom/server");
+module.exports = require("query-string");
 
 /***/ }),
 /* 95 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-modal");
+module.exports = require("react-dom/server");
 
 /***/ }),
 /* 96 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router");
+module.exports = require("react-modal");
 
 /***/ }),
 /* 97 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-router");
 
 /***/ }),
 /* 98 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom/Link");
+module.exports = require("react-router-dom");
 
 /***/ }),
 /* 99 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-server");
+module.exports = require("react-router-dom/Link");
 
 /***/ }),
 /* 100 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-form");
+module.exports = require("react-router-server");
 
 /***/ }),
 /* 101 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-saga");
+module.exports = require("redux-form");
 
 /***/ }),
 /* 102 */
 /***/ (function(module, exports) {
 
-module.exports = require("request");
+module.exports = require("redux-saga");
 
 /***/ }),
 /* 103 */
 /***/ (function(module, exports) {
 
-module.exports = require("serialize-javascript");
+module.exports = require("request");
 
 /***/ }),
 /* 104 */
 /***/ (function(module, exports) {
 
-module.exports = require("simple-load-script");
+module.exports = require("serialize-javascript");
 
 /***/ }),
 /* 105 */
 /***/ (function(module, exports) {
 
-module.exports = require("styled-theme/composer");
+module.exports = require("simple-load-script");
 
 /***/ }),
 /* 106 */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-theme/composer");
+
+/***/ }),
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(25);
 
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports) {
-
-module.exports = require("express-validator");
 
 /***/ })
 /******/ ]);
