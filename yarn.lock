@@ -1063,15 +1063,20 @@ babel-helpers@^6.24.1:
     babel-template "^6.24.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 babel-jest@^21.0.0, babel-jest@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-21.2.0.tgz#2ce059519a9374a2c46f2455b6fbef5ad75d863e"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 babel-jest@^20.0.0, babel-jest@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-20.0.3.tgz#e4a03b13dc10389e140fc645d09ffc4ced301671"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 babel-jest@^21.0.0, babel-jest@^21.2.0:
   version "21.2.0"
@@ -1085,6 +1090,8 @@ babel-jest@20.0.0:
     babel-plugin-istanbul "^4.0.0"
     babel-preset-jest "^20.0.0"
 
+=======
+>>>>>>> Fix tests
 babel-jest@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-20.0.3.tgz#e4a03b13dc10389e140fc645d09ffc4ced301671"
@@ -1906,21 +1913,29 @@ babel-preset-flow@^6.23.0:
     babel-plugin-transform-flow-strip-types "^6.22.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 babel-preset-jest@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-21.2.0.tgz#ff9d2bce08abd98e8a36d9a8a5189b9173b85638"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 babel-preset-jest@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-20.0.3.tgz#cbacaadecb5d689ca1e1de1360ebfc66862c178a"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 babel-preset-jest@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-21.2.0.tgz#ff9d2bce08abd98e8a36d9a8a5189b9173b85638"
 =======
 babel-preset-jest@^20.0.0, babel-preset-jest@^20.0.3:
+=======
+babel-preset-jest@^20.0.3:
+>>>>>>> Fix tests
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-20.0.3.tgz#cbacaadecb5d689ca1e1de1360ebfc66862c178a"
 >>>>>>> Add Github login to frontend
@@ -2970,21 +2985,29 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     sha.js "^2.4.8"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 cross-env@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.1.0.tgz#1f12d6b3777d5847dcf9cf39fbee3c6a76dd5058"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 create-react-class@^15.5.2, create-react-class@^15.5.3, create-react-class@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.0.tgz#ab448497c26566e1e29413e883207d57cfe7bed4"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 create-react-class@^15.6.0:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.2.tgz#cf1ed15f12aad7f14ef5f2dfe05e6c42f91ef02a"
 =======
 create-react-class@^15.5.2:
+=======
+create-react-class@^15.5.2, create-react-class@^15.6.0:
+>>>>>>> Fix tests
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.0.tgz#ab448497c26566e1e29413e883207d57cfe7bed4"
 >>>>>>> Add Github login to frontend
@@ -3628,6 +3651,7 @@ entities@^1.1.1, entities@~1.1.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enzyme-adapter-react-16@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.2.tgz#8c6f431f17c69e1e9eeb25ca4bd92f31971eb2dd"
@@ -3647,6 +3671,11 @@ enzyme@2.7.0:
 enzyme-adapter-utils@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.0.1.tgz#fcd81223339a55a312f7552641e045c404084009"
+=======
+enzyme@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-2.9.1.tgz#07d5ce691241240fb817bf2c4b18d6e530240df6"
+>>>>>>> Fix tests
   dependencies:
     lodash "^4.17.4"
     object.assign "^4.0.4"
@@ -3659,9 +3688,10 @@ enzyme@^3.1.0:
     cheerio "^1.0.0-rc.2"
     function.prototype.name "^1.0.3"
     is-subset "^0.1.1"
-    lodash "^4.17.2"
+    lodash "^4.17.4"
     object-is "^1.0.1"
     object.assign "^4.0.4"
+<<<<<<< HEAD
 <<<<<<< HEAD
     object.entries "^1.0.4"
     object.values "^1.0.4"
@@ -3672,6 +3702,12 @@ enzyme@^3.1.0:
     object.values "^1.0.3"
     uuid "^2.0.3"
 >>>>>>> Add Github login to frontend
+=======
+    object.entries "^1.0.4"
+    object.values "^1.0.4"
+    prop-types "^15.5.10"
+    uuid "^3.0.1"
+>>>>>>> Fix tests
 
 errno@^0.1.3, errno@^0.1.4:
   version "0.1.4"
@@ -5599,6 +5635,7 @@ istanbul-reports@^1.1.2:
     handlebars "^4.0.3"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jest-changed-files@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-21.2.0.tgz#5dbeecad42f5d88b482334902ce1cba6d9798d29"
@@ -5609,6 +5646,8 @@ jest-cli@^21.0.1:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-21.2.1.tgz#9c528b6629d651911138d228bdb033c157ec8c00"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-changed-files@^20.0.3:
   version "20.0.3"
@@ -5618,6 +5657,8 @@ jest-cli@^20.0.0:
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-20.0.4.tgz#e532b19d88ae5bc6c417e8b0593a6fe954b1dc93"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-changed-files@^21.2.0:
   version "21.2.0"
@@ -5637,8 +5678,23 @@ jest-cli@20.0.0:
   version "20.0.0"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-20.0.0.tgz#72664e0723bd099a0bade5bd4bf960fd54876069"
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+=======
+=======
+=======
+jest-changed-files@^20.0.3:
+  version "20.0.3"
+  resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-20.0.3.tgz#9394d5cc65c438406149bef1bf4d52b68e03e3f8"
+
+jest-cli@^20.0.4:
+  version "20.0.4"
+  resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-20.0.4.tgz#e532b19d88ae5bc6c417e8b0593a6fe954b1dc93"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
+>>>>>>> Fix tests
   dependencies:
     ansi-escapes "^3.0.0"
     chalk "^2.0.1"
@@ -5649,6 +5705,7 @@ jest-cli@20.0.0:
     istanbul-lib-coverage "^1.0.1"
     istanbul-lib-instrument "^1.4.2"
     istanbul-lib-source-maps "^1.1.0"
+<<<<<<< HEAD
 <<<<<<< HEAD
     jest-changed-files "^21.2.0"
     jest-config "^21.2.1"
@@ -5662,6 +5719,8 @@ jest-cli@20.0.0:
     jest-snapshot "^21.2.1"
     jest-util "^21.2.1"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
     jest-changed-files "^20.0.3"
     jest-config "^20.0.4"
@@ -5676,6 +5735,8 @@ jest-cli@20.0.0:
     jest-snapshot "^20.0.3"
     jest-util "^20.0.3"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
     jest-changed-files "^21.2.0"
     jest-config "^21.2.0"
@@ -5702,8 +5763,28 @@ jest-cli@20.0.0:
     jest-snapshot "^20.0.0"
     jest-util "^20.0.0"
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+=======
+=======
+=======
+    jest-changed-files "^20.0.3"
+    jest-config "^20.0.4"
+    jest-docblock "^20.0.3"
+    jest-environment-jsdom "^20.0.3"
+    jest-haste-map "^20.0.4"
+    jest-jasmine2 "^20.0.4"
+    jest-message-util "^20.0.3"
+    jest-regex-util "^20.0.3"
+    jest-resolve-dependencies "^20.0.3"
+    jest-runtime "^20.0.4"
+    jest-snapshot "^20.0.3"
+    jest-util "^20.0.3"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
+>>>>>>> Fix tests
     micromatch "^2.3.11"
     node-notifier "^5.0.2"
     pify "^3.0.0"
@@ -5715,21 +5796,29 @@ jest-cli@20.0.0:
     yargs "^9.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jest-config@^21.2.1:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-21.2.1.tgz#c7586c79ead0bcc1f38c401e55f964f13bf2a480"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-config@^20.0.4:
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-20.0.4.tgz#e37930ab2217c913605eff13e7bd763ec48faeea"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-config@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-21.2.0.tgz#e88e6e677eed4eb78acfc9a1243531e3484de143"
 =======
 jest-config@^20.0.0, jest-config@^20.0.4:
+=======
+jest-config@^20.0.4:
+>>>>>>> Fix tests
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-20.0.4.tgz#e37930ab2217c913605eff13e7bd763ec48faeea"
 >>>>>>> Add Github login to frontend
@@ -5754,6 +5843,7 @@ jest-diff@^21.2.1:
   dependencies:
     chalk "^2.0.1"
     diff "^3.2.0"
+<<<<<<< HEAD
     jest-get-type "^21.2.0"
     pretty-format "^21.2.1"
 
@@ -5761,6 +5851,11 @@ jest-diff@^21.2.1:
 jest-docblock@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-21.2.0.tgz#51529c3b30d5fd159da60c27ceedc195faf8d414"
+=======
+<<<<<<< HEAD
+    jest-matcher-utils "^20.0.3"
+    pretty-format "^20.0.3"
+>>>>>>> Fix tests
 
 jest-environment-jsdom@^21.2.1:
   version "21.2.1"
@@ -5770,6 +5865,11 @@ jest-environment-jsdom@^21.2.1:
 jest-docblock@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-20.0.3.tgz#17bea984342cc33d83c50fbe1545ea0efaa44712"
+=======
+<<<<<<< HEAD
+    jest-get-type "^21.2.0"
+    pretty-format "^21.2.0"
+>>>>>>> Fix tests
 
 jest-environment-jsdom@^20.0.3:
   version "20.0.3"
@@ -5785,10 +5885,16 @@ jest-environment-jsdom@^21.2.0:
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-21.2.0.tgz#b38a2a1c5a4070586446863ffc25c6aedc0c1ddb"
 =======
 jest-docblock@^20.0.0, jest-docblock@^20.0.3:
+=======
+    jest-matcher-utils "^20.0.3"
+    pretty-format "^20.0.3"
+
+jest-docblock@^20.0.3:
+>>>>>>> Fix tests
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-20.0.3.tgz#17bea984342cc33d83c50fbe1545ea0efaa44712"
 
-jest-environment-jsdom@^20.0.0, jest-environment-jsdom@^20.0.3:
+jest-environment-jsdom@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-20.0.3.tgz#048a8ac12ee225f7190417713834bb999787de99"
 >>>>>>> Add Github login to frontend
@@ -5811,15 +5917,20 @@ jest-get-type@^21.2.0:
   resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-21.2.0.tgz#f6376ab9db4b60d81e39f30749c6c466f40d4a23"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jest-haste-map@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-haste-map/-/jest-haste-map-21.2.0.tgz#1363f0a8bb4338f24f001806571eff7a4b2ff3d8"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-haste-map@^20.0.4:
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-haste-map/-/jest-haste-map-20.0.4.tgz#653eb55c889ce3c021f7b94693f20a4159badf03"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-haste-map@^21.2.0:
   version "21.2.0"
@@ -5836,6 +5947,8 @@ jest-haste-map@^20.0.0:
     sane "~1.6.0"
     worker-farm "^1.3.1"
 
+=======
+>>>>>>> Fix tests
 jest-haste-map@^20.0.4:
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-haste-map/-/jest-haste-map-20.0.4.tgz#653eb55c889ce3c021f7b94693f20a4159badf03"
@@ -5851,21 +5964,29 @@ jest-haste-map@^20.0.4:
     worker-farm "^1.3.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jest-jasmine2@^21.2.1:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-jasmine2/-/jest-jasmine2-21.2.1.tgz#9cc6fc108accfa97efebce10c4308548a4ea7592"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-jasmine2@^20.0.4:
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-jasmine2/-/jest-jasmine2-20.0.4.tgz#fcc5b1411780d911d042902ef1859e852e60d5e1"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-jasmine2@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-jasmine2/-/jest-jasmine2-21.2.0.tgz#99907a12d94ead2815f6bd22d69b3d2bc5bb36bc"
 =======
 jest-jasmine2@^20.0.0, jest-jasmine2@^20.0.4:
+=======
+jest-jasmine2@^20.0.4:
+>>>>>>> Fix tests
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-jasmine2/-/jest-jasmine2-20.0.4.tgz#fcc5b1411780d911d042902ef1859e852e60d5e1"
 >>>>>>> Add Github login to frontend
@@ -5875,11 +5996,35 @@ jest-jasmine2@^20.0.0, jest-jasmine2@^20.0.4:
     chalk "^2.0.1"
     expect "^21.2.1"
     graceful-fs "^4.1.11"
+<<<<<<< HEAD
     jest-diff "^21.2.1"
     jest-matcher-utils "^21.2.1"
     jest-message-util "^21.2.1"
     jest-snapshot "^21.2.1"
     p-cancelable "^0.3.0"
+=======
+    jest-diff "^20.0.3"
+    jest-matcher-utils "^20.0.3"
+    jest-matchers "^20.0.3"
+    jest-message-util "^20.0.3"
+    jest-snapshot "^20.0.3"
+    once "^1.4.0"
+    p-map "^1.1.1"
+
+jest-matcher-utils@^20.0.3:
+  version "20.0.3"
+  resolved "https://registry.yarnpkg.com/jest-matcher-utils/-/jest-matcher-utils-20.0.3.tgz#b3a6b8e37ca577803b0832a98b164f44b7815612"
+  dependencies:
+<<<<<<< HEAD
+    chalk "^1.1.3"
+    pretty-format "^20.0.3"
+=======
+<<<<<<< HEAD
+    chalk "^2.0.1"
+    jest-get-type "^21.2.0"
+    pretty-format "^21.2.0"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
 
 <<<<<<< HEAD
 jest-matcher-utils@^21.2.1:
@@ -5897,6 +6042,14 @@ jest-message-util@^21.2.0:
   resolved "https://registry.yarnpkg.com/jest-message-util/-/jest-message-util-21.2.0.tgz#3c6717fe21c301da3a24ffa5691aed8961d362f5"
 =======
 jest-message-util@^20.0.0, jest-message-util@^20.0.3:
+=======
+    jest-diff "^20.0.3"
+    jest-matcher-utils "^20.0.3"
+    jest-message-util "^20.0.3"
+    jest-regex-util "^20.0.3"
+
+jest-message-util@^20.0.3:
+>>>>>>> Fix tests
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-message-util/-/jest-message-util-20.0.3.tgz#6aec2844306fcb0e6e74d5796c1006d96fdd831c"
 >>>>>>> Add Github login to frontend
@@ -5942,15 +6095,19 @@ jest-regex-util@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-regex-util/-/jest-regex-util-21.2.0.tgz#1b1e33e63143babc3e0f2e6c9b5ba1eb34b2d530"
 
+<<<<<<< HEAD
 jest-resolve-dependencies@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-resolve-dependencies/-/jest-resolve-dependencies-21.2.0.tgz#9e231e371e1a736a1ad4e4b9a843bc72bfe03d09"
 =======
 jest-regex-util@^20.0.0, jest-regex-util@^20.0.3:
+=======
+jest-regex-util@^20.0.3:
+>>>>>>> Fix tests
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-regex-util/-/jest-regex-util-20.0.3.tgz#85bbab5d133e44625b19faf8c6aa5122d085d762"
 
-jest-resolve-dependencies@^20.0.0:
+jest-resolve-dependencies@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-resolve-dependencies/-/jest-resolve-dependencies-20.0.3.tgz#6e14a7b717af0f2cb3667c549de40af017b1723a"
 >>>>>>> Add Github login to frontend
@@ -5968,6 +6125,7 @@ jest-resolve@^21.2.0:
     is-builtin-module "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jest-runner@^21.2.1:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-runner/-/jest-runner-21.2.1.tgz#194732e3e518bfb3d7cbfc0fd5871246c7e1a467"
@@ -5980,11 +6138,15 @@ jest-runner@^21.2.1:
     jest-runtime "^21.2.1"
     jest-util "^21.2.1"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-runtime@^20.0.4:
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-runtime/-/jest-runtime-20.0.4.tgz#a2c802219c4203f754df1404e490186169d124d8"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-runner@^21.2.0:
   version "21.2.0"
@@ -6012,6 +6174,9 @@ jest-runtime@^21.2.0:
   resolved "https://registry.yarnpkg.com/jest-runtime/-/jest-runtime-21.2.0.tgz#665882303a656103c1fe025aaef44d547935bf51"
 =======
 jest-runtime@^20.0.0:
+=======
+jest-runtime@^20.0.4:
+>>>>>>> Fix tests
   version "20.0.4"
   resolved "https://registry.yarnpkg.com/jest-runtime/-/jest-runtime-20.0.4.tgz#a2c802219c4203f754df1404e490186169d124d8"
 >>>>>>> Add Github login to frontend
@@ -6033,8 +6198,18 @@ jest-runtime@^20.0.0:
     micromatch "^2.3.11"
     slash "^1.0.0"
     strip-bom "3.0.0"
+<<<<<<< HEAD
     write-file-atomic "^2.1.0"
     yargs "^9.0.0"
+=======
+<<<<<<< HEAD
+    yargs "^7.0.2"
+=======
+<<<<<<< HEAD
+    write-file-atomic "^2.1.0"
+    yargs "^9.0.0"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
 
 <<<<<<< HEAD
 jest-snapshot@^21.2.1:
@@ -6052,6 +6227,11 @@ jest-snapshot@^21.2.0:
   resolved "https://registry.yarnpkg.com/jest-snapshot/-/jest-snapshot-21.2.0.tgz#e3f53df6f90d2d72054c78d0eef32592a76edc05"
 =======
 jest-snapshot@^20.0.0, jest-snapshot@^20.0.3:
+=======
+    yargs "^7.0.2"
+
+jest-snapshot@^20.0.3:
+>>>>>>> Fix tests
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-snapshot/-/jest-snapshot-20.0.3.tgz#5b847e1adb1a4d90852a7f9f125086e187c76566"
 >>>>>>> Add Github login to frontend
@@ -6066,21 +6246,29 @@ jest-snapshot@^20.0.0, jest-snapshot@^20.0.3:
     pretty-format "^21.2.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jest-util@^21.2.1:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-21.2.1.tgz#a274b2f726b0897494d694a6c3d6a61ab819bb78"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-util@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-20.0.3.tgz#0c07f7d80d82f4e5a67c6f8b9c3fe7f65cfd32ad"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 jest-util@^21.2.0:
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-21.2.0.tgz#b80779fc67250eb952196233c5ce68c2bd83fe69"
 =======
 jest-util@^20.0.0, jest-util@^20.0.3:
+=======
+jest-util@^20.0.3:
+>>>>>>> Fix tests
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-20.0.3.tgz#0c07f7d80d82f4e5a67c6f8b9c3fe7f65cfd32ad"
 >>>>>>> Add Github login to frontend
@@ -7208,6 +7396,7 @@ normalize-url@^1.4.0:
     sort-keys "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 normalizr@3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.2.3.tgz#88755c64de418b040fa6ad1329b2de5c3250ac49"
@@ -7216,6 +7405,11 @@ normalizr@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.0.1.tgz#45c8fffa4e253f10f9d2c44e2d94290c3c08e2c5"
 >>>>>>> Add Github login to frontend
+=======
+normalizr@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.2.3.tgz#88755c64de418b040fa6ad1329b2de5c3250ac49"
+>>>>>>> Fix tests
 
 npm-run-path@^1.0.0:
   version "1.0.0"
@@ -7280,7 +7474,7 @@ object.assign@^4.0.4:
     function-bind "^1.1.0"
     object-keys "^1.0.10"
 
-object.entries@^1.0.3, object.entries@^1.0.4:
+object.entries@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/object.entries/-/object.entries-1.0.4.tgz#1bf9a4dd2288f5b33f3a993d257661f05d161a5f"
   dependencies:
@@ -7303,7 +7497,7 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
-object.values@^1.0.3, object.values@^1.0.4:
+object.values@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/object.values/-/object.values-1.0.4.tgz#e524da09b4f66ff05df457546ec72ac99f13069a"
   dependencies:
@@ -7973,7 +8167,7 @@ prop-types@15.5.8:
   dependencies:
     fbjs "^0.8.9"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@~15.5.7:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
 >>>>>>> Add Github login to frontend
@@ -8277,10 +8471,13 @@ react-docgen@^2.15.0:
     recast "^0.12.6"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-dom@^16.0.0:
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 react-dom@^15.5.4:
 <<<<<<< HEAD
@@ -8294,8 +8491,19 @@ react-dom@15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+=======
+=======
+=======
+react-dom@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
+>>>>>>> Fix tests
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -8304,8 +8512,12 @@ react-dom@15.5.4:
     prop-types "^15.6.0"
 =======
     object-assign "^4.1.0"
+<<<<<<< HEAD
     prop-types "~15.5.7"
 >>>>>>> Add Github login to frontend
+=======
+    prop-types "^15.5.10"
+>>>>>>> Fix tests
 
 <<<<<<< HEAD
 react-helmet@^5.0.3:
@@ -8612,10 +8824,13 @@ react-style-proptype@^3.0.0:
     prop-types "^15.5.4"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-test-renderer@^16.0.0, react-test-renderer@^16.0.0-0:
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.0.0.tgz#9fe7b8308f2f71f29fc356d4102086f131c9cb15"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 react-test-renderer@^15.5.4:
 <<<<<<< HEAD
@@ -8629,12 +8844,24 @@ react-test-renderer@15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.5.4.tgz#d4ebb23f613d685ea8f5390109c2d20fbf7c83bc"
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+=======
+=======
+=======
+react-test-renderer@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.6.1.tgz#026f4a5bb5552661fd2cc4bbcd0d4bc8a35ebf7e"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
+>>>>>>> Fix tests
   dependencies:
     fbjs "^0.8.16"
     object-assign "^4.1.1"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 react-transition-group@^1.1.2:
   version "1.2.1"
@@ -8666,11 +8893,15 @@ react@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 react@^15.5.4:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
 =======
+=======
+>>>>>>> Fix tests
 <<<<<<< HEAD
 react-transition-group@^1.1.2:
   version "1.2.0"
@@ -8701,13 +8932,26 @@ react@15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
 >>>>>>> Add Github login to frontend
+<<<<<<< HEAD
 >>>>>>> Add Github login to frontend
+=======
+=======
+react@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
+>>>>>>> Fix tests
+>>>>>>> Fix tests
   dependencies:
+    create-react-class "^15.6.0"
     fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+<<<<<<< HEAD
     prop-types "^15.5.7"
 >>>>>>> Add Github login to frontend
+=======
+    prop-types "^15.5.10"
+>>>>>>> Fix tests
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -10249,7 +10493,7 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
 
-uuid@^2.0.1, uuid@^2.0.2, uuid@^2.0.3:
+uuid@^2.0.1, uuid@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 

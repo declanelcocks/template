@@ -28,12 +28,11 @@ export const parseSettings = ({ method = 'get', data, locale, authorization, ...
     authorization: authorization ? `Bearer ${authorization}` : undefined,
   }
 
-  const settings = {
+  const settings = merge({
     body: data ? JSON.stringify(data) : undefined,
     method,
     headers,
-    ...otherSettings,
-  }
+  }, otherSettings)
 
   return settings
 }
