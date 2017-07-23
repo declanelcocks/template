@@ -5,8 +5,7 @@ import { LoginModal } from 'components'
 storiesOf('LoginModal', module)
   .add('default', () => (
     <LoginModal
-      onFacebookLogin={action('facebook')}
-      onGoogleLogin={action('google')}
+      onGithubLogin={action('github')}
       onClose={action('closed')}
       isOpen
     />

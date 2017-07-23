@@ -53,7 +53,7 @@ export const signup = (req, res) => {
   })
 }
 
-export const login = (req, res, next) => {
+export const login = (req, res) => {
   req.assert('email', 'Email is not valid').isEmail()
   req.assert('email', 'Email cannot be blank').notEmpty()
   req.assert('password', 'Password cannot be blank').notEmpty()

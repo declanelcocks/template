@@ -7,15 +7,22 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { ServerStateProvider } from 'react-router-server'
+import cookie from 'react-cookie'
 
 import { basename } from 'config'
 import configureStore from 'store/configure'
+import { authLoginRequest } from 'store/actions'
 import api from 'services/api'
 import App from 'components/App'
 
 const serverState = window.__SERVER_STATE__
 const initialState = window.__INITIAL_STATE__
 const store = configureStore(initialState, { api: api.create() })
+
+const token = cookie.load('token')
+if (initialState.auth.authenticated && token) {
+  store.dispatch(authLoginRequest('local', { token }))
+}
 
 const renderApp = () => (
   <ServerStateProvider state={serverState}>
