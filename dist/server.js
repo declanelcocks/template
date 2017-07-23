@@ -66,7 +66,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "http://localhost:3001/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 107);
+/******/ 	return __webpack_require__(__webpack_require__.s = 108);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -115,6 +115,12 @@ var _temp = function () {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -180,25 +186,48 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
 /* 6 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("react-redux");
+"use strict";
+
+
+// https://github.com/diegohaz/arc/wiki/Actions
+var req = __webpack_require__(74);
+
+req.keys().forEach(function (key) {
+  var actions = req(key);
+
+  Object.keys(actions).forEach(function (name) {
+    module.exports[name] = actions[name];
+  });
+});
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/actions.js');
+}();
+
+;
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("styled-theme");
+module.exports = require("react-redux");
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-theme");
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -218,9 +247,9 @@ Object.defineProperty(exports, 'schema', {
   }
 });
 
-var _express = __webpack_require__(5);
+var _express = __webpack_require__(4);
 
-var _middleware = __webpack_require__(14);
+var _middleware = __webpack_require__(13);
 
 var _controller = __webpack_require__(29);
 
@@ -254,7 +283,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -280,35 +309,6 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://github.com/diegohaz/arc/wiki/Actions
-var req = __webpack_require__(74);
-
-req.keys().forEach(function (key) {
-  var actions = req(key);
-
-  Object.keys(actions).forEach(function (name) {
-    module.exports[name] = actions[name];
-  });
-});
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/actions.js');
-}();
-
-;
-
-/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -316,7 +316,7 @@ var _temp = function () {
 
 
 // https://github.com/diegohaz/arc/wiki/Selectors
-var upperFirst = __webpack_require__(90);
+var upperFirst = __webpack_require__(91);
 
 var req = __webpack_require__(78);
 
@@ -358,128 +358,12 @@ var _temp = function () {
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-// https://github.com/diegohaz/arc/wiki/Actions
-// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
-var SOCIAL_LOGIN = exports.SOCIAL_LOGIN = 'SOCIAL_LOGIN';
-var SOCIAL_LOGIN_PREPARE = exports.SOCIAL_LOGIN_PREPARE = 'SOCIAL_LOGIN_PREPARE';
-var SOCIAL_LOGIN_REQUEST = exports.SOCIAL_LOGIN_REQUEST = 'SOCIAL_LOGIN_REQUEST';
-var SOCIAL_LOGIN_SUCCESS = exports.SOCIAL_LOGIN_SUCCESS = 'SOCIAL_LOGIN_SUCCESS';
-var SOCIAL_LOGIN_FAILURE = exports.SOCIAL_LOGIN_FAILURE = 'SOCIAL_LOGIN_FAILURE';
-var SOCIAL_LOGOUT = exports.SOCIAL_LOGOUT = 'SOCIAL_LOGOUT';
-
-var socialLoginPrepare = function socialLoginPrepare(service) {
-  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var clientId = _ref.clientId,
-      options = _objectWithoutProperties(_ref, ['clientId']);
-
-  return {
-    type: SOCIAL_LOGIN_PREPARE,
-    payload: _extends({
-      service: service,
-      clientId: clientId
-    }, options)
-  };
-};
-
-exports.socialLoginPrepare = socialLoginPrepare;
-var socialLoginRequest = function socialLoginRequest(service) {
-  var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var clientId = _ref2.clientId,
-      options = _objectWithoutProperties(_ref2, ['clientId']);
-
-  return {
-    type: SOCIAL_LOGIN_REQUEST,
-    payload: _extends({
-      service: service,
-      clientId: clientId
-    }, options),
-    meta: {
-      // https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
-      gtm: service
-    }
-  };
-};
-
-exports.socialLoginRequest = socialLoginRequest;
-var socialLoginSuccess = exports.socialLoginSuccess = function socialLoginSuccess(user, request) {
-  return {
-    type: SOCIAL_LOGIN_SUCCESS,
-    payload: user,
-    meta: {
-      request: request
-    }
-  };
-};
-
-var socialLoginFailure = exports.socialLoginFailure = function socialLoginFailure(error, request) {
-  return {
-    type: SOCIAL_LOGIN_FAILURE,
-    error: true,
-    payload: error,
-    meta: {
-      request: request
-    }
-  };
-};
-
-var socialLogout = exports.socialLogout = function socialLogout() {
-  return { type: SOCIAL_LOGOUT };
-};
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(SOCIAL_LOGIN, 'SOCIAL_LOGIN', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(SOCIAL_LOGIN_PREPARE, 'SOCIAL_LOGIN_PREPARE', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(SOCIAL_LOGIN_REQUEST, 'SOCIAL_LOGIN_REQUEST', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(SOCIAL_LOGIN_SUCCESS, 'SOCIAL_LOGIN_SUCCESS', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(SOCIAL_LOGIN_FAILURE, 'SOCIAL_LOGIN_FAILURE', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(SOCIAL_LOGOUT, 'SOCIAL_LOGOUT', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(socialLoginPrepare, 'socialLoginPrepare', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(socialLoginRequest, 'socialLoginRequest', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(socialLoginSuccess, 'socialLoginSuccess', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(socialLoginFailure, 'socialLoginFailure', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-
-  __REACT_HOT_LOADER__.register(socialLogout, 'socialLogout', '/Users/Declan/coding/tmp/template/src/store/social/actions.js');
-}();
-
-;
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("styled-tools");
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -495,7 +379,7 @@ var _jsonwebtoken = __webpack_require__(18);
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -542,7 +426,137 @@ var _temp = function () {
 ;
 
 /***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var AUTH_LOGIN = exports.AUTH_LOGIN = 'AUTH_LOGIN';
+var AUTH_LOGIN_PREPARE = exports.AUTH_LOGIN_PREPARE = 'AUTH_LOGIN_PREPARE';
+var AUTH_LOGIN_REQUEST = exports.AUTH_LOGIN_REQUEST = 'AUTH_LOGIN_REQUEST';
+var AUTH_LOGIN_SUCCESS = exports.AUTH_LOGIN_SUCCESS = 'AUTH_LOGIN_SUCCESS';
+var AUTH_LOGIN_FAILURE = exports.AUTH_LOGIN_FAILURE = 'AUTH_LOGIN_FAILURE';
+var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
+var AUTH_LOGOUT = exports.AUTH_LOGOUT = 'AUTH_LOGOUT';
+
+var authLoginPrepare = exports.authLoginPrepare = function authLoginPrepare(service, options) {
+  return {
+    type: AUTH_LOGIN_PREPARE,
+    service: service,
+    options: options
+  };
+};
+
+var authLoginRequest = exports.authLoginRequest = function authLoginRequest(service, options) {
+  return {
+    type: AUTH_LOGIN_REQUEST,
+    service: service,
+    options: options
+  };
+};
+
+var authLoginSuccess = exports.authLoginSuccess = function authLoginSuccess(user) {
+  return {
+    type: AUTH_LOGIN_SUCCESS,
+    user: user
+  };
+};
+
+var authLoginFailure = exports.authLoginFailure = function authLoginFailure(error) {
+  return {
+    type: AUTH_LOGIN_FAILURE,
+    error: error
+  };
+};
+
+var authUser = exports.authUser = function authUser() {
+  return { type: AUTH_USER };
+};
+
+var authLogout = exports.authLogout = function authLogout() {
+  return { type: AUTH_LOGOUT };
+};
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN, 'AUTH_LOGIN', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_PREPARE, 'AUTH_LOGIN_PREPARE', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_REQUEST, 'AUTH_LOGIN_REQUEST', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_SUCCESS, 'AUTH_LOGIN_SUCCESS', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_FAILURE, 'AUTH_LOGIN_FAILURE', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(AUTH_USER, 'AUTH_USER', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(AUTH_LOGOUT, 'AUTH_LOGOUT', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(authLoginPrepare, 'authLoginPrepare', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(authLoginRequest, 'authLoginRequest', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(authLoginSuccess, 'authLoginSuccess', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(authLoginFailure, 'authLoginFailure', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(authUser, 'authUser', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+
+  __REACT_HOT_LOADER__.register(authLogout, 'authLogout', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+}();
+
+;
+
+/***/ }),
 /* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var initialState = exports.initialState = {
+  user: null,
+  authenticated: false
+};
+
+var getUser = exports.getUser = function getUser() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  return state.user;
+};
+var getAuthenticated = exports.getAuthenticated = function getAuthenticated() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  return state.authenticated;
+};
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(initialState, "initialState", "/Users/Declan/coding/tmp/template/src/store/auth/selectors.js");
+
+  __REACT_HOT_LOADER__.register(getUser, "getUser", "/Users/Declan/coding/tmp/template/src/store/auth/selectors.js");
+
+  __REACT_HOT_LOADER__.register(getAuthenticated, "getAuthenticated", "/Users/Declan/coding/tmp/template/src/store/auth/selectors.js");
+}();
+
+;
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -595,7 +609,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -628,40 +642,6 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-// https://github.com/diegohaz/arc/wiki/Selectors
-// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
-var initialState = exports.initialState = {
-  user: null
-};
-
-var getUser = exports.getUser = function getUser() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  return state.user || initialState.user;
-};
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(initialState, "initialState", "/Users/Declan/coding/tmp/template/src/store/social/selectors.js");
-
-  __REACT_HOT_LOADER__.register(getUser, "getUser", "/Users/Declan/coding/tmp/template/src/store/social/selectors.js");
-}();
-
-;
-
-/***/ }),
 /* 18 */
 /***/ (function(module, exports) {
 
@@ -683,25 +663,25 @@ module.exports = require("mongoose");
 /* 21 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-helmet");
+module.exports = require("react-cookie");
 
 /***/ }),
 /* 22 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux");
+module.exports = require("react-helmet");
 
 /***/ }),
 /* 23 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-saga-thunk");
+module.exports = require("redux");
 
 /***/ }),
 /* 24 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-saga/effects");
+module.exports = require("redux-saga-thunk");
 
 /***/ }),
 /* 25 */
@@ -716,11 +696,15 @@ var _express = __webpack_require__(48);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _express3 = __webpack_require__(5);
+var _express3 = __webpack_require__(4);
 
 var _cors = __webpack_require__(84);
 
 var _cors2 = _interopRequireDefault(_cors);
+
+var _csurf = __webpack_require__(85);
+
+var _csurf2 = _interopRequireDefault(_csurf);
 
 var _mongoose = __webpack_require__(20);
 
@@ -734,25 +718,31 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _serializeJavascript = __webpack_require__(104);
+var _reactCookie = __webpack_require__(21);
+
+var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
+var _serializeJavascript = __webpack_require__(106);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
 var _styledComponents = __webpack_require__(2);
 
-var _server = __webpack_require__(95);
+var _server = __webpack_require__(96);
 
-var _reactRedux = __webpack_require__(6);
+var _reactRedux = __webpack_require__(7);
 
-var _reactRouter = __webpack_require__(97);
+var _reactRouter = __webpack_require__(98);
 
-var _reactRouterServer = __webpack_require__(100);
+var _reactRouterServer = __webpack_require__(101);
 
-var _config = __webpack_require__(4);
+var _config = __webpack_require__(5);
 
-var _configure = __webpack_require__(49);
+var _configure = __webpack_require__(51);
 
 var _configure2 = _interopRequireDefault(_configure);
+
+var _actions = __webpack_require__(6);
 
 var _api3 = __webpack_require__(46);
 
@@ -772,6 +762,7 @@ var _Error2 = _interopRequireDefault(_Error);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable no-console */
 var renderApp = function renderApp(_ref) {
   var store = _ref.store,
       context = _ref.context,
@@ -788,8 +779,7 @@ var renderApp = function renderApp(_ref) {
     )
   ));
   return (0, _reactRouterServer.renderToString)(app);
-}; /* eslint-disable no-console */
-
+};
 
 var renderHtml = function renderHtml(_ref2) {
   var serverState = _ref2.serverState,
@@ -807,13 +797,21 @@ var renderHtml = function renderHtml(_ref2) {
 _mongoose2.default.connect(_config.mongo.uri);
 
 var router = new _express3.Router();
+
 router.use('/api', (0, _cors2.default)(), _api2.default);
+
+router.use((0, _csurf2.default)({ cookie: true }));
 
 router.use(function (req, res, next) {
   var location = req.url;
   var store = (0, _configure2.default)({}, { api: _api4.default.create() });
   var context = {};
   var sheet = new _styledComponents.ServerStyleSheet();
+
+  _reactCookie2.default.plugToRequest(req, res);
+  var token = req.cookies.token;
+
+  if (token) store.dispatch((0, _actions.authUser)());
 
   renderApp({ store: store, context: context, location: location, sheet: sheet }).then(function (_ref3) {
     var serverState = _ref3.state,
@@ -880,15 +878,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _express = __webpack_require__(5);
+var _express = __webpack_require__(4);
 
-var _middleware = __webpack_require__(14);
+var _middleware = __webpack_require__(13);
 
 var _test = __webpack_require__(28);
 
 var _test2 = _interopRequireDefault(_test);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(9);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -952,7 +950,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _express = __webpack_require__(5);
+var _express = __webpack_require__(4);
 
 var _controller = __webpack_require__(27);
 
@@ -988,7 +986,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.authGithubCallback = exports.authGithub = exports.login = exports.signup = exports.currentUser = exports.generateToken = undefined;
 
-var _request = __webpack_require__(103);
+var _request = __webpack_require__(105);
 
 var _request2 = _interopRequireDefault(_request);
 
@@ -996,11 +994,11 @@ var _jsonwebtoken = __webpack_require__(18);
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
-var _moment = __webpack_require__(91);
+var _moment = __webpack_require__(92);
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _ = __webpack_require__(8);
+var _ = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1258,11 +1256,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(98);
+var _reactRouterDom = __webpack_require__(99);
 
 var _styledComponents = __webpack_require__(2);
 
-var _reactHelmet = __webpack_require__(21);
+var _reactHelmet = __webpack_require__(22);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
@@ -1393,7 +1391,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactHelmet = __webpack_require__(21);
+var _reactHelmet = __webpack_require__(22);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
@@ -1486,13 +1484,13 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _Link = __webpack_require__(99);
+var _Link = __webpack_require__(100);
 
 var _Link2 = _interopRequireDefault(_Link);
 
-var _styledTheme = __webpack_require__(7);
+var _styledTheme = __webpack_require__(8);
 
-var _styledTools = __webpack_require__(13);
+var _styledTools = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1634,7 +1632,7 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _styledTheme = __webpack_require__(7);
+var _styledTheme = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1717,9 +1715,9 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _styledTheme = __webpack_require__(7);
+var _styledTheme = __webpack_require__(8);
 
-var _styledTools = __webpack_require__(13);
+var _styledTools = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1799,7 +1797,7 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _styledTools = __webpack_require__(13);
+var _styledTools = __webpack_require__(12);
 
 var _components = __webpack_require__(3);
 
@@ -1922,11 +1920,11 @@ var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _reactModal = __webpack_require__(96);
+var _reactModal = __webpack_require__(97);
 
 var _reactModal2 = _interopRequireDefault(_reactModal);
 
-var _styledTheme = __webpack_require__(7);
+var _styledTheme = __webpack_require__(8);
 
 var _components = __webpack_require__(3);
 
@@ -2066,7 +2064,7 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _components = __webpack_require__(3);
 
-var _containers = __webpack_require__(9);
+var _containers = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2102,9 +2100,8 @@ var LoginModal = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          onFacebookLogin = _props.onFacebookLogin,
-          onGoogleLogin = _props.onGoogleLogin,
-          props = _objectWithoutProperties(_props, ['onFacebookLogin', 'onGoogleLogin']);
+          onGithubLogin = _props.onGithubLogin,
+          props = _objectWithoutProperties(_props, ['onGithubLogin']);
 
       return _react2.default.createElement(
         _containers.Modal,
@@ -2114,13 +2111,8 @@ var LoginModal = function (_Component) {
           null,
           _react2.default.createElement(
             _components.IconButton,
-            { onClick: onFacebookLogin, icon: 'facebook' },
-            'Connect with Facebook'
-          ),
-          _react2.default.createElement(
-            _components.IconButton,
-            { onClick: onGoogleLogin, icon: 'google' },
-            'Connect with Google'
+            { onClick: onGithubLogin, icon: 'github' },
+            'Connect with Github'
           )
         )
       );
@@ -2132,8 +2124,7 @@ var LoginModal = function (_Component) {
 
 LoginModal.propTypes = {
   user: _propTypes2.default.object,
-  onFacebookLogin: _propTypes2.default.func.isRequired,
-  onGoogleLogin: _propTypes2.default.func.isRequired,
+  onGithubLogin: _propTypes2.default.func.isRequired,
   onClose: _propTypes2.default.func.isRequired
 };
 var _default = LoginModal;
@@ -2181,7 +2172,7 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _components = __webpack_require__(3);
 
-var _containers = __webpack_require__(9);
+var _containers = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2191,30 +2182,25 @@ var InnerButton = _styledComponents2.default.div.withConfig({
   displayName: 'UserButton__InnerButton'
 })(['\n  display: flex;\n  align-items: center;\n']);
 
-var Image = _styledComponents2.default.img.withConfig({
-  displayName: 'UserButton__Image'
-})(['\n  margin-right: 0.5rem;\n']);
-
 var UserButton = function UserButton(_ref) {
-  var user = _ref.user,
+  var authenticated = _ref.authenticated,
       onLogin = _ref.onLogin,
       onLogout = _ref.onLogout,
-      props = _objectWithoutProperties(_ref, ['user', 'onLogin', 'onLogout']);
+      props = _objectWithoutProperties(_ref, ['authenticated', 'onLogin', 'onLogout']);
 
   return _react2.default.createElement(
     'div',
     null,
-    user && _react2.default.createElement(
+    authenticated && _react2.default.createElement(
       _components.Button,
       _extends({}, props, { onClick: onLogout }),
       _react2.default.createElement(
         InnerButton,
         null,
-        _react2.default.createElement(Image, { src: user.picture, width: 20, height: 20 }),
         'Sign out'
       )
     ),
-    !user && _react2.default.createElement(
+    !authenticated && _react2.default.createElement(
       _components.Button,
       _extends({}, props, { onClick: onLogin }),
       'Sign in'
@@ -2224,9 +2210,7 @@ var UserButton = function UserButton(_ref) {
 };
 
 UserButton.propTypes = {
-  user: _propTypes2.default.shape({
-    picture: _propTypes2.default.string.isRequired
-  }),
+  authenticated: _propTypes2.default.bool,
   onLogin: _propTypes2.default.func.isRequired,
   onLogout: _propTypes2.default.func.isRequired
 };
@@ -2241,8 +2225,6 @@ var _temp = function () {
   }
 
   __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/tmp/template/src/components/organisms/UserButton/index.js');
-
-  __REACT_HOT_LOADER__.register(Image, 'Image', '/Users/Declan/coding/tmp/template/src/components/organisms/UserButton/index.js');
 
   __REACT_HOT_LOADER__.register(UserButton, 'UserButton', '/Users/Declan/coding/tmp/template/src/components/organisms/UserButton/index.js');
 
@@ -2266,7 +2248,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _containers = __webpack_require__(9);
+var _containers = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2306,7 +2288,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _composer = __webpack_require__(106);
+var _composer = __webpack_require__(107);
 
 var theme = {}; // https://github.com/diegohaz/arc/wiki/Styling
 
@@ -2370,13 +2352,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(6);
-
-var _config = __webpack_require__(4);
+var _reactRedux = __webpack_require__(7);
 
 var _selectors = __webpack_require__(11);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(6);
 
 var _components = __webpack_require__(3);
 
@@ -2398,12 +2378,6 @@ var LoginModalContainer = function (_Component) {
   }
 
   _createClass(LoginModalContainer, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.prepareGoogle();
-      this.props.prepareFacebook();
-    }
-  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(_components.LoginModal, this.props);
@@ -2413,31 +2387,16 @@ var LoginModalContainer = function (_Component) {
   return LoginModalContainer;
 }(_react.Component);
 
-LoginModalContainer.propTypes = {
-  prepareGoogle: _propTypes2.default.func.isRequired,
-  prepareFacebook: _propTypes2.default.func.isRequired
-};
-
-
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    user: _selectors.fromSocial.getUser(state)
+    user: _selectors.fromAuth.getUser(state)
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    prepareGoogle: function prepareGoogle() {
-      return dispatch((0, _actions.socialLoginPrepare)('google', { clientId: _config.googleClientId }));
-    },
-    prepareFacebook: function prepareFacebook() {
-      return dispatch((0, _actions.socialLoginPrepare)('facebook', { clientId: _config.fbAppId }));
-    },
-    onFacebookLogin: function onFacebookLogin() {
-      return dispatch((0, _actions.socialLoginRequest)('facebook'));
-    },
-    onGoogleLogin: function onGoogleLogin() {
-      return dispatch((0, _actions.socialLoginRequest)('google'));
+    onGithubLogin: function onGithubLogin() {
+      return dispatch((0, _actions.authLoginRequest)('github'));
     },
     onClose: function onClose() {
       return dispatch((0, _actions.modalHide)('login'));
@@ -2485,11 +2444,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(6);
+var _reactRedux = __webpack_require__(7);
 
 var _selectors = __webpack_require__(11);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(6);
 
 var _components = __webpack_require__(3);
 
@@ -2557,11 +2516,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(6);
+var _reactRedux = __webpack_require__(7);
 
 var _selectors = __webpack_require__(11);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(6);
 
 var _components = __webpack_require__(3);
 
@@ -2573,7 +2532,7 @@ var UserButtonContainer = function UserButtonContainer(props) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    user: _selectors.fromSocial.getUser(state)
+    authenticated: _selectors.fromAuth.getAuthenticated(state)
   };
 };
 
@@ -2583,7 +2542,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch((0, _actions.modalShow)('login'));
     },
     onLogout: function onLogout() {
-      return dispatch((0, _actions.socialLogout)());
+      return dispatch((0, _actions.authLogout)());
     }
   };
 };
@@ -2623,32 +2582,42 @@ exports.parseEndpoint = exports.parseSettings = exports.parseJSON = exports.chec
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-__webpack_require__(88);
+__webpack_require__(89);
 
-var _queryString = __webpack_require__(94);
+var _reactCookie = __webpack_require__(21);
+
+var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
+var _queryString = __webpack_require__(95);
 
 var _merge = __webpack_require__(19);
 
 var _merge2 = _interopRequireDefault(_merge);
 
-var _config = __webpack_require__(4);
+var _config = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } // https://github.com/diegohaz/arc/wiki/API-service
-
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var checkStatus = exports.checkStatus = function checkStatus(response) {
-  if (response.ok) {
-    return response;
-  }
+  if (response.ok) return response;
+
   var error = new Error(response.status + ' ' + response.statusText);
   error.response = response;
   throw error;
 };
 
 var parseJSON = exports.parseJSON = function parseJSON(response) {
-  return response.json();
+  return new Promise(function (resolve) {
+    return response.json().then(function (json) {
+      return resolve({
+        status: response.status,
+        ok: response.ok,
+        json: json
+      });
+    });
+  });
 };
 
 var parseSettings = function parseSettings() {
@@ -2658,18 +2627,22 @@ var parseSettings = function parseSettings() {
       method = _ref$method === undefined ? 'get' : _ref$method,
       data = _ref.data,
       locale = _ref.locale,
-      otherSettings = _objectWithoutProperties(_ref, ['method', 'data', 'locale']);
+      authorization = _ref.authorization,
+      otherSettings = _objectWithoutProperties(_ref, ['method', 'data', 'locale', 'authorization']);
 
   var headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    'Accept-Language': locale
+    'Accept-Language': locale,
+    authorization: authorization ? 'Bearer ' + authorization : undefined
   };
-  var settings = (0, _merge2.default)({
+
+  var settings = _extends({
     body: data ? JSON.stringify(data) : undefined,
     method: method,
     headers: headers
   }, otherSettings);
+
   return settings;
 };
 
@@ -2688,7 +2661,22 @@ api.request = function (endpoint) {
   var params = _ref2.params,
       settings = _objectWithoutProperties(_ref2, ['params']);
 
-  return fetch(parseEndpoint(endpoint, params), parseSettings(settings)).then(checkStatus).then(parseJSON);
+  settings.authorization = _reactCookie2.default.load('token');
+
+  return new Promise(function (resolve, reject) {
+    return fetch(parseEndpoint(endpoint, params), parseSettings(settings)).then(parseJSON).then(function (response) {
+      if (response.ok) return resolve(response.json);
+
+      // Extract the error from the server's json
+      // Expects the API to respond to an error with:
+      // response: { error: 'This is an error message' }
+      return reject(response.json.error);
+    }).catch(function (error) {
+      return reject({
+        networkError: error.message
+      });
+    });
+  });
 };['delete', 'get'].forEach(function (method) {
   api[method] = function (endpoint, settings) {
     return api.request(endpoint, _extends({ method: method }, settings));
@@ -2766,7 +2754,7 @@ var _temp = function () {
 "use strict";
 
 
-var _dotenv = __webpack_require__(85);
+var _dotenv = __webpack_require__(86);
 
 var _dotenv2 = _interopRequireDefault(_dotenv);
 
@@ -2794,11 +2782,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _express = __webpack_require__(5);
+var _express = __webpack_require__(4);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _expressForceSsl = __webpack_require__(86);
+var _expressForceSsl = __webpack_require__(87);
 
 var _expressForceSsl2 = _interopRequireDefault(_expressForceSsl);
 
@@ -2806,7 +2794,7 @@ var _compression = __webpack_require__(82);
 
 var _compression2 = _interopRequireDefault(_compression);
 
-var _morgan = __webpack_require__(92);
+var _morgan = __webpack_require__(93);
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
@@ -2818,15 +2806,15 @@ var _bodyParser = __webpack_require__(81);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _expressValidator = __webpack_require__(87);
+var _expressValidator = __webpack_require__(88);
 
 var _expressValidator2 = _interopRequireDefault(_expressValidator);
 
-var _path = __webpack_require__(93);
+var _path = __webpack_require__(94);
 
 var _path2 = _interopRequireDefault(_path);
 
-var _config = __webpack_require__(4);
+var _config = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2891,23 +2879,494 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(22);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reduxSaga = __webpack_require__(102);
+var _selectors = __webpack_require__(15);
+
+var _actions = __webpack_require__(14);
+
+var _default = function _default() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _selectors.initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _actions.AUTH_USER:
+      return _extends({}, state, {
+        authenticated: true
+      });
+    case _actions.AUTH_LOGIN_SUCCESS:
+      return _extends({}, state, {
+        user: action.user,
+        authenticated: true
+      });
+    case _actions.AUTH_LOGOUT:
+      return _extends({}, state, {
+        user: _selectors.initialState.user,
+        authenticated: false
+      });
+    default:
+      return state;
+  }
+};
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/auth/reducer.js');
+}();
+
+;
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.exchangeCodeForToken = exports.closePopup = exports.pollPopup = exports.openPopup = exports.oauth2 = exports.serviceAction = undefined;
+exports.loginGithub = loginGithub;
+exports.watchAuthLoginGithub = watchAuthLoginGithub;
+exports.loginLocal = loginLocal;
+exports.watchAuthLoginLocal = watchAuthLoginLocal;
+exports.watchAuthLogout = watchAuthLogout;
+
+var _effects = __webpack_require__(104);
+
+var _reactCookie = __webpack_require__(21);
+
+var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
+var _url = __webpack_require__(110);
+
+var _querystring = __webpack_require__(109);
+
+var _api = __webpack_require__(46);
+
+var _api2 = _interopRequireDefault(_api);
+
+var _actions = __webpack_require__(14);
+
+var actions = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _marked = [loginGithub, watchAuthLoginGithub, loginLocal, watchAuthLoginLocal, watchAuthLogout].map(regeneratorRuntime.mark);
+
+var serviceAction = exports.serviceAction = function serviceAction(suffix, service) {
+  return function (action) {
+    return action.type === 'AUTH_LOGIN_' + suffix && action.service === service;
+  };
+};
+
+var oauth2 = exports.oauth2 = function oauth2(config) {
+  return new Promise(function (resolve) {
+    var params = {
+      client_id: config.clientId,
+      redirect_uri: config.redirectUri,
+      scope: config.scope,
+      display: 'popup',
+      response_type: 'code'
+    };
+
+    var url = config.authorizationUrl + '?' + (0, _querystring.stringify)(params);
+    resolve({ url: url });
+  });
+};
+
+var openPopup = exports.openPopup = function openPopup(_ref) {
+  var url = _ref.url,
+      config = _ref.config;
+  return new Promise(function (resolve) {
+    var width = config.width || 500;
+    var height = config.height || 500;
+    var options = {
+      width: width,
+      height: height,
+      top: window.screenY + (window.outerHeight - height) / 2.5,
+      left: window.screenX + (window.outerWidth - width) / 2
+    };
+    var popup = window.open(url, '_blank', (0, _querystring.stringify)(options, ','));
+
+    if (url === 'about:blank') {
+      popup.document.body.innerHTML = 'Loading...';
+    }
+
+    resolve({ window: popup });
+  });
+};
+
+var pollPopup = exports.pollPopup = function pollPopup(_ref2) {
+  var window = _ref2.window,
+      config = _ref2.config,
+      requestToken = _ref2.requestToken;
+  return new Promise(function (resolve, reject) {
+    var redirectUri = (0, _url.parse)(config.redirectUri);
+    var redirectUriPath = redirectUri.host + redirectUri.pathname;
+
+    if (requestToken) {
+      window.location = config.authorizationUrl + '?' + (0, _querystring.stringify)(requestToken);
+    }
+
+    var polling = setInterval(function () {
+      if (!window || window.closed) {
+        clearInterval(polling);
+      }
+
+      try {
+        var popupUrlPath = window.location.host + window.location.pathname;
+
+        if (popupUrlPath === redirectUriPath) {
+          if (window.location.search || window.location.hash) {
+            var query = (0, _querystring.parse)(window.location.search.substring(1).replace(/\/$/, ''));
+            var hash = (0, _querystring.parse)(window.location.hash.substring(1).replace(/[/$]/, ''));
+            var params = Object.assign({}, query, hash);
+
+            if (params.error) {
+              reject(params.error);
+            } else {
+              resolve({ oauthData: params, window: window, interval: polling });
+            }
+          } else {
+            reject('OAuth redirect has occurred but no query or hash parameters were found.');
+          }
+        }
+      } catch (error) {
+        // Ignore DOMException: Blocked a frame with origin from accessing a cross-origin frame.
+        // A hack to get around same-origin security policy errors in Internet Explorer.
+      }
+    }, 500);
+  });
+};
+
+var closePopup = exports.closePopup = function closePopup(_ref3) {
+  var window = _ref3.window,
+      interval = _ref3.interval;
+  return new Promise(function (resolve) {
+    clearInterval(interval);
+    window.close();
+    resolve();
+  });
+};
+
+var exchangeCodeForToken = exports.exchangeCodeForToken = function exchangeCodeForToken(_ref4) {
+  var oauthData = _ref4.oauthData,
+      config = _ref4.config,
+      window = _ref4.window,
+      interval = _ref4.interval;
+  return new Promise(function (resolve, reject) {
+    var data = Object.assign({}, oauthData, config);
+
+    _api2.default.post(config.url, data).then(function (_ref5) {
+      var token = _ref5.token,
+          user = _ref5.user;
+
+      return resolve({ token: token, user: user, window: window, interval: interval });
+    }).catch(function (err) {
+      reject(err);
+      closePopup({ window: window, interval: interval });
+    });
+  });
+};
+
+function loginGithub() {
+  var config, _ref6, url, _ref7, _window, _ref8, oauthData, ppWindow, interval, _ref9, token, user, exWindow, exInterval;
+
+  return regeneratorRuntime.wrap(function loginGithub$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          config = {
+            url: '/auth/github',
+            clientId: '8238d57f2bcc4cd3d0c7',
+            redirectUri: 'http://localhost:3000/api/auth/github/callback',
+            authorizationUrl: 'https://github.com/login/oauth/authorize',
+            scope: 'user user:email repo',
+            width: 452,
+            height: 633
+          };
+          _context.prev = 1;
+          _context.next = 4;
+          return oauth2(config);
+
+        case 4:
+          _ref6 = _context.sent;
+          url = _ref6.url;
+          _context.next = 8;
+          return openPopup({ url: url, config: config });
+
+        case 8:
+          _ref7 = _context.sent;
+          _window = _ref7.window;
+          _context.next = 12;
+          return pollPopup({ window: _window, config: config });
+
+        case 12:
+          _ref8 = _context.sent;
+          oauthData = _ref8.oauthData;
+          ppWindow = _ref8.window;
+          interval = _ref8.interval;
+          _context.next = 18;
+          return exchangeCodeForToken({ oauthData: oauthData, config: config, window: ppWindow, interval: interval });
+
+        case 18:
+          _ref9 = _context.sent;
+          token = _ref9.token;
+          user = _ref9.user;
+          exWindow = _ref9.window;
+          exInterval = _ref9.interval;
+
+
+          _reactCookie2.default.save('token', token);
+
+          _context.next = 26;
+          return (0, _effects.put)(actions.authLoginSuccess(user));
+
+        case 26:
+          _context.next = 28;
+          return closePopup({ window: exWindow, interval: exInterval });
+
+        case 28:
+          _context.next = 34;
+          break;
+
+        case 30:
+          _context.prev = 30;
+          _context.t0 = _context['catch'](1);
+          _context.next = 34;
+          return (0, _effects.put)(actions.authLoginFailure(_context.t0));
+
+        case 34:
+        case 'end':
+          return _context.stop();
+      }
+    }
+  }, _marked[0], this, [[1, 30]]);
+}
+
+function watchAuthLoginGithub() {
+  return regeneratorRuntime.wrap(function watchAuthLoginGithub$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          if (false) {
+            _context2.next = 7;
+            break;
+          }
+
+          _context2.next = 3;
+          return (0, _effects.take)(serviceAction('REQUEST', 'github'));
+
+        case 3:
+          _context2.next = 5;
+          return (0, _effects.call)(loginGithub);
+
+        case 5:
+          _context2.next = 0;
+          break;
+
+        case 7:
+        case 'end':
+          return _context2.stop();
+      }
+    }
+  }, _marked[1], this);
+}
+
+function loginLocal() {
+  var _ref10, token, user;
+
+  return regeneratorRuntime.wrap(function loginLocal$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          _context3.next = 3;
+          return _api2.default.get('/users');
+
+        case 3:
+          _ref10 = _context3.sent;
+          token = _ref10.token;
+          user = _ref10.user;
+
+          _reactCookie2.default.save('token', token);
+          _context3.next = 9;
+          return (0, _effects.put)(actions.authLoginSuccess(user));
+
+        case 9:
+          _context3.next = 15;
+          break;
+
+        case 11:
+          _context3.prev = 11;
+          _context3.t0 = _context3['catch'](0);
+          _context3.next = 15;
+          return (0, _effects.put)(actions.authLoginFailure(_context3.t0));
+
+        case 15:
+        case 'end':
+          return _context3.stop();
+      }
+    }
+  }, _marked[2], this, [[0, 11]]);
+}
+
+function watchAuthLoginLocal() {
+  var _ref11, options;
+
+  return regeneratorRuntime.wrap(function watchAuthLoginLocal$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          if (false) {
+            _context4.next = 9;
+            break;
+          }
+
+          _context4.next = 3;
+          return (0, _effects.take)(serviceAction('REQUEST', 'local'));
+
+        case 3:
+          _ref11 = _context4.sent;
+          options = _ref11.options;
+          _context4.next = 7;
+          return (0, _effects.call)(loginLocal, options);
+
+        case 7:
+          _context4.next = 0;
+          break;
+
+        case 9:
+        case 'end':
+          return _context4.stop();
+      }
+    }
+  }, _marked[3], this);
+}
+
+function watchAuthLogout() {
+  return regeneratorRuntime.wrap(function watchAuthLogout$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          if (false) {
+            _context5.next = 6;
+            break;
+          }
+
+          _context5.next = 3;
+          return (0, _effects.take)(actions.AUTH_LOGOUT);
+
+        case 3:
+          _reactCookie2.default.remove('token');
+          _context5.next = 0;
+          break;
+
+        case 6:
+        case 'end':
+          return _context5.stop();
+      }
+    }
+  }, _marked[4], this);
+}
+
+var _default = regeneratorRuntime.mark(function _default() {
+  return regeneratorRuntime.wrap(function _default$(_context6) {
+    while (1) {
+      switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return (0, _effects.fork)(watchAuthLoginLocal);
+
+        case 2:
+          _context6.next = 4;
+          return (0, _effects.fork)(watchAuthLoginGithub);
+
+        case 4:
+          _context6.next = 6;
+          return (0, _effects.fork)(watchAuthLogout);
+
+        case 6:
+        case 'end':
+          return _context6.stop();
+      }
+    }
+  }, _default, this);
+});
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(serviceAction, 'serviceAction', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(oauth2, 'oauth2', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(openPopup, 'openPopup', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(pollPopup, 'pollPopup', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(closePopup, 'closePopup', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(exchangeCodeForToken, 'exchangeCodeForToken', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(loginGithub, 'loginGithub', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(watchAuthLoginGithub, 'watchAuthLoginGithub', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(loginLocal, 'loginLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(watchAuthLoginLocal, 'watchAuthLoginLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(watchAuthLogout, 'watchAuthLogout', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+}();
+
+;
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(23);
+
+var _reduxSaga = __webpack_require__(103);
 
 var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
-var _config = __webpack_require__(4);
+var _config = __webpack_require__(5);
 
-var _middlewares = __webpack_require__(50);
+var _middlewares = __webpack_require__(52);
 
 var _middlewares2 = _interopRequireDefault(_middlewares);
 
-var _reducer = __webpack_require__(52);
+var _reducer = __webpack_require__(54);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
-var _sagas = __webpack_require__(53);
+var _sagas = __webpack_require__(55);
 
 var _sagas2 = _interopRequireDefault(_sagas);
 
@@ -2968,13 +3427,13 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _require = __webpack_require__(23),
+var _require = __webpack_require__(24),
     thunkMiddleware = _require.middleware;
 
 var req = __webpack_require__(75);
@@ -2995,7 +3454,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3009,9 +3468,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#modal
 
 
-var _selectors = __webpack_require__(16);
+var _selectors = __webpack_require__(17);
 
-var _actions = __webpack_require__(15);
+var _actions = __webpack_require__(16);
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3049,7 +3508,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3059,15 +3518,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _camelCase = __webpack_require__(89);
+var _camelCase = __webpack_require__(90);
 
 var _camelCase2 = _interopRequireDefault(_camelCase);
 
-var _redux = __webpack_require__(22);
+var _redux = __webpack_require__(23);
 
-var _reduxForm = __webpack_require__(101);
+var _reduxForm = __webpack_require__(102);
 
-var _reduxSagaThunk = __webpack_require__(23);
+var _reduxSagaThunk = __webpack_require__(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3104,7 +3563,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3114,7 +3573,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _effects = __webpack_require__(24);
+var _effects = __webpack_require__(104);
 
 var req = __webpack_require__(77); // https://github.com/diegohaz/arc/wiki/Sagas
 
@@ -3155,466 +3614,6 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(sagas, 'sagas', '/Users/Declan/coding/tmp/template/src/store/sagas.js');
 
   __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/sagas.js');
-}();
-
-;
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // https://github.com/diegohaz/arc/wiki/Reducers
-// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
-
-
-var _selectors = __webpack_require__(17);
-
-var _actions = __webpack_require__(12);
-
-var _default = function _default() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _selectors.initialState;
-  var _ref = arguments[1];
-  var type = _ref.type,
-      payload = _ref.payload;
-
-  switch (type) {
-    case _actions.SOCIAL_LOGIN_SUCCESS:
-      return _extends({}, state, {
-        user: payload
-      });
-    case _actions.SOCIAL_LOGOUT:
-      return _extends({}, state, {
-        user: _selectors.initialState.user
-      });
-    default:
-      return state;
-  }
-};
-
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/social/reducer.js');
-}();
-
-;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.serviceAction = exports.appendFbRoot = exports.promises = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.loginFacebook = loginFacebook;
-exports.prepareFacebook = prepareFacebook;
-exports.watchSocialLoginFacebook = watchSocialLoginFacebook;
-exports.loginGoogle = loginGoogle;
-exports.prepareGoogle = prepareGoogle;
-exports.watchSocialLoginGoogle = watchSocialLoginGoogle;
-
-var _simpleLoadScript = __webpack_require__(105);
-
-var _simpleLoadScript2 = _interopRequireDefault(_simpleLoadScript);
-
-var _effects = __webpack_require__(24);
-
-var _actions = __webpack_require__(12);
-
-var actions = _interopRequireWildcard(_actions);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _marked = [loginFacebook, prepareFacebook, watchSocialLoginFacebook, loginGoogle, prepareGoogle, watchSocialLoginGoogle].map(regeneratorRuntime.mark);
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } // https://github.com/diegohaz/arc/wiki/Sagas
-// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
-
-
-var promises = exports.promises = {
-  fbLogin: function fbLogin(options) {
-    return new Promise(function (resolve, reject) {
-      window.FB.login(function (response) {
-        // istanbul ignore else
-        if (response.authResponse) {
-          resolve(response.authResponse);
-        } else {
-          reject(response.status);
-        }
-      }, options);
-    });
-  },
-  fbGetMe: function fbGetMe(options) {
-    return new Promise(function (resolve) {
-      window.FB.api('/me', options, function (me) {
-        return resolve(me);
-      });
-    });
-  },
-  loadGoogleAuth2: function loadGoogleAuth2() {
-    return new Promise(function (resolve) {
-      window.gapi.load('auth2', resolve);
-    });
-  }
-};
-
-var appendFbRoot = exports.appendFbRoot = function appendFbRoot() {
-  var fbRoot = document.createElement('div');
-  fbRoot.id = 'fb-root';
-  document.body.appendChild(fbRoot);
-};
-
-var serviceAction = exports.serviceAction = function serviceAction(suffix, service) {
-  return function (_ref) {
-    var type = _ref.type,
-        payload = _ref.payload;
-    return type === 'SOCIAL_LOGIN_' + suffix && payload && payload.service === service;
-  };
-};
-
-function loginFacebook() {
-  var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var _ref2$scope = _ref2.scope,
-      scope = _ref2$scope === undefined ? 'public_profile' : _ref2$scope,
-      _ref2$fields = _ref2.fields,
-      fields = _ref2$fields === undefined ? 'id,name' : _ref2$fields,
-      options = _objectWithoutProperties(_ref2, ['scope', 'fields']);
-
-  var request, data, picture;
-  return regeneratorRuntime.wrap(function loginFacebook$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          request = _extends({ service: 'facebook', scope: scope, fields: fields }, options);
-          _context.prev = 1;
-          _context.next = 4;
-          return (0, _effects.call)(promises.fbLogin, _extends({ scope: scope }, options));
-
-        case 4:
-          _context.next = 6;
-          return (0, _effects.call)(promises.fbGetMe, { fields: fields });
-
-        case 6:
-          data = _context.sent;
-          picture = 'https://graph.facebook.com/' + data.id + '/picture?type=normal';
-          _context.next = 10;
-          return (0, _effects.put)(actions.socialLoginSuccess(_extends({}, data, { picture: picture }), request));
-
-        case 10:
-          _context.next = 16;
-          break;
-
-        case 12:
-          _context.prev = 12;
-          _context.t0 = _context['catch'](1);
-          _context.next = 16;
-          return (0, _effects.put)(actions.socialLoginFailure(_context.t0, request));
-
-        case 16:
-        case 'end':
-          return _context.stop();
-      }
-    }
-  }, _marked[0], this, [[1, 12]]);
-}
-
-function prepareFacebook(_ref3) {
-  var clientId = _ref3.clientId,
-      _ref3$version = _ref3.version,
-      version = _ref3$version === undefined ? 'v2.8' : _ref3$version,
-      options = _objectWithoutProperties(_ref3, ['clientId', 'version']);
-
-  var request;
-  return regeneratorRuntime.wrap(function prepareFacebook$(_context2) {
-    while (1) {
-      switch (_context2.prev = _context2.next) {
-        case 0:
-          request = _extends({ service: 'facebook', clientId: clientId, version: version }, options);
-          _context2.prev = 1;
-          _context2.next = 4;
-          return (0, _effects.call)(appendFbRoot);
-
-        case 4:
-          _context2.next = 6;
-          return (0, _effects.call)(_simpleLoadScript2.default, '//connect.facebook.net/en_US/sdk.js');
-
-        case 6:
-          _context2.next = 8;
-          return (0, _effects.call)([window.FB, window.FB.init], _extends({ appId: clientId, version: version }, options));
-
-        case 8:
-          _context2.next = 14;
-          break;
-
-        case 10:
-          _context2.prev = 10;
-          _context2.t0 = _context2['catch'](1);
-          _context2.next = 14;
-          return (0, _effects.put)(actions.socialLoginFailure(_context2.t0, request));
-
-        case 14:
-        case 'end':
-          return _context2.stop();
-      }
-    }
-  }, _marked[1], this, [[1, 10]]);
-}
-
-function watchSocialLoginFacebook() {
-  var _ref4, payload, _ref5, _payload;
-
-  return regeneratorRuntime.wrap(function watchSocialLoginFacebook$(_context3) {
-    while (1) {
-      switch (_context3.prev = _context3.next) {
-        case 0:
-          _context3.next = 2;
-          return (0, _effects.take)(serviceAction('PREPARE', 'facebook'));
-
-        case 2:
-          _ref4 = _context3.sent;
-          payload = _ref4.payload;
-          _context3.next = 6;
-          return (0, _effects.call)(prepareFacebook, payload);
-
-        case 6:
-          if (false) {
-            _context3.next = 15;
-            break;
-          }
-
-          _context3.next = 9;
-          return (0, _effects.take)(serviceAction('REQUEST', 'facebook'));
-
-        case 9:
-          _ref5 = _context3.sent;
-          _payload = _ref5.payload;
-          _context3.next = 13;
-          return (0, _effects.call)(loginFacebook, _payload);
-
-        case 13:
-          _context3.next = 6;
-          break;
-
-        case 15:
-        case 'end':
-          return _context3.stop();
-      }
-    }
-  }, _marked[2], this);
-}
-
-function loginGoogle() {
-  var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var _ref6$scope = _ref6.scope,
-      scope = _ref6$scope === undefined ? 'profile' : _ref6$scope,
-      options = _objectWithoutProperties(_ref6, ['scope']);
-
-  var request, auth2, user, profile, name, picture;
-  return regeneratorRuntime.wrap(function loginGoogle$(_context4) {
-    while (1) {
-      switch (_context4.prev = _context4.next) {
-        case 0:
-          request = _extends({ service: 'google', scope: scope }, options);
-          _context4.prev = 1;
-          _context4.next = 4;
-          return (0, _effects.call)(window.gapi.auth2.getAuthInstance);
-
-        case 4:
-          auth2 = _context4.sent;
-          _context4.next = 7;
-          return (0, _effects.call)([auth2, auth2.signIn], _extends({ scope: scope }, options));
-
-        case 7:
-          user = _context4.sent;
-          _context4.next = 10;
-          return (0, _effects.call)([user, user.getBasicProfile]);
-
-        case 10:
-          profile = _context4.sent;
-          _context4.next = 13;
-          return (0, _effects.call)([profile, profile.getName]);
-
-        case 13:
-          name = _context4.sent;
-          _context4.next = 16;
-          return (0, _effects.call)([profile, profile.getImageUrl]);
-
-        case 16:
-          picture = _context4.sent;
-          _context4.next = 19;
-          return (0, _effects.put)(actions.socialLoginSuccess({ name: name, picture: picture }, request));
-
-        case 19:
-          _context4.next = 25;
-          break;
-
-        case 21:
-          _context4.prev = 21;
-          _context4.t0 = _context4['catch'](1);
-          _context4.next = 25;
-          return (0, _effects.put)(actions.socialLoginFailure(_context4.t0, request));
-
-        case 25:
-        case 'end':
-          return _context4.stop();
-      }
-    }
-  }, _marked[3], this, [[1, 21]]);
-}
-
-function prepareGoogle(_ref7) {
-  var clientId = _ref7.clientId,
-      options = _objectWithoutProperties(_ref7, ['clientId']);
-
-  var request;
-  return regeneratorRuntime.wrap(function prepareGoogle$(_context5) {
-    while (1) {
-      switch (_context5.prev = _context5.next) {
-        case 0:
-          request = _extends({ service: 'google', clientId: clientId }, options);
-          _context5.prev = 1;
-          _context5.next = 4;
-          return (0, _effects.call)(_simpleLoadScript2.default, '//apis.google.com/js/platform.js');
-
-        case 4:
-          _context5.next = 6;
-          return (0, _effects.call)(promises.loadGoogleAuth2);
-
-        case 6:
-          _context5.next = 8;
-          return (0, _effects.call)(window.gapi.auth2.init, _extends({ client_id: clientId }, options));
-
-        case 8:
-          _context5.next = 14;
-          break;
-
-        case 10:
-          _context5.prev = 10;
-          _context5.t0 = _context5['catch'](1);
-          _context5.next = 14;
-          return (0, _effects.put)(actions.socialLoginFailure(_context5.t0, request));
-
-        case 14:
-        case 'end':
-          return _context5.stop();
-      }
-    }
-  }, _marked[4], this, [[1, 10]]);
-}
-
-function watchSocialLoginGoogle() {
-  var _ref8, payload, _ref9, _payload2;
-
-  return regeneratorRuntime.wrap(function watchSocialLoginGoogle$(_context6) {
-    while (1) {
-      switch (_context6.prev = _context6.next) {
-        case 0:
-          _context6.next = 2;
-          return (0, _effects.take)(serviceAction('PREPARE', 'google'));
-
-        case 2:
-          _ref8 = _context6.sent;
-          payload = _ref8.payload;
-          _context6.next = 6;
-          return (0, _effects.call)(prepareGoogle, payload);
-
-        case 6:
-          if (false) {
-            _context6.next = 15;
-            break;
-          }
-
-          _context6.next = 9;
-          return (0, _effects.take)(serviceAction('REQUEST', 'google'));
-
-        case 9:
-          _ref9 = _context6.sent;
-          _payload2 = _ref9.payload;
-          _context6.next = 13;
-          return (0, _effects.call)(loginGoogle, _payload2);
-
-        case 13:
-          _context6.next = 6;
-          break;
-
-        case 15:
-        case 'end':
-          return _context6.stop();
-      }
-    }
-  }, _marked[5], this);
-}
-
-var _default = regeneratorRuntime.mark(function _default() {
-  return regeneratorRuntime.wrap(function _default$(_context7) {
-    while (1) {
-      switch (_context7.prev = _context7.next) {
-        case 0:
-          _context7.next = 2;
-          return (0, _effects.fork)(watchSocialLoginFacebook);
-
-        case 2:
-          _context7.next = 4;
-          return (0, _effects.fork)(watchSocialLoginGoogle);
-
-        case 4:
-        case 'end':
-          return _context7.stop();
-      }
-    }
-  }, _default, this);
-});
-
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(promises, 'promises', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(appendFbRoot, 'appendFbRoot', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(serviceAction, 'serviceAction', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(loginFacebook, 'loginFacebook', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(prepareFacebook, 'prepareFacebook', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(watchSocialLoginFacebook, 'watchSocialLoginFacebook', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(loginGoogle, 'loginGoogle', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(prepareGoogle, 'prepareGoogle', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(watchSocialLoginGoogle, 'watchSocialLoginGoogle', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/social/sagas.js');
 }();
 
 ;
@@ -3806,8 +3805,8 @@ webpackContext.id = 73;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./modal/actions.js": 15,
-	"./social/actions.js": 12
+	"./auth/actions.js": 14,
+	"./modal/actions.js": 16
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3842,8 +3841,8 @@ webpackEmptyContext.id = 75;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./modal/reducer.js": 51,
-	"./social/reducer.js": 54
+	"./auth/reducer.js": 49,
+	"./modal/reducer.js": 53
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3866,7 +3865,7 @@ webpackContext.id = 76;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./social/sagas.js": 55
+	"./auth/sagas.js": 50
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3889,8 +3888,8 @@ webpackContext.id = 77;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./modal/selectors.js": 16,
-	"./social/selectors.js": 17
+	"./auth/selectors.js": 15,
+	"./modal/selectors.js": 17
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3948,140 +3947,158 @@ module.exports = require("cors");
 /* 85 */
 /***/ (function(module, exports) {
 
-module.exports = require("dotenv");
+module.exports = require("csurf");
 
 /***/ }),
 /* 86 */
 /***/ (function(module, exports) {
 
-module.exports = require("express-force-ssl");
+module.exports = require("dotenv");
 
 /***/ }),
 /* 87 */
 /***/ (function(module, exports) {
 
-module.exports = require("express-validator");
+module.exports = require("express-force-ssl");
 
 /***/ }),
 /* 88 */
 /***/ (function(module, exports) {
 
-module.exports = require("isomorphic-fetch");
+module.exports = require("express-validator");
 
 /***/ }),
 /* 89 */
 /***/ (function(module, exports) {
 
-module.exports = require("lodash/camelCase");
+module.exports = require("isomorphic-fetch");
 
 /***/ }),
 /* 90 */
 /***/ (function(module, exports) {
 
-module.exports = require("lodash/upperFirst");
+module.exports = require("lodash/camelCase");
 
 /***/ }),
 /* 91 */
 /***/ (function(module, exports) {
 
-module.exports = require("moment");
+module.exports = require("lodash/upperFirst");
 
 /***/ }),
 /* 92 */
 /***/ (function(module, exports) {
 
-module.exports = require("morgan");
+module.exports = require("moment");
 
 /***/ }),
 /* 93 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("morgan");
 
 /***/ }),
 /* 94 */
 /***/ (function(module, exports) {
 
-module.exports = require("query-string");
+module.exports = require("path");
 
 /***/ }),
 /* 95 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom/server");
+module.exports = require("query-string");
 
 /***/ }),
 /* 96 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-modal");
+module.exports = require("react-dom/server");
 
 /***/ }),
 /* 97 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router");
+module.exports = require("react-modal");
 
 /***/ }),
 /* 98 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-router");
 
 /***/ }),
 /* 99 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom/Link");
+module.exports = require("react-router-dom");
 
 /***/ }),
 /* 100 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-server");
+module.exports = require("react-router-dom/Link");
 
 /***/ }),
 /* 101 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-form");
+module.exports = require("react-router-server");
 
 /***/ }),
 /* 102 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-saga");
+module.exports = require("redux-form");
 
 /***/ }),
 /* 103 */
 /***/ (function(module, exports) {
 
-module.exports = require("request");
+module.exports = require("redux-saga");
 
 /***/ }),
 /* 104 */
 /***/ (function(module, exports) {
 
-module.exports = require("serialize-javascript");
+module.exports = require("redux-saga/effects");
 
 /***/ }),
 /* 105 */
 /***/ (function(module, exports) {
 
-module.exports = require("simple-load-script");
+module.exports = require("request");
 
 /***/ }),
 /* 106 */
 /***/ (function(module, exports) {
 
-module.exports = require("styled-theme/composer");
+module.exports = require("serialize-javascript");
 
 /***/ }),
 /* 107 */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-theme/composer");
+
+/***/ }),
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(25);
 
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports) {
+
+module.exports = require("querystring");
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports) {
+
+module.exports = require("url");
 
 /***/ })
 /******/ ]);

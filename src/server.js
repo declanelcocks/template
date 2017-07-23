@@ -3,10 +3,12 @@ import 'babel-polyfill'
 import express from 'services/express'
 import { Router } from 'express'
 import cors from 'cors'
+import csrf from 'csurf'
 import mongoose from 'mongoose'
 import api from 'api'
 
 import React from 'react'
+import cookie from 'react-cookie'
 import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -16,6 +18,7 @@ import { renderToString } from 'react-router-server'
 
 import { port, host, basename, mongo } from 'config'
 import configureStore from 'store/configure'
+import { authUser } from 'store/actions'
 import apiService from 'services/api'
 import App from 'components/App'
 import Html from 'components/Html'
@@ -53,7 +56,10 @@ const renderHtml = ({
 mongoose.connect(mongo.uri)
 
 const router = new Router()
+
 router.use('/api', cors(), api)
+
+router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
   const location = req.url
@@ -61,21 +67,24 @@ router.use((req, res, next) => {
   const context = {}
   const sheet = new ServerStyleSheet()
 
-  renderApp({
-    store, context, location, sheet,
-  }).then(({ state: serverState, html: content }) => {
-    if (context.status) {
-      res.status(context.status)
-    }
-    if (context.url) {
-      res.redirect(context.url)
-    } else {
-      const initialState = store.getState()
-      res.send(renderHtml({
-        serverState, initialState, content, sheet,
-      }))
-    }
-  }).catch(next)
+  cookie.plugToRequest(req, res)
+  const token = req.cookies.token
+
+  if (token) store.dispatch(authUser())
+
+  renderApp({ store, context, location, sheet })
+    .then(({ state: serverState, html: content }) => {
+      if (context.status) {
+        res.status(context.status)
+      }
+      if (context.url) {
+        res.redirect(context.url)
+      } else {
+        const initialState = store.getState()
+        res.send(renderHtml({ serverState, initialState, content, sheet }))
+      }
+    })
+    .catch(next)
 })
 
 router.use((err, req, res, next) => {
