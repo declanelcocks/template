@@ -136,9 +136,9 @@ export function* watchAuthLoginGithub() {
   }
 }
 
-export function* loginLocal() {
+export function* loginLocal(data) {
   try {
-    const { token, user } = yield api.get('/users')
+    const { token, user } = yield api.post('/auth/login', data)
     cookie.save('token', token)
     yield put(actions.authLoginSuccess(user))
   } catch (e) {

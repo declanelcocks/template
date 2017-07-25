@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { IconButton } from 'components'
-import { Modal } from 'containers'
+import { LoginForm, Modal } from 'containers'
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,6 +31,7 @@ class LoginModal extends Component {
     return (
       <Modal title="Login" name="login" closeable {...props}>
         <Wrapper>
+          <LoginForm />
           <IconButton onClick={onGithubLogin} icon="github">Connect with Github</IconButton>
         </Wrapper>
       </Modal>
