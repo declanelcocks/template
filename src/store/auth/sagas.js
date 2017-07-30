@@ -138,9 +138,9 @@ export function* watchAuthLoginGithub() {
 
 export function* loginFacebook() {
   const config = {
-    url: 'http://localhost:3000/auth/facebook',
+    url: '/auth/facebook',
     clientId: '763079670530508',
-    redirectUri: 'http://localhost:3000/auth/facebook/callback',
+    redirectUri: 'http://localhost:3000/api/auth/facebook/callback',
     authorizationUrl: 'https://www.facebook.com/v2.5/dialog/oauth',
     scope: 'email,user_location',
     width: 580,

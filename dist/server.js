@@ -270,6 +270,8 @@ router.post('/auth/signup', _controller.signup);
 router.post('/auth/login', _controller.login);
 router.post('/auth/github', _controller.authGithub);
 router.get('/auth/github/callback', _controller.authGithubCallback);
+router.post('/auth/facebook', _controller.authFacebook);
+router.get('/auth/facebook/callback', _controller.authFacebookCallback);
 
 exports.User = _model2.default;
 var _default = router;
@@ -1175,7 +1177,7 @@ var _temp = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.authGithubCallback = exports.authGithub = exports.login = exports.signup = exports.currentUser = exports.generateToken = undefined;
+exports.authFacebookCallback = exports.authFacebook = exports.authGithubCallback = exports.authGithub = exports.login = exports.signup = exports.currentUser = exports.generateToken = undefined;
 
 var _request = __webpack_require__(114);
 
@@ -1243,6 +1245,10 @@ var signup = exports.signup = function signup(req, res) {
 };
 
 var login = exports.login = function login(req, res) {
+  if (req.isAuthenticated()) {
+    return res.send({ token: generateToken(req.user), user: req.user });
+  }
+
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('email', 'Email cannot be blank').notEmpty();
   req.assert('password', 'Password cannot be blank').notEmpty();
@@ -1282,7 +1288,7 @@ var authGithub = exports.authGithub = function authGithub(req, res) {
       'User-Agent': 'template'
 
       // Step 2. Retrieve user's profile information.
-    };_request2.default.get({ url: userUrl, headers: headers, json: true }, function (err, response, profile) {
+    };return _request2.default.get({ url: userUrl, headers: headers, json: true }, function (err, response, profile) {
       if (profile.error) return res.status(500).send({ error: profile.error.message });
 
       // Step 3a. Link accounts if user is authenticated.
@@ -1329,6 +1335,72 @@ var authGithubCallback = exports.authGithubCallback = function authGithubCallbac
   var res = _ref.res;
   return res.send({ msg: 'loading' });
 };
+
+var authFacebook = exports.authFacebook = function authFacebook(req, res) {
+  var profileFields = ['id', 'name', 'email', 'gender', 'location'];
+  var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
+  var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + profileFields.join(',');
+
+  var params = {
+    code: req.body.code,
+    client_id: req.body.clientId,
+    client_secret: process.env.FACEBOOK_SECRET,
+    redirect_uri: req.body.redirectUri
+
+    // Step 1. Exchange authorization code for access token.
+  };_request2.default.get({ url: accessTokenUrl, qs: params, json: true }, function (err, response, accessToken) {
+    if (accessToken.error) {
+      return res.status(500).send({ msg: accessToken.error.message });
+    }
+
+    // Step 2. Retrieve user's profile information.
+    return _request2.default.get({ url: graphApiUrl, qs: accessToken, json: true }, function (err, response, profile) {
+      if (profile.error) return res.status(500).send({ msg: profile.error.message });
+
+      // Step 3a. Link accounts if user is authenticated.
+      if (req.isAuthenticated()) {
+        return _.User.findOne({ facebook: profile.id }, function (err, user) {
+          if (user) {
+            return res.status(409).send({ error: 'There is already an existing account linked with this Github account.' });
+          }
+
+          if (!user) return res.status(401).send({ error: 'Your login has expired.' });
+
+          var userWithFacebook = req.user;
+          userWithFacebook.name = user.name || profile.name;
+          userWithFacebook.facebook = profile.id;
+
+          return user.save(function () {
+            return res.send({ token: generateToken(userWithFacebook), user: userWithFacebook });
+          });
+        });
+      }
+
+      // Step 3b. Create a new user account or return an existing one.
+      return _.User.findOne({ facebook: profile.id }, function (err, user) {
+        // User exists
+        if (user) return res.send({ token: generateToken(user), user: user });
+
+        var newUser = new _.User({
+          name: profile.name,
+          email: profile.email,
+          facebook: profile.id
+        });
+
+        return newUser.save(function (error) {
+          if (error) return res.status(400).send({ error: error });
+
+          return res.send({ token: generateToken(newUser), user: newUser });
+        });
+      });
+    });
+  });
+};
+
+var authFacebookCallback = exports.authFacebookCallback = function authFacebookCallback(_ref2) {
+  var res = _ref2.res;
+  return res.send({ msg: 'loading' });
+};
 ;
 
 var _temp = function () {
@@ -1347,6 +1419,10 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(authGithub, 'authGithub', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
 
   __REACT_HOT_LOADER__.register(authGithubCallback, 'authGithubCallback', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+
+  __REACT_HOT_LOADER__.register(authFacebook, 'authFacebook', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+
+  __REACT_HOT_LOADER__.register(authFacebookCallback, 'authFacebookCallback', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
 }();
 
 ;
@@ -1378,7 +1454,8 @@ var userSchema = new _mongoose.Schema({
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
-  github: String
+  github: String,
+  facebook: String
 }, {
   timestamps: true,
   toJSON: { virtuals: true }
@@ -2663,7 +2740,8 @@ var LoginModal = function (_Component) {
     value: function render() {
       var _props = this.props,
           onGithubLogin = _props.onGithubLogin,
-          props = _objectWithoutProperties(_props, ['onGithubLogin']);
+          onFacebookLogin = _props.onFacebookLogin,
+          props = _objectWithoutProperties(_props, ['onGithubLogin', 'onFacebookLogin']);
 
       return _react2.default.createElement(
         _containers.Modal,
@@ -2676,6 +2754,11 @@ var LoginModal = function (_Component) {
             _components.IconButton,
             { onClick: onGithubLogin, icon: 'github' },
             'Connect with Github'
+          ),
+          _react2.default.createElement(
+            _components.IconButton,
+            { onClick: onFacebookLogin, icon: 'facebook' },
+            'Connect with Facebook'
           )
         )
       );
@@ -2688,6 +2771,7 @@ var LoginModal = function (_Component) {
 LoginModal.propTypes = {
   user: _propTypes2.default.object,
   onGithubLogin: _propTypes2.default.func.isRequired,
+  onFacebookLogin: _propTypes2.default.func.isRequired,
   onClose: _propTypes2.default.func.isRequired
 };
 var _default = LoginModal;
@@ -3061,6 +3145,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     onGithubLogin: function onGithubLogin() {
       return dispatch((0, _actions.authLoginRequest)('github'));
+    },
+    onFacebookLogin: function onFacebookLogin() {
+      return dispatch((0, _actions.authLoginRequest)('facebook'));
     },
     onClose: function onClose() {
       return dispatch((0, _actions.modalHide)('login'));
@@ -3550,6 +3637,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.exchangeCodeForToken = exports.closePopup = exports.pollPopup = exports.openPopup = exports.oauth2 = exports.serviceAction = undefined;
 exports.loginGithub = loginGithub;
 exports.watchAuthLoginGithub = watchAuthLoginGithub;
+exports.loginFacebook = loginFacebook;
+exports.watchAuthLoginFacebook = watchAuthLoginFacebook;
 exports.loginLocal = loginLocal;
 exports.watchAuthLoginLocal = watchAuthLoginLocal;
 exports.watchAuthLogout = watchAuthLogout;
@@ -3576,7 +3665,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [loginGithub, watchAuthLoginGithub, loginLocal, watchAuthLoginLocal, watchAuthLogout].map(regeneratorRuntime.mark);
+var _marked = [loginGithub, watchAuthLoginGithub, loginFacebook, watchAuthLoginFacebook, loginLocal, watchAuthLoginLocal, watchAuthLogout].map(regeneratorRuntime.mark);
 
 var serviceAction = exports.serviceAction = function serviceAction(suffix, service) {
   return function (action) {
@@ -3798,70 +3887,103 @@ function watchAuthLoginGithub() {
   }, _marked[1], this);
 }
 
-function loginLocal(data) {
-  var _ref10, token, user;
+function loginFacebook() {
+  var config, _ref10, url, _ref11, _window2, _ref12, oauthData, ppWindow, interval, _ref13, token, user, exWindow, exInterval;
 
-  return regeneratorRuntime.wrap(function loginLocal$(_context3) {
+  return regeneratorRuntime.wrap(function loginFacebook$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          _context3.prev = 0;
-          _context3.next = 3;
-          return _api2.default.post('/auth/login', data);
+          config = {
+            url: '/auth/facebook',
+            clientId: '763079670530508',
+            redirectUri: 'http://localhost:3000/api/auth/facebook/callback',
+            authorizationUrl: 'https://www.facebook.com/v2.5/dialog/oauth',
+            scope: 'email,user_location',
+            width: 580,
+            height: 400
+          };
+          _context3.prev = 1;
+          _context3.next = 4;
+          return oauth2(config);
 
-        case 3:
+        case 4:
           _ref10 = _context3.sent;
-          token = _ref10.token;
-          user = _ref10.user;
+          url = _ref10.url;
+          _context3.next = 8;
+          return openPopup({ url: url, config: config });
+
+        case 8:
+          _ref11 = _context3.sent;
+          _window2 = _ref11.window;
+          _context3.next = 12;
+          return pollPopup({ window: _window2, config: config });
+
+        case 12:
+          _ref12 = _context3.sent;
+          oauthData = _ref12.oauthData;
+          ppWindow = _ref12.window;
+          interval = _ref12.interval;
+          _context3.next = 18;
+          return exchangeCodeForToken({ oauthData: oauthData, config: config, window: ppWindow, interval: interval });
+
+        case 18:
+          _ref13 = _context3.sent;
+          token = _ref13.token;
+          user = _ref13.user;
+          exWindow = _ref13.window;
+          exInterval = _ref13.interval;
+
 
           _reactCookie2.default.save('token', token);
-          _context3.next = 9;
+
+          _context3.next = 26;
           return (0, _effects.put)(actions.authLoginSuccess(user));
 
-        case 9:
-          _context3.next = 15;
+        case 26:
+          _context3.next = 28;
+          return closePopup({ window: exWindow, interval: exInterval });
+
+        case 28:
+          _context3.next = 34;
           break;
 
-        case 11:
-          _context3.prev = 11;
-          _context3.t0 = _context3['catch'](0);
-          _context3.next = 15;
+        case 30:
+          _context3.prev = 30;
+          _context3.t0 = _context3['catch'](1);
+          _context3.next = 34;
           return (0, _effects.put)(actions.authLoginFailure(_context3.t0));
 
-        case 15:
+        case 34:
         case 'end':
           return _context3.stop();
       }
     }
-  }, _marked[2], this, [[0, 11]]);
+  }, _marked[2], this, [[1, 30]]);
 }
 
-function watchAuthLoginLocal() {
-  var _ref11, options;
-
-  return regeneratorRuntime.wrap(function watchAuthLoginLocal$(_context4) {
+function watchAuthLoginFacebook() {
+  return regeneratorRuntime.wrap(function watchAuthLoginFacebook$(_context4) {
     while (1) {
       switch (_context4.prev = _context4.next) {
         case 0:
           if (false) {
-            _context4.next = 9;
+            _context4.next = 7;
             break;
           }
 
           _context4.next = 3;
-          return (0, _effects.take)(serviceAction('REQUEST', 'local'));
+          return (0, _effects.take)(serviceAction('REQUEST', 'facebook'));
 
         case 3:
-          _ref11 = _context4.sent;
-          options = _ref11.options;
-          _context4.next = 7;
-          return (0, _effects.call)(loginLocal, options);
+          _context4.next = 5;
+          return (0, _effects.call)(loginFacebook);
 
-        case 7:
+        case 5:
           _context4.next = 0;
           break;
 
-        case 9:
+        case 7:
         case 'end':
           return _context4.stop();
       }
@@ -3869,51 +3991,126 @@ function watchAuthLoginLocal() {
   }, _marked[3], this);
 }
 
-function watchAuthLogout() {
-  return regeneratorRuntime.wrap(function watchAuthLogout$(_context5) {
+function loginLocal(data) {
+  var _ref14, token, user;
+
+  return regeneratorRuntime.wrap(function loginLocal$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
-          if (false) {
-            _context5.next = 6;
-            break;
-          }
-
+          _context5.prev = 0;
           _context5.next = 3;
-          return (0, _effects.take)(actions.AUTH_LOGOUT);
+          return _api2.default.post('/auth/login', data);
 
         case 3:
-          _reactCookie2.default.remove('token');
-          _context5.next = 0;
+          _ref14 = _context5.sent;
+          token = _ref14.token;
+          user = _ref14.user;
+
+          _reactCookie2.default.save('token', token);
+          _context5.next = 9;
+          return (0, _effects.put)(actions.authLoginSuccess(user));
+
+        case 9:
+          _context5.next = 15;
           break;
 
-        case 6:
+        case 11:
+          _context5.prev = 11;
+          _context5.t0 = _context5['catch'](0);
+          _context5.next = 15;
+          return (0, _effects.put)(actions.authLoginFailure(_context5.t0));
+
+        case 15:
         case 'end':
           return _context5.stop();
       }
     }
-  }, _marked[4], this);
+  }, _marked[4], this, [[0, 11]]);
 }
 
-var _default = regeneratorRuntime.mark(function _default() {
-  return regeneratorRuntime.wrap(function _default$(_context6) {
+function watchAuthLoginLocal() {
+  var _ref15, options;
+
+  return regeneratorRuntime.wrap(function watchAuthLoginLocal$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
-          _context6.next = 2;
-          return (0, _effects.fork)(watchAuthLoginLocal);
+          if (false) {
+            _context6.next = 9;
+            break;
+          }
 
-        case 2:
-          _context6.next = 4;
-          return (0, _effects.fork)(watchAuthLoginGithub);
+          _context6.next = 3;
+          return (0, _effects.take)(serviceAction('REQUEST', 'local'));
 
-        case 4:
-          _context6.next = 6;
-          return (0, _effects.fork)(watchAuthLogout);
+        case 3:
+          _ref15 = _context6.sent;
+          options = _ref15.options;
+          _context6.next = 7;
+          return (0, _effects.call)(loginLocal, options);
+
+        case 7:
+          _context6.next = 0;
+          break;
+
+        case 9:
+        case 'end':
+          return _context6.stop();
+      }
+    }
+  }, _marked[5], this);
+}
+
+function watchAuthLogout() {
+  return regeneratorRuntime.wrap(function watchAuthLogout$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          if (false) {
+            _context7.next = 6;
+            break;
+          }
+
+          _context7.next = 3;
+          return (0, _effects.take)(actions.AUTH_LOGOUT);
+
+        case 3:
+          _reactCookie2.default.remove('token');
+          _context7.next = 0;
+          break;
 
         case 6:
         case 'end':
-          return _context6.stop();
+          return _context7.stop();
+      }
+    }
+  }, _marked[6], this);
+}
+
+var _default = regeneratorRuntime.mark(function _default() {
+  return regeneratorRuntime.wrap(function _default$(_context8) {
+    while (1) {
+      switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.next = 2;
+          return (0, _effects.fork)(watchAuthLoginLocal);
+
+        case 2:
+          _context8.next = 4;
+          return (0, _effects.fork)(watchAuthLoginGithub);
+
+        case 4:
+          _context8.next = 6;
+          return (0, _effects.fork)(watchAuthLoginFacebook);
+
+        case 6:
+          _context8.next = 8;
+          return (0, _effects.fork)(watchAuthLogout);
+
+        case 8:
+        case 'end':
+          return _context8.stop();
       }
     }
   }, _default, this);
@@ -3942,6 +4139,10 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(loginGithub, 'loginGithub', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
 
   __REACT_HOT_LOADER__.register(watchAuthLoginGithub, 'watchAuthLoginGithub', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(loginFacebook, 'loginFacebook', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+
+  __REACT_HOT_LOADER__.register(watchAuthLoginFacebook, 'watchAuthLoginFacebook', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
 
   __REACT_HOT_LOADER__.register(loginLocal, 'loginLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
 
