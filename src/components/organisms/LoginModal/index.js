@@ -17,6 +17,7 @@ class LoginModal extends Component {
   static propTypes = {
     user: PropTypes.object,
     onGithubLogin: PropTypes.func.isRequired,
+    onFacebookLogin: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
   }
 
@@ -27,12 +28,13 @@ class LoginModal extends Component {
   }
 
   render() {
-    const { onGithubLogin, ...props } = this.props
+    const { onGithubLogin, onFacebookLogin, ...props } = this.props
     return (
       <Modal title="Login" name="login" closeable {...props}>
         <Wrapper>
           <LoginForm />
           <IconButton onClick={onGithubLogin} icon="github">Connect with Github</IconButton>
+          <IconButton onClick={onFacebookLogin} icon="facebook">Connect with Facebook</IconButton>
         </Wrapper>
       </Modal>
     )

@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onGithubLogin: () => dispatch(authLoginRequest('github')),
+  onFacebookLogin: () => dispatch(authLoginRequest('facebook')),
   onClose: () => dispatch(modalHide('login')),
 })
 
