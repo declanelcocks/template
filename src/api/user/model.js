@@ -8,6 +8,7 @@ const userSchema = new Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
   github: String,
+  facebook: String,
 }, {
   timestamps: true,
   toJSON: { virtuals: true },

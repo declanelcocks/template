@@ -54,6 +54,10 @@ export const signup = (req, res) => {
 }
 
 export const login = (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.send({ token: generateToken(req.user), user: req.user })
+  }
+
   req.assert('email', 'Email is not valid').isEmail()
   req.assert('email', 'Email cannot be blank').notEmpty()
   req.assert('password', 'Password cannot be blank').notEmpty()
