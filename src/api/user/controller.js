@@ -95,7 +95,7 @@ export const authGithub = (req, res) => {
     }
 
     // Step 2. Retrieve user's profile information.
-    request.get({ url: userUrl, headers, json: true }, (err, response, profile) => {
+    return request.get({ url: userUrl, headers, json: true }, (err, response, profile) => {
       if (profile.error) return res.status(500).send({ error: profile.error.message })
 
       // Step 3a. Link accounts if user is authenticated.
@@ -137,3 +137,65 @@ export const authGithub = (req, res) => {
 }
 
 export const authGithubCallback = ({ res }) => res.send({ msg: 'loading' })
+
+export const authFacebook = (req, res) => {
+  const profileFields = ['id', 'name', 'email', 'gender', 'location']
+  const accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token'
+  const graphApiUrl = `https://graph.facebook.com/v2.5/me?fields=${profileFields.join(',')}`
+
+  const params = {
+    code: req.body.code,
+    client_id: req.body.clientId,
+    client_secret: process.env.FACEBOOK_SECRET,
+    redirect_uri: req.body.redirectUri,
+  }
+
+  // Step 1. Exchange authorization code for access token.
+  request.get({ url: accessTokenUrl, qs: params, json: true }, (err, response, accessToken) => {
+    if (accessToken.error) {
+      return res.status(500).send({ msg: accessToken.error.message })
+    }
+
+    // Step 2. Retrieve user's profile information.
+    return request.get({ url: graphApiUrl, qs: accessToken, json: true }, (err, response, profile) => {
+      if (profile.error) return res.status(500).send({ msg: profile.error.message })
+
+      // Step 3a. Link accounts if user is authenticated.
+      if (req.isAuthenticated()) {
+        return User.findOne({ facebook: profile.id }, (err, user) => {
+          if (user) {
+            return res.status(409).send({ error: 'There is already an existing account linked with this Github account.' })
+          }
+
+          if (!user) return res.status(401).send({ error: 'Your login has expired.' })
+
+          const userWithFacebook = req.user
+          userWithFacebook.name = user.name || profile.name
+          userWithFacebook.facebook = profile.id
+
+          return user.save(() => res.send({ token: generateToken(userWithFacebook), user: userWithFacebook }))
+        })
+      }
+
+      // Step 3b. Create a new user account or return an existing one.
+      return User.findOne({ facebook: profile.id }, (err, user) => {
+        // User exists
+        if (user) return res.send({ token: generateToken(user), user })
+
+        const newUser = new User({
+          name: profile.name,
+          email: profile.email,
+          facebook: profile.id,
+        })
+
+        return newUser.save((error) => {
+          if (error) return res.status(400).send({ error })
+
+          return res.send({ token: generateToken(newUser), user: newUser })
+        })
+      })
+    })
+  })
+}
+
+export const authFacebookCallback = ({ res }) => res.send({ msg: 'loading' })
