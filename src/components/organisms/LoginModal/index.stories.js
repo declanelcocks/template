@@ -6,6 +6,7 @@ storiesOf('LoginModal', module)
   .add('default', () => (
     <LoginModal
       onGithubLogin={action('github')}
+      onFacebookLogin={action('facebook')}
       onClose={action('closed')}
       isOpen
     />

@@ -136,6 +136,39 @@ export function* watchAuthLoginGithub() {
   }
 }
 
+export function* loginFacebook() {
+  const config = {
+    url: 'http://localhost:3000/auth/facebook',
+    clientId: '763079670530508',
+    redirectUri: 'http://localhost:3000/auth/facebook/callback',
+    authorizationUrl: 'https://www.facebook.com/v2.5/dialog/oauth',
+    scope: 'email,user_location',
+    width: 580,
+    height: 400,
+  }
+
+  try {
+    const { url } = yield oauth2(config)
+    const { window } = yield openPopup({ url, config })
+    const { oauthData, window: ppWindow, interval } = yield pollPopup({ window, config })
+    const { token, user, window: exWindow, interval: exInterval } = yield exchangeCodeForToken({ oauthData, config, window: ppWindow, interval })
+
+    cookie.save('token', token)
+
+    yield put(actions.authLoginSuccess(user))
+    yield closePopup({ window: exWindow, interval: exInterval })
+  } catch (e) {
+    yield put(actions.authLoginFailure(e))
+  }
+}
+
+export function* watchAuthLoginFacebook() {
+  while (true) {
+    yield take(serviceAction('REQUEST', 'facebook'))
+    yield call(loginFacebook)
+  }
+}
+
 export function* loginLocal(data) {
   try {
     const { token, user } = yield api.post('/auth/login', data)
@@ -163,5 +196,6 @@ export function* watchAuthLogout() {
 export default function* () {
   yield fork(watchAuthLoginLocal)
   yield fork(watchAuthLoginGithub)
+  yield fork(watchAuthLoginFacebook)
   yield fork(watchAuthLogout)
 }
