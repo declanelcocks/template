@@ -24,15 +24,14 @@ export const currentUser = (req, res) => {
 }
 
 export const signup = (req, res) => {
-  req.assert('name', 'Name cannot be blank').notEmpty()
   req.assert('email', 'Email is not valid').isEmail()
   req.assert('email', 'Email cannot be blank').notEmpty()
   req.assert('password', 'Password must be at least 4 characters long').len(4)
-  req.sanitize('email').normalizeEmail({ remove_dots: false })
 
   const errors = req.validationErrors()
 
   if (errors) return res.status(400).send(errors)
+
 
   return User.findOne({ email: req.body.email }, (err, user) => {
     if (user) {
@@ -185,6 +184,8 @@ export const authFacebook = (req, res) => {
       return User.findOne({ facebook: profile.id }, (err, user) => {
         // User exists
         if (user) return res.send({ token: generateToken(user), user })
+
+        // TODO: Instead of saving a new user, first check if `profile.email` exists in Users
 
         const newUser = new User({
           name: profile.name,

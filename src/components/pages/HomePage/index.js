@@ -1,10 +1,10 @@
-// https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
-import { UserButton } from 'containers'
+import { SignupButton, UserButton } from 'containers'
 
 const HomePage = () => {
   return (
     <div>
+      <SignupButton />
       <UserButton />
     </div>
   )

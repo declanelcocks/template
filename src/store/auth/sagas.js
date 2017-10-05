@@ -9,6 +9,9 @@ import {
 import api from 'services/api'
 import * as actions from './actions'
 
+export const signupAction = (suffix, service) => action =>
+  action.type === `AUTH_SIGNUP_${suffix}` && action.service === service
+
 export const serviceAction = (suffix, service) => action =>
   action.type === `AUTH_LOGIN_${suffix}` && action.service === service
 
@@ -162,6 +165,23 @@ export function* loginFacebook() {
   }
 }
 
+export function* signupLocal(data) {
+  try {
+    const { token, user } = yield api.post('/auth/signup', data)
+    cookie.save('token', token)
+    yield put(actions.authLoginSuccess(user))
+  } catch (e) {
+    yield put(actions.authSignupFailure(e))
+  }
+}
+
+export function* watchAuthSignupLocal() {
+  while (true) {
+    const { options } = yield take(signupAction('REQUEST', 'local'))
+    yield call(signupLocal, options)
+  }
+}
+
 export function* watchAuthLoginFacebook() {
   while (true) {
     yield take(serviceAction('REQUEST', 'facebook'))
@@ -194,6 +214,7 @@ export function* watchAuthLogout() {
 }
 
 export default function* () {
+  yield fork(watchAuthSignupLocal)
   yield fork(watchAuthLoginLocal)
   yield fork(watchAuthLoginGithub)
   yield fork(watchAuthLoginFacebook)

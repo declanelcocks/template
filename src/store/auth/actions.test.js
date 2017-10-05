@@ -1,5 +1,13 @@
 import * as actions from './actions'
 
+test('authSignupRequest', () => {
+  expect(actions.authSignupRequest('local', 1)).toEqual({
+    type: actions.AUTH_SIGNUP_REQUEST,
+    service: 'local',
+    options: 1,
+  })
+})
+
 test('authLoginPrepare', () => {
   expect(actions.authLoginPrepare('github', 1)).toEqual({
     type: actions.AUTH_LOGIN_PREPARE,

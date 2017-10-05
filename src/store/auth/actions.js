@@ -1,3 +1,4 @@
+export const AUTH_SIGNUP_REQUEST = 'AUTH_SIGNUP_REQUEST'
 export const AUTH_LOGIN = 'AUTH_LOGIN'
 export const AUTH_LOGIN_PREPARE = 'AUTH_LOGIN_PREPARE'
 export const AUTH_LOGIN_REQUEST = 'AUTH_LOGIN_REQUEST'
@@ -5,6 +6,12 @@ export const AUTH_LOGIN_SUCCESS = 'AUTH_LOGIN_SUCCESS'
 export const AUTH_LOGIN_FAILURE = 'AUTH_LOGIN_FAILURE'
 export const AUTH_USER = 'AUTH_USER'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT'
+
+export const authSignupRequest = (service, options) => ({
+  type: AUTH_SIGNUP_REQUEST,
+  service,
+  options,
+})
 
 export const authLoginPrepare = (service, options) => ({
   type: AUTH_LOGIN_PREPARE,
