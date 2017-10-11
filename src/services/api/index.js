@@ -54,10 +54,7 @@ api.request = (endpoint, { params, ...settings } = {}) => {
       .then((response) => {
         if (response.ok) return resolve(response.json)
 
-        // Extract the error from the server's json
-        // Expects the API to respond to an error with:
-        // response: { error: 'This is an error message' }
-        return reject(response.json.error)
+        return reject(response.json)
       })
       .catch((error) => {
         return reject({

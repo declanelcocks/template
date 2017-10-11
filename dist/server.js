@@ -642,10 +642,7 @@ api.request = function (endpoint) {
     return fetch(parseEndpoint(endpoint, params), parseSettings(settings)).then(parseJSON).then(function (response) {
       if (response.ok) return resolve(response.json);
 
-      // Extract the error from the server's json
-      // Expects the API to respond to an error with:
-      // response: { error: 'This is an error message' }
-      return reject(response.json.error);
+      return reject(response.json);
     }).catch(function (error) {
       return reject({
         networkError: error.message
@@ -1368,7 +1365,7 @@ var signup = exports.signup = function signup(req, res) {
 
   return _.User.findOne({ email: req.body.email }, function (err, user) {
     if (user) {
-      return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
+      return res.status(400).send({ error: 'The email address you have entered is already associated with another account.' });
     }
 
     var newUser = new _.User({
@@ -1387,6 +1384,8 @@ var signup = exports.signup = function signup(req, res) {
 
 var login = exports.login = function login(req, res) {
   if (req.isAuthenticated()) {
+    // valid token was provided, but the user does not exist
+    if (!req.user) return res.status(400).send({ error: 'Invalid token' });
     return res.send({ token: generateToken(req.user), user: req.user });
   }
 
@@ -1400,10 +1399,10 @@ var login = exports.login = function login(req, res) {
   if (errors) return res.status(400).send(errors);
 
   return _.User.findOne({ email: req.body.email }, function (err, user) {
-    if (!user) return res.status(401).send({ msg: 'The email address ' + req.body.email + ' is not associated with any account.' });
+    if (!user) return res.status(401).send({ error: 'The email address ' + req.body.email + ' is not associated with any account.' });
 
     return user.comparePassword(req.body.password, function (err, isMatch) {
-      if (!isMatch) return res.status(401).send({ msg: 'Invalid email or password' });
+      if (!isMatch) return res.status(401).send({ error: 'Invalid email or password' });
 
       return res.send({ token: generateToken(user), user: user.toJSON() });
     });
@@ -1491,12 +1490,12 @@ var authFacebook = exports.authFacebook = function authFacebook(req, res) {
     // Step 1. Exchange authorization code for access token.
   };_request2.default.get({ url: accessTokenUrl, qs: params, json: true }, function (err, response, accessToken) {
     if (accessToken.error) {
-      return res.status(500).send({ msg: accessToken.error.message });
+      return res.status(500).send({ error: accessToken.error.message });
     }
 
     // Step 2. Retrieve user's profile information.
     return _request2.default.get({ url: graphApiUrl, qs: accessToken, json: true }, function (err, response, profile) {
-      if (profile.error) return res.status(500).send({ msg: profile.error.message });
+      if (profile.error) return res.status(500).send({ error: profile.error.message });
 
       // Step 3a. Link accounts if user is authenticated.
       if (req.isAuthenticated()) {
@@ -1519,21 +1518,32 @@ var authFacebook = exports.authFacebook = function authFacebook(req, res) {
 
       // Step 3b. Create a new user account or return an existing one.
       return _.User.findOne({ facebook: profile.id }, function (err, user) {
-        // User exists
+        // User with Facebook ID exists
         if (user) return res.send({ token: generateToken(user), user: user });
 
-        // TODO: Instead of saving a new user, first check if `profile.email` exists in Users
+        return _.User.findOne({ email: profile.email }, function (err, user) {
+          // User with email exists => Add Facebook ID to user
+          if (user) {
+            user.name = user.name || profile.name;
+            user.facebook = profile.id;
 
-        var newUser = new _.User({
-          name: profile.name,
-          email: profile.email,
-          facebook: profile.id
-        });
+            return user.save(function () {
+              return res.send({ token: generateToken(user), user: user });
+            });
+          }
 
-        return newUser.save(function (error) {
-          if (error) return res.status(400).send({ error: error });
+          // User with email or Facebook ID doesn't exist => Create new User
+          var newUser = new _.User({
+            name: profile.name,
+            email: profile.email,
+            facebook: profile.id
+          });
 
-          return res.send({ token: generateToken(newUser), user: newUser });
+          return newUser.save(function (error) {
+            if (error) return res.status(400).send({ error: error });
+
+            return res.send({ token: generateToken(newUser), user: newUser });
+          });
         });
       });
     });
@@ -2997,9 +3007,255 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 50 */,
-/* 51 */,
-/* 52 */,
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(3);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = __webpack_require__(2);
+
+var _containers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var InnerButton = _styledComponents2.default.div.withConfig({
+  displayName: 'SignupButton__InnerButton'
+})(['\n  display: flex;\n  align-items: center;\n']);
+
+var SignupButton = function SignupButton(_ref) {
+  var onSignup = _ref.onSignup,
+      props = _objectWithoutProperties(_ref, ['onSignup']);
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _components.Button,
+      _extends({}, props, { onClick: onSignup }),
+      _react2.default.createElement(
+        InnerButton,
+        null,
+        'Sign up'
+      )
+    ),
+    _react2.default.createElement(_containers.SignupModal, null)
+  );
+};
+
+SignupButton.propTypes = {
+  onSignup: _propTypes2.default.func.isRequired
+};
+
+var _default = SignupButton;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
+
+  __REACT_HOT_LOADER__.register(SignupButton, 'SignupButton', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
+}();
+
+;
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reduxForm = __webpack_require__(10);
+
+var _styledComponents = __webpack_require__(3);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Form = _styledComponents2.default.form.withConfig({
+  displayName: 'SignupForm__Form'
+})(['\n  width: 100%;\n  box-sizing: border-box;\n  padding: 1rem;\n']);
+
+var SignupForm = function SignupForm(_ref) {
+  var handleSubmit = _ref.handleSubmit,
+      submitting = _ref.submitting;
+
+  return _react2.default.createElement(
+    Form,
+    { onSubmit: handleSubmit },
+    _react2.default.createElement(_reduxForm.Field, { name: 'email', label: 'Email', type: 'email', component: _components.ReduxField }),
+    _react2.default.createElement(_reduxForm.Field, { name: 'password', label: 'Password', type: 'password', component: _components.ReduxField }),
+    _react2.default.createElement(
+      _components.Button,
+      { type: 'submit', disabled: submitting },
+      'Sign up'
+    )
+  );
+};
+
+SignupForm.propTypes = {
+  handleSubmit: _propTypes2.default.func.isRequired,
+  submitting: _propTypes2.default.bool
+};
+
+var _default = SignupForm;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Form, 'Form', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
+
+  __REACT_HOT_LOADER__.register(SignupForm, 'SignupForm', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
+}();
+
+;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(3);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _containers = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Wrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'SignupModal__Wrapper'
+})(['\n  display: flex;\n  flex-direction: column;\n  > * {\n    margin-bottom: 0.5rem;\n  }\n']);
+
+var SignupModal = function (_Component) {
+  _inherits(SignupModal, _Component);
+
+  function SignupModal() {
+    _classCallCheck(this, SignupModal);
+
+    return _possibleConstructorReturn(this, (SignupModal.__proto__ || Object.getPrototypeOf(SignupModal)).apply(this, arguments));
+  }
+
+  _createClass(SignupModal, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (!this.props.user && nextProps.user) {
+        this.props.onClose();
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _containers.Modal,
+        _extends({ title: 'Sign up', name: 'signup', closeable: true }, this.props),
+        _react2.default.createElement(
+          Wrapper,
+          null,
+          _react2.default.createElement(_containers.SignupForm, null)
+        )
+      );
+    }
+  }]);
+
+  return SignupModal;
+}(_react.Component);
+
+SignupModal.propTypes = {
+  user: _propTypes2.default.object,
+  onClose: _propTypes2.default.func.isRequired
+};
+var _default = SignupModal;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
+
+  __REACT_HOT_LOADER__.register(SignupModal, 'SignupModal', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
+}();
+
+;
+
+/***/ }),
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3399,9 +3655,201 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 59 */,
-/* 60 */,
-/* 61 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(6);
+
+var _selectors = __webpack_require__(8);
+
+var _actions = __webpack_require__(4);
+
+var _components = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SignupButtonContainer = function SignupButtonContainer(props) {
+  return _react2.default.createElement(_components.SignupButton, props);
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    authenticated: _selectors.fromAuth.getAuthenticated(state)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onSignup: function onSignup() {
+      return dispatch((0, _actions.modalShow)('signup'));
+    }
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignupButtonContainer);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SignupButtonContainer, 'SignupButtonContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+}();
+
+;
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reduxForm = __webpack_require__(10);
+
+var _actions = __webpack_require__(4);
+
+var _validation = __webpack_require__(18);
+
+var _components = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SignupFormContainer = function SignupFormContainer(props) {
+  return _react2.default.createElement(_components.SignupForm, props);
+};
+
+var onSubmit = function onSubmit(data, dispatch) {
+  return dispatch((0, _actions.authSignupRequest)('local', data));
+};
+
+var validate = (0, _validation.createValidator)({
+  email: [_validation.required],
+  password: [_validation.required]
+});
+
+var _default = (0, _reduxForm.reduxForm)({
+  form: 'SignupForm',
+  onSubmit: onSubmit,
+  validate: validate
+})(SignupFormContainer);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SignupFormContainer, 'SignupFormContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+
+  __REACT_HOT_LOADER__.register(onSubmit, 'onSubmit', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+
+  __REACT_HOT_LOADER__.register(validate, 'validate', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+}();
+
+;
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(6);
+
+var _selectors = __webpack_require__(8);
+
+var _actions = __webpack_require__(4);
+
+var _components = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var SignupModalContainer = function SignupModalContainer(_ref) {
+  var props = _objectWithoutProperties(_ref, []);
+
+  return _react2.default.createElement(_components.SignupModal, props);
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: _selectors.fromAuth.getUser(state)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onClose: function onClose() {
+      return dispatch((0, _actions.modalHide)('signup'));
+    }
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignupModalContainer);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SignupModalContainer, 'SignupModalContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+}();
+
+;
+
+/***/ }),
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4098,7 +4546,7 @@ function watchAuthLoginFacebook() {
 }
 
 function loginLocal(data) {
-  var _ref16, token, user;
+  var _ref16, token, user, _token;
 
   return regeneratorRuntime.wrap(function loginLocal$(_context7) {
     while (1) {
@@ -4118,16 +4566,31 @@ function loginLocal(data) {
           return (0, _effects.put)(actions.authLoginSuccess(user));
 
         case 9:
-          _context7.next = 15;
+          _context7.next = 21;
           break;
 
         case 11:
           _context7.prev = 11;
           _context7.t0 = _context7['catch'](0);
-          _context7.next = 15;
+          _token = _reactCookie2.default.load('token');
+
+          if (!_token) {
+            _context7.next = 19;
+            break;
+          }
+
+          _context7.next = 17;
+          return (0, _effects.put)(actions.authLogout(_context7.t0));
+
+        case 17:
+          _context7.next = 21;
+          break;
+
+        case 19:
+          _context7.next = 21;
           return (0, _effects.put)(actions.authLoginFailure(_context7.t0));
 
-        case 15:
+        case 21:
         case 'end':
           return _context7.stop();
       }
@@ -4657,9 +5120,9 @@ var map = {
 	"./organisms/LoginForm/index.js": 47,
 	"./organisms/LoginModal/index.js": 48,
 	"./organisms/ReduxField/index.js": 49,
-	"./organisms/SignupButton/index.js": 132,
-	"./organisms/SignupForm/index.js": 133,
-	"./organisms/SignupModal/index.js": 134,
+	"./organisms/SignupButton/index.js": 50,
+	"./organisms/SignupForm/index.js": 51,
+	"./organisms/SignupModal/index.js": 52,
 	"./organisms/UserButton/index.js": 53,
 	"./pages/HomePage/index.js": 54
 };
@@ -4724,9 +5187,9 @@ var map = {
 	"./LoginForm.js": 56,
 	"./LoginModal.js": 57,
 	"./Modal.js": 58,
-	"./SignupButton.js": 131,
-	"./SignupForm.js": 130,
-	"./SignupModal.js": 129,
+	"./SignupButton.js": 59,
+	"./SignupForm.js": 60,
+	"./SignupModal.js": 61,
 	"./UserButton.js": 62
 };
 function webpackContext(req) {
@@ -5056,450 +5519,6 @@ module.exports = require("validator/lib/isURL");
 
 module.exports = __webpack_require__(29);
 
-
-/***/ }),
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(6);
-
-var _selectors = __webpack_require__(8);
-
-var _actions = __webpack_require__(4);
-
-var _components = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var SignupModalContainer = function SignupModalContainer(_ref) {
-  var props = _objectWithoutProperties(_ref, []);
-
-  return _react2.default.createElement(_components.SignupModal, props);
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    user: _selectors.fromAuth.getUser(state)
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    onClose: function onClose() {
-      return dispatch((0, _actions.modalHide)('signup'));
-    }
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignupModalContainer);
-
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(SignupModalContainer, 'SignupModalContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
-
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
-
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
-}();
-
-;
-
-/***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reduxForm = __webpack_require__(10);
-
-var _actions = __webpack_require__(4);
-
-var _validation = __webpack_require__(18);
-
-var _components = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SignupFormContainer = function SignupFormContainer(props) {
-  return _react2.default.createElement(_components.SignupForm, props);
-};
-
-var onSubmit = function onSubmit(data, dispatch) {
-  return dispatch((0, _actions.authSignupRequest)('local', data));
-};
-
-var validate = (0, _validation.createValidator)({
-  email: [_validation.required],
-  password: [_validation.required]
-});
-
-var _default = (0, _reduxForm.reduxForm)({
-  form: 'SignupForm',
-  onSubmit: onSubmit,
-  validate: validate
-})(SignupFormContainer);
-
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(SignupFormContainer, 'SignupFormContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
-
-  __REACT_HOT_LOADER__.register(onSubmit, 'onSubmit', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
-
-  __REACT_HOT_LOADER__.register(validate, 'validate', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
-}();
-
-;
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(6);
-
-var _selectors = __webpack_require__(8);
-
-var _actions = __webpack_require__(4);
-
-var _components = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SignupButtonContainer = function SignupButtonContainer(props) {
-  return _react2.default.createElement(_components.SignupButton, props);
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    authenticated: _selectors.fromAuth.getAuthenticated(state)
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    onSignup: function onSignup() {
-      return dispatch((0, _actions.modalShow)('signup'));
-    }
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignupButtonContainer);
-
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(SignupButtonContainer, 'SignupButtonContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
-
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
-
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
-}();
-
-;
-
-/***/ }),
-/* 132 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _styledComponents = __webpack_require__(3);
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _components = __webpack_require__(2);
-
-var _containers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var InnerButton = _styledComponents2.default.div.withConfig({
-  displayName: 'SignupButton__InnerButton'
-})(['\n  display: flex;\n  align-items: center;\n']);
-
-var SignupButton = function SignupButton(_ref) {
-  var onSignup = _ref.onSignup,
-      props = _objectWithoutProperties(_ref, ['onSignup']);
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      _components.Button,
-      _extends({}, props, { onClick: onSignup }),
-      _react2.default.createElement(
-        InnerButton,
-        null,
-        'Sign up'
-      )
-    ),
-    _react2.default.createElement(_containers.SignupModal, null)
-  );
-};
-
-SignupButton.propTypes = {
-  onSignup: _propTypes2.default.func.isRequired
-};
-
-var _default = SignupButton;
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
-
-  __REACT_HOT_LOADER__.register(SignupButton, 'SignupButton', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
-}();
-
-;
-
-/***/ }),
-/* 133 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reduxForm = __webpack_require__(10);
-
-var _styledComponents = __webpack_require__(3);
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _components = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Form = _styledComponents2.default.form.withConfig({
-  displayName: 'SignupForm__Form'
-})(['\n  width: 100%;\n  box-sizing: border-box;\n  padding: 1rem;\n']);
-
-var SignupForm = function SignupForm(_ref) {
-  var handleSubmit = _ref.handleSubmit,
-      submitting = _ref.submitting;
-
-  return _react2.default.createElement(
-    Form,
-    { onSubmit: handleSubmit },
-    _react2.default.createElement(_reduxForm.Field, { name: 'email', label: 'Email', type: 'email', component: _components.ReduxField }),
-    _react2.default.createElement(_reduxForm.Field, { name: 'password', label: 'Password', type: 'password', component: _components.ReduxField }),
-    _react2.default.createElement(
-      _components.Button,
-      { type: 'submit', disabled: submitting },
-      'Sign up'
-    )
-  );
-};
-
-SignupForm.propTypes = {
-  handleSubmit: _propTypes2.default.func.isRequired,
-  submitting: _propTypes2.default.bool
-};
-
-var _default = SignupForm;
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(Form, 'Form', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
-
-  __REACT_HOT_LOADER__.register(SignupForm, 'SignupForm', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
-}();
-
-;
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _styledComponents = __webpack_require__(3);
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _containers = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Wrapper = _styledComponents2.default.div.withConfig({
-  displayName: 'SignupModal__Wrapper'
-})(['\n  display: flex;\n  flex-direction: column;\n  > * {\n    margin-bottom: 0.5rem;\n  }\n']);
-
-var SignupModal = function (_Component) {
-  _inherits(SignupModal, _Component);
-
-  function SignupModal() {
-    _classCallCheck(this, SignupModal);
-
-    return _possibleConstructorReturn(this, (SignupModal.__proto__ || Object.getPrototypeOf(SignupModal)).apply(this, arguments));
-  }
-
-  _createClass(SignupModal, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (!this.props.user && nextProps.user) {
-        this.props.onClose();
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _containers.Modal,
-        _extends({ title: 'Sign up', name: 'signup', closeable: true }, this.props),
-        _react2.default.createElement(
-          Wrapper,
-          null,
-          _react2.default.createElement(_containers.SignupForm, null)
-        )
-      );
-    }
-  }]);
-
-  return SignupModal;
-}(_react.Component);
-
-SignupModal.propTypes = {
-  user: _propTypes2.default.object,
-  onClose: _propTypes2.default.func.isRequired
-};
-var _default = SignupModal;
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
-
-  __REACT_HOT_LOADER__.register(SignupModal, 'SignupModal', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
-
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
-}();
-
-;
 
 /***/ })
 /******/ ]);

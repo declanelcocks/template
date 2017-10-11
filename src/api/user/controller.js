@@ -35,7 +35,7 @@ export const signup = (req, res) => {
 
   return User.findOne({ email: req.body.email }, (err, user) => {
     if (user) {
-      return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' })
+      return res.status(400).send({ error: 'The email address you have entered is already associated with another account.' })
     }
 
     const newUser = new User({
@@ -54,6 +54,8 @@ export const signup = (req, res) => {
 
 export const login = (req, res) => {
   if (req.isAuthenticated()) {
+    // valid token was provided, but the user does not exist
+    if (!req.user) return res.status(400).send({ error: 'Invalid token' })
     return res.send({ token: generateToken(req.user), user: req.user })
   }
 
@@ -67,10 +69,10 @@ export const login = (req, res) => {
   if (errors) return res.status(400).send(errors)
 
   return User.findOne({ email: req.body.email }, (err, user) => {
-    if (!user) return res.status(401).send({ msg: `The email address ${req.body.email} is not associated with any account.` })
+    if (!user) return res.status(401).send({ error: `The email address ${req.body.email} is not associated with any account.` })
 
     return user.comparePassword(req.body.password, (err, isMatch) => {
-      if (!isMatch) return res.status(401).send({ msg: 'Invalid email or password' })
+      if (!isMatch) return res.status(401).send({ error: 'Invalid email or password' })
 
       return res.send({ token: generateToken(user), user: user.toJSON() })
     })
@@ -156,12 +158,12 @@ export const authFacebook = (req, res) => {
   // Step 1. Exchange authorization code for access token.
   request.get({ url: accessTokenUrl, qs: params, json: true }, (err, response, accessToken) => {
     if (accessToken.error) {
-      return res.status(500).send({ msg: accessToken.error.message })
+      return res.status(500).send({ error: accessToken.error.message })
     }
 
     // Step 2. Retrieve user's profile information.
     return request.get({ url: graphApiUrl, qs: accessToken, json: true }, (err, response, profile) => {
-      if (profile.error) return res.status(500).send({ msg: profile.error.message })
+      if (profile.error) return res.status(500).send({ error: profile.error.message })
 
       // Step 3a. Link accounts if user is authenticated.
       if (req.isAuthenticated()) {
@@ -182,21 +184,30 @@ export const authFacebook = (req, res) => {
 
       // Step 3b. Create a new user account or return an existing one.
       return User.findOne({ facebook: profile.id }, (err, user) => {
-        // User exists
+        // User with Facebook ID exists
         if (user) return res.send({ token: generateToken(user), user })
 
-        // TODO: Instead of saving a new user, first check if `profile.email` exists in Users
+        return User.findOne({ email: profile.email }, (err, user) => {
+          // User with email exists => Add Facebook ID to user
+          if (user) {
+            user.name = user.name || profile.name
+            user.facebook = profile.id
 
-        const newUser = new User({
-          name: profile.name,
-          email: profile.email,
-          facebook: profile.id,
-        })
+            return user.save(() => res.send({ token: generateToken(user), user }))
+          }
 
-        return newUser.save((error) => {
-          if (error) return res.status(400).send({ error })
+          // User with email or Facebook ID doesn't exist => Create new User
+          const newUser = new User({
+            name: profile.name,
+            email: profile.email,
+            facebook: profile.id,
+          })
 
-          return res.send({ token: generateToken(newUser), user: newUser })
+          return newUser.save((error) => {
+            if (error) return res.status(400).send({ error })
+
+            return res.send({ token: generateToken(newUser), user: newUser })
+          })
         })
       })
     })
