@@ -28,6 +28,7 @@ test('watchAuthLoginGithub', () => {
 
 test('saga', () => {
   const generator = saga()
+  expect(generator.next().value).toEqual(fork(sagas.watchAuthSignupLocal))
   expect(generator.next().value).toEqual(fork(sagas.watchAuthLoginLocal))
   expect(generator.next().value).toEqual(fork(sagas.watchAuthLoginGithub))
   expect(generator.next().value).toEqual(fork(sagas.watchAuthLoginFacebook))
