@@ -195,7 +195,10 @@ export function* loginLocal(data) {
     cookie.save('token', token)
     yield put(actions.authLoginSuccess(user))
   } catch (e) {
-    yield put(actions.authLoginFailure(e))
+    const token = cookie.load('token')
+    token
+      ? yield put(actions.authLogout(e))
+      : yield put(actions.authLoginFailure(e))
   }
 }
 
