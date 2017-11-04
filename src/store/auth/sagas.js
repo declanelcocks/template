@@ -77,7 +77,7 @@ export const pollPopup = ({ window, config, requestToken }) =>
               resolve({ oauthData: params, window, interval: polling })
             }
           } else {
-            reject('OAuth redirect has occurred but no query or hash parameters were found.')
+            reject(new Error('OAuth redirect has occurred but no query or hash parameters were found.'))
           }
         }
       } catch (error) {

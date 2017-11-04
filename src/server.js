@@ -68,7 +68,7 @@ router.use((req, res, next) => {
   const sheet = new ServerStyleSheet()
 
   cookie.plugToRequest(req, res)
-  const token = req.cookies.token
+  const { token } = req.cookies
 
   if (token) store.dispatch(authUser())
 
