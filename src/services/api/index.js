@@ -56,10 +56,11 @@ api.request = (endpoint, { params, ...settings } = {}) => {
 
         return reject(response.json)
       })
-      .catch((error) => {
-        return reject({
-          networkError: error.message,
-        })
+      .catch((err) => {
+        const error = new Error(`Network Error: ${err.message}`)
+        error.response = err
+
+        return reject(error)
       })
   })
 }

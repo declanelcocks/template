@@ -46,8 +46,9 @@
       "specialLink": ["hrefLeft", "hrefRight", "to"],
       "aspects": ["noHref", "invalidHref", "preferButton"]
     }],
-    "no-unused-vars-rest/no-unused-vars": [2, {"ignoreDestructuredVarsWithRest": true}],
     "no-underscore-dangle": 0,
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "object-curly-newline": 0,
+    "function-paren-newline": 0
   }
 }
