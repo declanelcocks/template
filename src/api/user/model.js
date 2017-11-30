@@ -14,6 +14,7 @@ const userSchema = new Schema({
   toJSON: { virtuals: true },
 })
 
+// Password hash middleware
 userSchema.pre('save', function encryptNewPassword(next) {
   const user = this
 
@@ -27,6 +28,7 @@ userSchema.pre('save', function encryptNewPassword(next) {
   })
 })
 
+// Helper method to validate a user's password
 userSchema.methods = {
   comparePassword(password, cb) {
     bcrypt.compare(password, this.password, (err, isMatch) => {
@@ -35,6 +37,7 @@ userSchema.methods = {
   },
 }
 
+// Clean up the JSON response from User
 userSchema.options.toJSON = {
   transform: function sanitizeUserDoc(doc, ret) {
     delete ret.password
