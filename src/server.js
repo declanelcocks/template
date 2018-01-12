@@ -20,6 +20,7 @@ import { port, host, basename, mongo } from 'config'
 import configureStore from 'store/configure'
 import { authUser } from 'store/actions'
 import apiService from 'services/api'
+import routes from 'components/routes'
 import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
@@ -30,7 +31,7 @@ const renderApp = ({
   const app = sheet.collectStyles((
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
-        <App />
+        <App routes={routes} />
       </StaticRouter>
     </Provider>
   ))
