@@ -1,9 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Switch, Route } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-
-import { HomePage } from 'components'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
@@ -14,7 +13,7 @@ injectGlobal`
   }
 `
 
-const App = () => {
+const App = ({ routes, initialData = [] }) => {
   return (
     <div>
       <Helmet titleTemplate="ARc - %s">
@@ -30,11 +29,22 @@ const App = () => {
       </Helmet>
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route path="/" component={HomePage} exact />
+          {routes.map((route, index) => (
+            // pass in the initialData from the server for this specific route
+            <Route key={route.path} {...route} initialData={initialData[index]} />
+          ))}
         </Switch>
       </ThemeProvider>
     </div>
   )
+}
+
+App.propTypes = {
+  routes: PropTypes.arrayOf(PropTypes.shape({
+    path: PropTypes.string.isRequired,
+    component: PropTypes.func.isRequired,
+  })),
+  initialData: PropTypes.array,
 }
 
 export default App

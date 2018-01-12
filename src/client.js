@@ -14,6 +14,7 @@ import configureStore from 'store/configure'
 import { authLoginRequest } from 'store/actions'
 import api from 'services/api'
 import App from 'components/App'
+import routes from 'components/routes'
 
 const serverState = window.__SERVER_STATE__
 const initialState = window.__INITIAL_STATE__
@@ -28,7 +29,7 @@ const renderApp = () => (
   <ServerStateProvider state={serverState}>
     <Provider store={store}>
       <BrowserRouter basename={basename}>
-        <App />
+        <App routes={routes} />
       </BrowserRouter>
     </Provider>
   </ServerStateProvider>

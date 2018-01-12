@@ -66,7 +66,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "http://localhost:3001/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 128);
+/******/ 	return __webpack_require__(__webpack_require__.s = 129);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -89,7 +89,7 @@ module.exports = require("prop-types");
 
 
 // https://github.com/diegohaz/arc/wiki/Atomic-Design#do-not-worry
-var req = __webpack_require__(87);
+var req = __webpack_require__(88);
 
 req.keys().forEach(function (key) {
   var componentName = key.replace(/^.+\/([^/]+)\/index\.js/, '$1');
@@ -102,7 +102,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/components/index.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/components/index.js');
 }();
 
 ;
@@ -121,7 +121,7 @@ module.exports = require("styled-components");
 
 
 // https://github.com/diegohaz/arc/wiki/Actions
-var req = __webpack_require__(90);
+var req = __webpack_require__(91);
 
 req.keys().forEach(function (key) {
   var actions = req(key);
@@ -137,7 +137,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/actions.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/store/actions.js');
 }();
 
 ;
@@ -162,7 +162,7 @@ module.exports = require("react-redux");
 
 
 // https://github.com/diegohaz/arc/wiki/Containers
-var req = __webpack_require__(89);
+var req = __webpack_require__(90);
 
 req.keys().forEach(function (key) {
   var containerName = key.replace(/^\.\/([^.]+)\.js$/, '$1');
@@ -175,7 +175,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/containers/index.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/containers/index.js');
 }();
 
 ;
@@ -188,9 +188,9 @@ var _temp = function () {
 
 
 // https://github.com/diegohaz/arc/wiki/Selectors
-var upperFirst = __webpack_require__(107);
+var upperFirst = __webpack_require__(108);
 
-var req = __webpack_require__(94);
+var req = __webpack_require__(95);
 
 req.keys().forEach(function (key) {
   var storeName = key.replace(/\.\/(.+)\/.+$/, '$1');
@@ -223,7 +223,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/selectors.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/store/selectors.js');
 }();
 
 ;
@@ -307,7 +307,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(config, 'config', '/Users/Declan/coding/tmp/template/src/config.js');
+  __REACT_HOT_LOADER__.register(config, 'config', '/Users/Declan/coding/template/src/config.js');
 }();
 
 ;
@@ -363,9 +363,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/tmp/template/src/api/user/index.js');
+  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/template/src/api/user/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/api/user/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/api/user/index.js');
 }();
 
 ;
@@ -441,35 +441,35 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(AUTH_SIGNUP_REQUEST, 'AUTH_SIGNUP_REQUEST', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_SIGNUP_REQUEST, 'AUTH_SIGNUP_REQUEST', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_LOGIN, 'AUTH_LOGIN', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN, 'AUTH_LOGIN', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_LOGIN_PREPARE, 'AUTH_LOGIN_PREPARE', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_PREPARE, 'AUTH_LOGIN_PREPARE', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_LOGIN_REQUEST, 'AUTH_LOGIN_REQUEST', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_REQUEST, 'AUTH_LOGIN_REQUEST', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_LOGIN_SUCCESS, 'AUTH_LOGIN_SUCCESS', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_SUCCESS, 'AUTH_LOGIN_SUCCESS', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_LOGIN_FAILURE, 'AUTH_LOGIN_FAILURE', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_LOGIN_FAILURE, 'AUTH_LOGIN_FAILURE', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_USER, 'AUTH_USER', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_USER, 'AUTH_USER', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(AUTH_LOGOUT, 'AUTH_LOGOUT', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(AUTH_LOGOUT, 'AUTH_LOGOUT', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authSignupRequest, 'authSignupRequest', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authSignupRequest, 'authSignupRequest', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authLoginPrepare, 'authLoginPrepare', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authLoginPrepare, 'authLoginPrepare', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authLoginRequest, 'authLoginRequest', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authLoginRequest, 'authLoginRequest', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authLoginSuccess, 'authLoginSuccess', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authLoginSuccess, 'authLoginSuccess', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authLoginFailure, 'authLoginFailure', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authLoginFailure, 'authLoginFailure', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authUser, 'authUser', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authUser, 'authUser', '/Users/Declan/coding/template/src/store/auth/actions.js');
 
-  __REACT_HOT_LOADER__.register(authLogout, 'authLogout', '/Users/Declan/coding/tmp/template/src/store/auth/actions.js');
+  __REACT_HOT_LOADER__.register(authLogout, 'authLogout', '/Users/Declan/coding/template/src/store/auth/actions.js');
 }();
 
 ;
@@ -536,9 +536,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(isAuthenticated, 'isAuthenticated', '/Users/Declan/coding/tmp/template/src/api/middleware/index.js');
+  __REACT_HOT_LOADER__.register(isAuthenticated, 'isAuthenticated', '/Users/Declan/coding/template/src/api/middleware/index.js');
 
-  __REACT_HOT_LOADER__.register(ensureAuth, 'ensureAuth', '/Users/Declan/coding/tmp/template/src/api/middleware/index.js');
+  __REACT_HOT_LOADER__.register(ensureAuth, 'ensureAuth', '/Users/Declan/coding/template/src/api/middleware/index.js');
 }();
 
 ;
@@ -557,13 +557,13 @@ exports.parseEndpoint = exports.parseSettings = exports.parseJSON = exports.chec
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-__webpack_require__(105);
+__webpack_require__(106);
 
 var _reactCookie = __webpack_require__(15);
 
 var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
-var _queryString = __webpack_require__(111);
+var _queryString = __webpack_require__(112);
 
 var _merge = __webpack_require__(23);
 
@@ -643,10 +643,11 @@ api.request = function (endpoint) {
       if (response.ok) return resolve(response.json);
 
       return reject(response.json);
-    }).catch(function (error) {
-      return reject({
-        networkError: error.message
-      });
+    }).catch(function (err) {
+      var error = new Error('Network Error: ' + err.message);
+      error.response = err;
+
+      return reject(error);
     });
   });
 };['delete', 'get'].forEach(function (method) {
@@ -704,17 +705,17 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(checkStatus, 'checkStatus', '/Users/Declan/coding/tmp/template/src/services/api/index.js');
+  __REACT_HOT_LOADER__.register(checkStatus, 'checkStatus', '/Users/Declan/coding/template/src/services/api/index.js');
 
-  __REACT_HOT_LOADER__.register(parseJSON, 'parseJSON', '/Users/Declan/coding/tmp/template/src/services/api/index.js');
+  __REACT_HOT_LOADER__.register(parseJSON, 'parseJSON', '/Users/Declan/coding/template/src/services/api/index.js');
 
-  __REACT_HOT_LOADER__.register(parseSettings, 'parseSettings', '/Users/Declan/coding/tmp/template/src/services/api/index.js');
+  __REACT_HOT_LOADER__.register(parseSettings, 'parseSettings', '/Users/Declan/coding/template/src/services/api/index.js');
 
-  __REACT_HOT_LOADER__.register(parseEndpoint, 'parseEndpoint', '/Users/Declan/coding/tmp/template/src/services/api/index.js');
+  __REACT_HOT_LOADER__.register(parseEndpoint, 'parseEndpoint', '/Users/Declan/coding/template/src/services/api/index.js');
 
-  __REACT_HOT_LOADER__.register(api, 'api', '/Users/Declan/coding/tmp/template/src/services/api/index.js');
+  __REACT_HOT_LOADER__.register(api, 'api', '/Users/Declan/coding/template/src/services/api/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/services/api/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/services/api/index.js');
 }();
 
 ;
@@ -731,19 +732,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createValidator = exports.match = exports.oneOf = exports.integer = exports.maxLength = exports.minLength = exports.required = exports.url = exports.email = undefined;
 
-var _isEmail = __webpack_require__(124);
+var _isEmail = __webpack_require__(125);
 
 var _isEmail2 = _interopRequireDefault(_isEmail);
 
-var _isInt = __webpack_require__(126);
+var _isInt = __webpack_require__(127);
 
 var _isInt2 = _interopRequireDefault(_isInt);
 
-var _isIn = __webpack_require__(125);
+var _isIn = __webpack_require__(126);
 
 var _isIn2 = _interopRequireDefault(_isIn);
 
-var _isURL = __webpack_require__(127);
+var _isURL = __webpack_require__(128);
 
 var _isURL2 = _interopRequireDefault(_isURL);
 
@@ -824,27 +825,27 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(isEmpty, 'isEmpty', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(isEmpty, 'isEmpty', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(join, 'join', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(join, 'join', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(email, 'email', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(email, 'email', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(url, 'url', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(url, 'url', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(required, 'required', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(required, 'required', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(minLength, 'minLength', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(minLength, 'minLength', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(maxLength, 'maxLength', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(maxLength, 'maxLength', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(integer, 'integer', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(integer, 'integer', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(oneOf, 'oneOf', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(oneOf, 'oneOf', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(match, 'match', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(match, 'match', '/Users/Declan/coding/template/src/services/validation/index.js');
 
-  __REACT_HOT_LOADER__.register(createValidator, 'createValidator', '/Users/Declan/coding/tmp/template/src/services/validation/index.js');
+  __REACT_HOT_LOADER__.register(createValidator, 'createValidator', '/Users/Declan/coding/template/src/services/validation/index.js');
 }();
 
 ;
@@ -879,11 +880,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(initialState, "initialState", "/Users/Declan/coding/tmp/template/src/store/auth/selectors.js");
+  __REACT_HOT_LOADER__.register(initialState, "initialState", "/Users/Declan/coding/template/src/store/auth/selectors.js");
 
-  __REACT_HOT_LOADER__.register(getUser, "getUser", "/Users/Declan/coding/tmp/template/src/store/auth/selectors.js");
+  __REACT_HOT_LOADER__.register(getUser, "getUser", "/Users/Declan/coding/template/src/store/auth/selectors.js");
 
-  __REACT_HOT_LOADER__.register(getAuthenticated, "getAuthenticated", "/Users/Declan/coding/tmp/template/src/store/auth/selectors.js");
+  __REACT_HOT_LOADER__.register(getAuthenticated, "getAuthenticated", "/Users/Declan/coding/template/src/store/auth/selectors.js");
 }();
 
 ;
@@ -930,13 +931,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(MODAL_SHOW, 'MODAL_SHOW', '/Users/Declan/coding/tmp/template/src/store/modal/actions.js');
+  __REACT_HOT_LOADER__.register(MODAL_SHOW, 'MODAL_SHOW', '/Users/Declan/coding/template/src/store/modal/actions.js');
 
-  __REACT_HOT_LOADER__.register(MODAL_HIDE, 'MODAL_HIDE', '/Users/Declan/coding/tmp/template/src/store/modal/actions.js');
+  __REACT_HOT_LOADER__.register(MODAL_HIDE, 'MODAL_HIDE', '/Users/Declan/coding/template/src/store/modal/actions.js');
 
-  __REACT_HOT_LOADER__.register(modalShow, 'modalShow', '/Users/Declan/coding/tmp/template/src/store/modal/actions.js');
+  __REACT_HOT_LOADER__.register(modalShow, 'modalShow', '/Users/Declan/coding/template/src/store/modal/actions.js');
 
-  __REACT_HOT_LOADER__.register(modalHide, 'modalHide', '/Users/Declan/coding/tmp/template/src/store/modal/actions.js');
+  __REACT_HOT_LOADER__.register(modalHide, 'modalHide', '/Users/Declan/coding/template/src/store/modal/actions.js');
 }();
 
 ;
@@ -967,9 +968,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(initialState, "initialState", "/Users/Declan/coding/tmp/template/src/store/modal/selectors.js");
+  __REACT_HOT_LOADER__.register(initialState, "initialState", "/Users/Declan/coding/template/src/store/modal/selectors.js");
 
-  __REACT_HOT_LOADER__.register(isOpen, "isOpen", "/Users/Declan/coding/tmp/template/src/store/modal/selectors.js");
+  __REACT_HOT_LOADER__.register(isOpen, "isOpen", "/Users/Declan/coding/template/src/store/modal/selectors.js");
 }();
 
 ;
@@ -1023,19 +1024,19 @@ module.exports = require("redux-saga/effects");
 "use strict";
 
 
-__webpack_require__(95);
+__webpack_require__(96);
 
-var _express = __webpack_require__(64);
+var _express = __webpack_require__(65);
 
 var _express2 = _interopRequireDefault(_express);
 
 var _express3 = __webpack_require__(9);
 
-var _cors = __webpack_require__(100);
+var _cors = __webpack_require__(101);
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _csurf = __webpack_require__(101);
+var _csurf = __webpack_require__(102);
 
 var _csurf2 = _interopRequireDefault(_csurf);
 
@@ -1055,23 +1056,23 @@ var _reactCookie = __webpack_require__(15);
 
 var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
-var _serializeJavascript = __webpack_require__(121);
+var _serializeJavascript = __webpack_require__(122);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
 var _styledComponents = __webpack_require__(3);
 
-var _server = __webpack_require__(113);
+var _server = __webpack_require__(114);
 
 var _reactRedux = __webpack_require__(6);
 
-var _reactRouter = __webpack_require__(115);
+var _reactRouter = __webpack_require__(116);
 
-var _reactRouterServer = __webpack_require__(118);
+var _reactRouterServer = __webpack_require__(119);
 
 var _config = __webpack_require__(12);
 
-var _configure = __webpack_require__(67);
+var _configure = __webpack_require__(68);
 
 var _configure2 = _interopRequireDefault(_configure);
 
@@ -1080,6 +1081,10 @@ var _actions = __webpack_require__(4);
 var _api3 = __webpack_require__(17);
 
 var _api4 = _interopRequireDefault(_api3);
+
+var _routes = __webpack_require__(55);
+
+var _routes2 = _interopRequireDefault(_routes);
 
 var _App = __webpack_require__(35);
 
@@ -1095,7 +1100,6 @@ var _Error2 = _interopRequireDefault(_Error);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable no-console */
 var renderApp = function renderApp(_ref) {
   var store = _ref.store,
       context = _ref.context,
@@ -1108,11 +1112,12 @@ var renderApp = function renderApp(_ref) {
     _react2.default.createElement(
       _reactRouter.StaticRouter,
       { basename: _config.basename, context: context, location: location },
-      _react2.default.createElement(_App2.default, null)
+      _react2.default.createElement(_App2.default, { routes: _routes2.default })
     )
   ));
   return (0, _reactRouterServer.renderToString)(app);
-};
+}; /* eslint-disable no-console */
+
 
 var renderHtml = function renderHtml(_ref2) {
   var serverState = _ref2.serverState,
@@ -1121,9 +1126,14 @@ var renderHtml = function renderHtml(_ref2) {
       sheet = _ref2.sheet;
 
   var styles = sheet.getStyleElement();
-  var assets = global.assets;
+  var _global = global,
+      assets = _global.assets;
+
   var state = '\n    window.__SERVER_STATE__ = ' + (0, _serializeJavascript2.default)(serverState) + ';\n    window.__INITIAL_STATE__ = ' + (0, _serializeJavascript2.default)(initialState) + ';\n  ';
-  var html = _react2.default.createElement(_Html2.default, { styles: styles, assets: assets, state: state, content: content });
+  var props = {
+    styles: styles, assets: assets, state: state, content: content
+  };
+  var html = _react2.default.createElement(_Html2.default, props);
   return '<!doctype html>\n' + (0, _server.renderToStaticMarkup)(html);
 };
 
@@ -1143,6 +1153,7 @@ router.use(function (req, res, next) {
 
   _reactCookie2.default.plugToRequest(req, res);
   var token = req.cookies.token;
+
 
   if (token) store.dispatch((0, _actions.authUser)());
 
@@ -1189,13 +1200,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(renderApp, 'renderApp', '/Users/Declan/coding/tmp/template/src/server.js');
+  __REACT_HOT_LOADER__.register(renderApp, 'renderApp', '/Users/Declan/coding/template/src/server.js');
 
-  __REACT_HOT_LOADER__.register(renderHtml, 'renderHtml', '/Users/Declan/coding/tmp/template/src/server.js');
+  __REACT_HOT_LOADER__.register(renderHtml, 'renderHtml', '/Users/Declan/coding/template/src/server.js');
 
-  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/tmp/template/src/server.js');
+  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/template/src/server.js');
 
-  __REACT_HOT_LOADER__.register(app, 'app', '/Users/Declan/coding/tmp/template/src/server.js');
+  __REACT_HOT_LOADER__.register(app, 'app', '/Users/Declan/coding/template/src/server.js');
 }();
 
 ;
@@ -1240,9 +1251,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/tmp/template/src/api/index.js');
+  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/template/src/api/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/api/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/api/index.js');
 }();
 
 ;
@@ -1267,7 +1278,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(index, 'index', '/Users/Declan/coding/tmp/template/src/api/test/controller.js');
+  __REACT_HOT_LOADER__.register(index, 'index', '/Users/Declan/coding/template/src/api/test/controller.js');
 }();
 
 ;
@@ -1300,9 +1311,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/tmp/template/src/api/test/index.js');
+  __REACT_HOT_LOADER__.register(router, 'router', '/Users/Declan/coding/template/src/api/test/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/api/test/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/api/test/index.js');
 }();
 
 ;
@@ -1319,7 +1330,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.authFacebookCallback = exports.authFacebook = exports.authGithubCallback = exports.authGithub = exports.login = exports.signup = exports.currentUser = exports.generateToken = undefined;
 
-var _request = __webpack_require__(120);
+var _request = __webpack_require__(121);
 
 var _request2 = _interopRequireDefault(_request);
 
@@ -1327,7 +1338,7 @@ var _jsonwebtoken = __webpack_require__(22);
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
-var _moment = __webpack_require__(108);
+var _moment = __webpack_require__(109);
 
 var _moment2 = _interopRequireDefault(_moment);
 
@@ -1561,21 +1572,21 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(generateToken, 'generateToken', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(generateToken, 'generateToken', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(currentUser, 'currentUser', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(currentUser, 'currentUser', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(signup, 'signup', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(signup, 'signup', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(login, 'login', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(login, 'login', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(authGithub, 'authGithub', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(authGithub, 'authGithub', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(authGithubCallback, 'authGithubCallback', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(authGithubCallback, 'authGithubCallback', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(authFacebook, 'authFacebook', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(authFacebook, 'authFacebook', '/Users/Declan/coding/template/src/api/user/controller.js');
 
-  __REACT_HOT_LOADER__.register(authFacebookCallback, 'authFacebookCallback', '/Users/Declan/coding/tmp/template/src/api/user/controller.js');
+  __REACT_HOT_LOADER__.register(authFacebookCallback, 'authFacebookCallback', '/Users/Declan/coding/template/src/api/user/controller.js');
 }();
 
 ;
@@ -1595,7 +1606,7 @@ var _mongoose = __webpack_require__(24);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _bcryptNodejs = __webpack_require__(96);
+var _bcryptNodejs = __webpack_require__(97);
 
 var _bcryptNodejs2 = _interopRequireDefault(_bcryptNodejs);
 
@@ -1614,6 +1625,7 @@ var userSchema = new _mongoose.Schema({
   toJSON: { virtuals: true }
 });
 
+// Password hash middleware
 userSchema.pre('save', function encryptNewPassword(next) {
   var user = this;
 
@@ -1627,6 +1639,7 @@ userSchema.pre('save', function encryptNewPassword(next) {
   });
 });
 
+// Helper method to validate a user's password
 userSchema.methods = {
   comparePassword: function comparePassword(password, cb) {
     _bcryptNodejs2.default.compare(password, this.password, function (err, isMatch) {
@@ -1635,6 +1648,7 @@ userSchema.methods = {
   }
 };
 
+// Clean up the JSON response from User
 userSchema.options.toJSON = {
   transform: function sanitizeUserDoc(doc, ret) {
     delete ret.password;
@@ -1653,9 +1667,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(userSchema, 'userSchema', '/Users/Declan/coding/tmp/template/src/api/user/model.js');
+  __REACT_HOT_LOADER__.register(userSchema, 'userSchema', '/Users/Declan/coding/template/src/api/user/model.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/api/user/model.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/api/user/model.js');
 }();
 
 ;
@@ -1671,13 +1685,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _templateObject = _taggedTemplateLiteral(['\n  body {\n    margin: 0;\n  }\n'], ['\n  body {\n    margin: 0;\n  }\n']);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(116);
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(117);
 
 var _styledComponents = __webpack_require__(3);
 
@@ -1685,9 +1705,7 @@ var _reactHelmet = __webpack_require__(25);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _components = __webpack_require__(2);
-
-var _default2 = __webpack_require__(55);
+var _default2 = __webpack_require__(56);
 
 var _default3 = _interopRequireDefault(_default2);
 
@@ -1700,7 +1718,11 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 (0, _styledComponents.injectGlobal)(_templateObject);
 
-var App = function App() {
+var App = function App(_ref) {
+  var routes = _ref.routes,
+      _ref$initialData = _ref.initialData,
+      initialData = _ref$initialData === undefined ? [] : _ref$initialData;
+
   return _react2.default.createElement(
     'div',
     null,
@@ -1727,10 +1749,23 @@ var App = function App() {
       _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _components.HomePage, exact: true })
+        routes.map(function (route, index) {
+          return (
+            // pass in the initialData from the server for this specific route
+            _react2.default.createElement(_reactRouterDom.Route, _extends({ key: route.path }, route, { initialData: initialData[index] }))
+          );
+        })
       )
     )
   );
+};
+
+App.propTypes = {
+  routes: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+    path: _propTypes2.default.string.isRequired,
+    component: _propTypes2.default.func.isRequired
+  })),
+  initialData: _propTypes2.default.array
 };
 
 var _default = App;
@@ -1742,9 +1777,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(App, 'App', '/Users/Declan/coding/tmp/template/src/components/App.js');
+  __REACT_HOT_LOADER__.register(App, 'App', '/Users/Declan/coding/template/src/components/App.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/App.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/App.js');
 }();
 
 ;
@@ -1783,9 +1818,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(ErrorPage, 'ErrorPage', '/Users/Declan/coding/tmp/template/src/components/Error.js');
+  __REACT_HOT_LOADER__.register(ErrorPage, 'ErrorPage', '/Users/Declan/coding/template/src/components/Error.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/Error.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/Error.js');
 }();
 
 ;
@@ -1873,9 +1908,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Html, 'Html', '/Users/Declan/coding/tmp/template/src/components/Html.js');
+  __REACT_HOT_LOADER__.register(Html, 'Html', '/Users/Declan/coding/template/src/components/Html.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/Html.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/Html.js');
 }();
 
 ;
@@ -1928,9 +1963,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Block, 'Block', '/Users/Declan/coding/tmp/template/src/components/atoms/Block/index.js');
+  __REACT_HOT_LOADER__.register(Block, 'Block', '/Users/Declan/coding/template/src/components/atoms/Block/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/atoms/Block/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/atoms/Block/index.js');
 }();
 
 ;
@@ -1960,7 +1995,7 @@ var _styledComponents = __webpack_require__(3);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _Link = __webpack_require__(117);
+var _Link = __webpack_require__(118);
 
 var _Link2 = _interopRequireDefault(_Link);
 
@@ -2060,27 +2095,27 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(backgroundColor, 'backgroundColor', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(backgroundColor, 'backgroundColor', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(foregroundColor, 'foregroundColor', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(foregroundColor, 'foregroundColor', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(hoverBackgroundColor, 'hoverBackgroundColor', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(hoverBackgroundColor, 'hoverBackgroundColor', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(hoverForegroundColor, 'hoverForegroundColor', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(hoverForegroundColor, 'hoverForegroundColor', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(styles, 'styles', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledLink, 'StyledLink', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(StyledLink, 'StyledLink', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(Anchor, 'Anchor', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(Anchor, 'Anchor', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledButton, 'StyledButton', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(StyledButton, 'StyledButton', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(Button, 'Button', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(Button, 'Button', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/atoms/Button/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/atoms/Button/index.js');
 }();
 
 ;
@@ -2155,13 +2190,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/tmp/template/src/components/atoms/Heading/index.js');
+  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/template/src/components/atoms/Heading/index.js');
 
-  __REACT_HOT_LOADER__.register(styles, 'styles', '/Users/Declan/coding/tmp/template/src/components/atoms/Heading/index.js');
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/Users/Declan/coding/template/src/components/atoms/Heading/index.js');
 
-  __REACT_HOT_LOADER__.register(Heading, 'Heading', '/Users/Declan/coding/tmp/template/src/components/atoms/Heading/index.js');
+  __REACT_HOT_LOADER__.register(Heading, 'Heading', '/Users/Declan/coding/template/src/components/atoms/Heading/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/atoms/Heading/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/atoms/Heading/index.js');
 }();
 
 ;
@@ -2216,7 +2251,7 @@ var Icon = function Icon(_ref2) {
   var icon = _ref2.icon,
       props = _objectWithoutProperties(_ref2, ['icon']);
 
-  var svg = __webpack_require__(88)("./" + icon + '.svg');
+  var svg = __webpack_require__(89)("./" + icon + '.svg');
   return _react2.default.createElement(Wrapper, _extends({}, props, { dangerouslySetInnerHTML: { __html: svg } }));
 };
 
@@ -2237,13 +2272,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/tmp/template/src/components/atoms/Icon/index.js');
+  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/template/src/components/atoms/Icon/index.js');
 
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/atoms/Icon/index.js');
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/template/src/components/atoms/Icon/index.js');
 
-  __REACT_HOT_LOADER__.register(Icon, 'Icon', '/Users/Declan/coding/tmp/template/src/components/atoms/Icon/index.js');
+  __REACT_HOT_LOADER__.register(Icon, 'Icon', '/Users/Declan/coding/template/src/components/atoms/Icon/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/atoms/Icon/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/atoms/Icon/index.js');
 }();
 
 ;
@@ -2328,19 +2363,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 
-  __REACT_HOT_LOADER__.register(styles, 'styles', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledTextarea, 'StyledTextarea', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(StyledTextarea, 'StyledTextarea', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledSelect, 'StyledSelect', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(StyledSelect, 'StyledSelect', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledInput, 'StyledInput', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(StyledInput, 'StyledInput', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 
-  __REACT_HOT_LOADER__.register(Input, 'Input', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(Input, 'Input', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/atoms/Input/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/atoms/Input/index.js');
 }();
 
 ;
@@ -2385,9 +2420,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Label, 'Label', '/Users/Declan/coding/tmp/template/src/components/atoms/Label/index.js');
+  __REACT_HOT_LOADER__.register(Label, 'Label', '/Users/Declan/coding/template/src/components/atoms/Label/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/atoms/Label/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/atoms/Label/index.js');
 }();
 
 ;
@@ -2480,13 +2515,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Error, 'Error', '/Users/Declan/coding/tmp/template/src/components/molecules/Field/index.js');
+  __REACT_HOT_LOADER__.register(Error, 'Error', '/Users/Declan/coding/template/src/components/molecules/Field/index.js');
 
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/molecules/Field/index.js');
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/template/src/components/molecules/Field/index.js');
 
-  __REACT_HOT_LOADER__.register(Field, 'Field', '/Users/Declan/coding/tmp/template/src/components/molecules/Field/index.js');
+  __REACT_HOT_LOADER__.register(Field, 'Field', '/Users/Declan/coding/template/src/components/molecules/Field/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/molecules/Field/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/molecules/Field/index.js');
 }();
 
 ;
@@ -2554,7 +2589,7 @@ var IconButton = function IconButton(_ref) {
       responsive = props.responsive,
       height = props.height;
 
-  var iconElement = _react2.default.createElement(StyledIcon, { height: height / 2.5, icon: icon });
+  var iconElement = _react2.default.createElement(StyledIcon, { height: height ? height / 2.5 : undefined, icon: icon });
   return _react2.default.createElement(
     StyledButton,
     _extends({ hasText: !!children }, props),
@@ -2595,19 +2630,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(fadeIn, 'fadeIn', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(fadeIn, 'fadeIn', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledButton, 'StyledButton', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(StyledButton, 'StyledButton', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 
-  __REACT_HOT_LOADER__.register(Text, 'Text', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(Text, 'Text', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledIcon, 'StyledIcon', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(StyledIcon, 'StyledIcon', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 
-  __REACT_HOT_LOADER__.register(IconButton, 'IconButton', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(IconButton, 'IconButton', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/molecules/IconButton/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/molecules/IconButton/index.js');
 }();
 
 ;
@@ -2639,7 +2674,7 @@ var _styledComponents = __webpack_require__(3);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _reactModal = __webpack_require__(114);
+var _reactModal = __webpack_require__(115);
 
 var _reactModal2 = _interopRequireDefault(_reactModal);
 
@@ -2735,21 +2770,21 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(overlayStyles, 'overlayStyles', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(overlayStyles, 'overlayStyles', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(ModalBox, 'ModalBox', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(ModalBox, 'ModalBox', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(Header, 'Header', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledHeading, 'StyledHeading', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(StyledHeading, 'StyledHeading', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(Content, 'Content', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(Content, 'Content', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(StyledReactModal, 'StyledReactModal', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(StyledReactModal, 'StyledReactModal', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(Modal, 'Modal', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(Modal, 'Modal', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/molecules/Modal/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/molecules/Modal/index.js');
 }();
 
 ;
@@ -2818,11 +2853,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Form, 'Form', '/Users/Declan/coding/tmp/template/src/components/organisms/LoginForm/index.js');
+  __REACT_HOT_LOADER__.register(Form, 'Form', '/Users/Declan/coding/template/src/components/organisms/LoginForm/index.js');
 
-  __REACT_HOT_LOADER__.register(LoginForm, 'LoginForm', '/Users/Declan/coding/tmp/template/src/components/organisms/LoginForm/index.js');
+  __REACT_HOT_LOADER__.register(LoginForm, 'LoginForm', '/Users/Declan/coding/template/src/components/organisms/LoginForm/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/LoginForm/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/LoginForm/index.js');
 }();
 
 ;
@@ -2936,11 +2971,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/organisms/LoginModal/index.js');
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/template/src/components/organisms/LoginModal/index.js');
 
-  __REACT_HOT_LOADER__.register(LoginModal, 'LoginModal', '/Users/Declan/coding/tmp/template/src/components/organisms/LoginModal/index.js');
+  __REACT_HOT_LOADER__.register(LoginModal, 'LoginModal', '/Users/Declan/coding/template/src/components/organisms/LoginModal/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/LoginModal/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/LoginModal/index.js');
 }();
 
 ;
@@ -2999,9 +3034,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(ReduxField, 'ReduxField', '/Users/Declan/coding/tmp/template/src/components/organisms/ReduxField/index.js');
+  __REACT_HOT_LOADER__.register(ReduxField, 'ReduxField', '/Users/Declan/coding/template/src/components/organisms/ReduxField/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/ReduxField/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/ReduxField/index.js');
 }();
 
 ;
@@ -3076,11 +3111,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
+  __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/template/src/components/organisms/SignupButton/index.js');
 
-  __REACT_HOT_LOADER__.register(SignupButton, 'SignupButton', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
+  __REACT_HOT_LOADER__.register(SignupButton, 'SignupButton', '/Users/Declan/coding/template/src/components/organisms/SignupButton/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupButton/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/SignupButton/index.js');
 }();
 
 ;
@@ -3149,11 +3184,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Form, 'Form', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
+  __REACT_HOT_LOADER__.register(Form, 'Form', '/Users/Declan/coding/template/src/components/organisms/SignupForm/index.js');
 
-  __REACT_HOT_LOADER__.register(SignupForm, 'SignupForm', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
+  __REACT_HOT_LOADER__.register(SignupForm, 'SignupForm', '/Users/Declan/coding/template/src/components/organisms/SignupForm/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupForm/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/SignupForm/index.js');
 }();
 
 ;
@@ -3246,11 +3281,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/Declan/coding/template/src/components/organisms/SignupModal/index.js');
 
-  __REACT_HOT_LOADER__.register(SignupModal, 'SignupModal', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
+  __REACT_HOT_LOADER__.register(SignupModal, 'SignupModal', '/Users/Declan/coding/template/src/components/organisms/SignupModal/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/SignupModal/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/SignupModal/index.js');
 }();
 
 ;
@@ -3334,11 +3369,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/tmp/template/src/components/organisms/UserButton/index.js');
+  __REACT_HOT_LOADER__.register(InnerButton, 'InnerButton', '/Users/Declan/coding/template/src/components/organisms/UserButton/index.js');
 
-  __REACT_HOT_LOADER__.register(UserButton, 'UserButton', '/Users/Declan/coding/tmp/template/src/components/organisms/UserButton/index.js');
+  __REACT_HOT_LOADER__.register(UserButton, 'UserButton', '/Users/Declan/coding/template/src/components/organisms/UserButton/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/organisms/UserButton/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/organisms/UserButton/index.js');
 }();
 
 ;
@@ -3380,9 +3415,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(HomePage, 'HomePage', '/Users/Declan/coding/tmp/template/src/components/pages/HomePage/index.js');
+  __REACT_HOT_LOADER__.register(HomePage, 'HomePage', '/Users/Declan/coding/template/src/components/pages/HomePage/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/pages/HomePage/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/pages/HomePage/index.js');
 }();
 
 ;
@@ -3398,7 +3433,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _composer = __webpack_require__(122);
+var _components = __webpack_require__(2);
+
+var routes = [{
+  path: '/',
+  component: _components.HomePage,
+  exact: true
+}];
+
+var _default = routes;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(routes, 'routes', '/Users/Declan/coding/template/src/components/routes.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/routes.js');
+}();
+
+;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _composer = __webpack_require__(123);
 
 var theme = {}; // https://github.com/diegohaz/arc/wiki/Styling
 
@@ -3434,15 +3504,15 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(theme, 'theme', '/Users/Declan/coding/tmp/template/src/components/themes/default.js');
+  __REACT_HOT_LOADER__.register(theme, 'theme', '/Users/Declan/coding/template/src/components/themes/default.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/components/themes/default.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/components/themes/default.js');
 }();
 
 ;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3493,19 +3563,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(LoginFormContainer, 'LoginFormContainer', '/Users/Declan/coding/tmp/template/src/containers/LoginForm.js');
+  __REACT_HOT_LOADER__.register(LoginFormContainer, 'LoginFormContainer', '/Users/Declan/coding/template/src/containers/LoginForm.js');
 
-  __REACT_HOT_LOADER__.register(onSubmit, 'onSubmit', '/Users/Declan/coding/tmp/template/src/containers/LoginForm.js');
+  __REACT_HOT_LOADER__.register(onSubmit, 'onSubmit', '/Users/Declan/coding/template/src/containers/LoginForm.js');
 
-  __REACT_HOT_LOADER__.register(validate, 'validate', '/Users/Declan/coding/tmp/template/src/containers/LoginForm.js');
+  __REACT_HOT_LOADER__.register(validate, 'validate', '/Users/Declan/coding/template/src/containers/LoginForm.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/LoginForm.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/LoginForm.js');
 }();
 
 ;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3567,19 +3637,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(LoginModalContainer, 'LoginModalContainer', '/Users/Declan/coding/tmp/template/src/containers/LoginModal.js');
+  __REACT_HOT_LOADER__.register(LoginModalContainer, 'LoginModalContainer', '/Users/Declan/coding/template/src/containers/LoginModal.js');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/LoginModal.js');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/template/src/containers/LoginModal.js');
 
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/LoginModal.js');
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/template/src/containers/LoginModal.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/LoginModal.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/LoginModal.js');
 }();
 
 ;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3643,19 +3713,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(ModalContainer, 'ModalContainer', '/Users/Declan/coding/tmp/template/src/containers/Modal.js');
+  __REACT_HOT_LOADER__.register(ModalContainer, 'ModalContainer', '/Users/Declan/coding/template/src/containers/Modal.js');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/Modal.js');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/template/src/containers/Modal.js');
 
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/Modal.js');
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/template/src/containers/Modal.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/Modal.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/Modal.js');
 }();
 
 ;
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3707,19 +3777,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(SignupButtonContainer, 'SignupButtonContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+  __REACT_HOT_LOADER__.register(SignupButtonContainer, 'SignupButtonContainer', '/Users/Declan/coding/template/src/containers/SignupButton.js');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/template/src/containers/SignupButton.js');
 
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/template/src/containers/SignupButton.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupButton.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/SignupButton.js');
 }();
 
 ;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3770,19 +3840,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(SignupFormContainer, 'SignupFormContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+  __REACT_HOT_LOADER__.register(SignupFormContainer, 'SignupFormContainer', '/Users/Declan/coding/template/src/containers/SignupForm.js');
 
-  __REACT_HOT_LOADER__.register(onSubmit, 'onSubmit', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+  __REACT_HOT_LOADER__.register(onSubmit, 'onSubmit', '/Users/Declan/coding/template/src/containers/SignupForm.js');
 
-  __REACT_HOT_LOADER__.register(validate, 'validate', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+  __REACT_HOT_LOADER__.register(validate, 'validate', '/Users/Declan/coding/template/src/containers/SignupForm.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupForm.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/SignupForm.js');
 }();
 
 ;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3838,19 +3908,19 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(SignupModalContainer, 'SignupModalContainer', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+  __REACT_HOT_LOADER__.register(SignupModalContainer, 'SignupModalContainer', '/Users/Declan/coding/template/src/containers/SignupModal.js');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/template/src/containers/SignupModal.js');
 
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/template/src/containers/SignupModal.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/SignupModal.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/SignupModal.js');
 }();
 
 ;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3905,25 +3975,25 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(UserButtonContainer, 'UserButtonContainer', '/Users/Declan/coding/tmp/template/src/containers/UserButton.js');
+  __REACT_HOT_LOADER__.register(UserButtonContainer, 'UserButtonContainer', '/Users/Declan/coding/template/src/containers/UserButton.js');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/tmp/template/src/containers/UserButton.js');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Declan/coding/template/src/containers/UserButton.js');
 
-  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/tmp/template/src/containers/UserButton.js');
+  __REACT_HOT_LOADER__.register(mapDispatchToProps, 'mapDispatchToProps', '/Users/Declan/coding/template/src/containers/UserButton.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/containers/UserButton.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/containers/UserButton.js');
 }();
 
 ;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _dotenv = __webpack_require__(102);
+var _dotenv = __webpack_require__(103);
 
 var _dotenv2 = _interopRequireDefault(_dotenv);
 
@@ -3941,7 +4011,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3955,31 +4025,31 @@ var _express = __webpack_require__(9);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _expressForceSsl = __webpack_require__(103);
+var _expressForceSsl = __webpack_require__(104);
 
 var _expressForceSsl2 = _interopRequireDefault(_expressForceSsl);
 
-var _compression = __webpack_require__(98);
+var _compression = __webpack_require__(99);
 
 var _compression2 = _interopRequireDefault(_compression);
 
-var _morgan = __webpack_require__(109);
+var _morgan = __webpack_require__(110);
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
-var _cookieParser = __webpack_require__(99);
+var _cookieParser = __webpack_require__(100);
 
 var _cookieParser2 = _interopRequireDefault(_cookieParser);
 
-var _bodyParser = __webpack_require__(97);
+var _bodyParser = __webpack_require__(98);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _expressValidator = __webpack_require__(104);
+var _expressValidator = __webpack_require__(105);
 
 var _expressValidator2 = _interopRequireDefault(_expressValidator);
 
-var _path = __webpack_require__(110);
+var _path = __webpack_require__(111);
 
 var _path2 = _interopRequireDefault(_path);
 
@@ -4002,7 +4072,7 @@ var _default = function _default(routes) {
   }
 
   if (_config.env === 'development') {
-    __webpack_require__(63);
+    __webpack_require__(64);
   }
 
   /* istanbul ignore next */
@@ -4029,16 +4099,16 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(root, 'root', '/Users/Declan/coding/tmp/template/src/services/express/index.js');
+  __REACT_HOT_LOADER__.register(root, 'root', '/Users/Declan/coding/template/src/services/express/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/services/express/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/services/express/index.js');
 }();
 
 ;
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4086,13 +4156,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/auth/reducer.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/store/auth/reducer.js');
 }();
 
 ;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4118,9 +4188,9 @@ var _reactCookie = __webpack_require__(15);
 
 var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
-var _url = __webpack_require__(123);
+var _url = __webpack_require__(124);
 
-var _querystring = __webpack_require__(112);
+var _querystring = __webpack_require__(113);
 
 var _api = __webpack_require__(17);
 
@@ -4225,7 +4295,7 @@ var pollPopup = exports.pollPopup = function pollPopup(_ref2) {
               resolve({ oauthData: params, window: window, interval: polling });
             }
           } else {
-            reject('OAuth redirect has occurred but no query or hash parameters were found.');
+            reject(new Error('OAuth redirect has occurred but no query or hash parameters were found.'));
           }
         }
       } catch (error) {
@@ -4697,45 +4767,45 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(signupAction, 'signupAction', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(signupAction, 'signupAction', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(serviceAction, 'serviceAction', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(serviceAction, 'serviceAction', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(oauth2, 'oauth2', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(oauth2, 'oauth2', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(openPopup, 'openPopup', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(openPopup, 'openPopup', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(pollPopup, 'pollPopup', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(pollPopup, 'pollPopup', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(closePopup, 'closePopup', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(closePopup, 'closePopup', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(exchangeCodeForToken, 'exchangeCodeForToken', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(exchangeCodeForToken, 'exchangeCodeForToken', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(loginGithub, 'loginGithub', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(loginGithub, 'loginGithub', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(watchAuthLoginGithub, 'watchAuthLoginGithub', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(watchAuthLoginGithub, 'watchAuthLoginGithub', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(loginFacebook, 'loginFacebook', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(loginFacebook, 'loginFacebook', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(signupLocal, 'signupLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(signupLocal, 'signupLocal', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(watchAuthSignupLocal, 'watchAuthSignupLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(watchAuthSignupLocal, 'watchAuthSignupLocal', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(watchAuthLoginFacebook, 'watchAuthLoginFacebook', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(watchAuthLoginFacebook, 'watchAuthLoginFacebook', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(loginLocal, 'loginLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(loginLocal, 'loginLocal', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(watchAuthLoginLocal, 'watchAuthLoginLocal', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(watchAuthLoginLocal, 'watchAuthLoginLocal', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(watchAuthLogout, 'watchAuthLogout', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(watchAuthLogout, 'watchAuthLogout', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/auth/sagas.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/store/auth/sagas.js');
 }();
 
 ;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4747,21 +4817,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(26);
 
-var _reduxSaga = __webpack_require__(119);
+var _reduxSaga = __webpack_require__(120);
 
 var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
 var _config = __webpack_require__(12);
 
-var _middlewares = __webpack_require__(68);
+var _middlewares = __webpack_require__(69);
 
 var _middlewares2 = _interopRequireDefault(_middlewares);
 
-var _reducer = __webpack_require__(70);
+var _reducer = __webpack_require__(71);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
-var _sagas = __webpack_require__(71);
+var _sagas = __webpack_require__(72);
 
 var _sagas2 = _interopRequireDefault(_sagas);
 
@@ -4812,17 +4882,17 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(devtools, 'devtools', '/Users/Declan/coding/tmp/template/src/store/configure.js');
+  __REACT_HOT_LOADER__.register(devtools, 'devtools', '/Users/Declan/coding/template/src/store/configure.js');
 
-  __REACT_HOT_LOADER__.register(configureStore, 'configureStore', '/Users/Declan/coding/tmp/template/src/store/configure.js');
+  __REACT_HOT_LOADER__.register(configureStore, 'configureStore', '/Users/Declan/coding/template/src/store/configure.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/configure.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/store/configure.js');
 }();
 
 ;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4831,7 +4901,7 @@ var _temp = function () {
 var _require = __webpack_require__(27),
     thunkMiddleware = _require.middleware;
 
-var req = __webpack_require__(91);
+var req = __webpack_require__(92);
 
 module.exports = req.keys().map(function (key) {
   return req(key).default;
@@ -4843,13 +4913,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/middlewares.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/store/middlewares.js');
 }();
 
 ;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4897,13 +4967,13 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/modal/reducer.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/store/modal/reducer.js');
 }();
 
 ;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4913,7 +4983,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _camelCase = __webpack_require__(106);
+var _camelCase = __webpack_require__(107);
 
 var _camelCase2 = _interopRequireDefault(_camelCase);
 
@@ -4931,7 +5001,7 @@ var reducers = {
   thunk: _reduxSagaThunk.reducer
 };
 
-var req = __webpack_require__(92);
+var req = __webpack_require__(93);
 
 req.keys().forEach(function (key) {
   var storeName = (0, _camelCase2.default)(key.replace(/\.\/(.+)\/.+$/, '$1'));
@@ -4948,17 +5018,17 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(reducers, 'reducers', '/Users/Declan/coding/tmp/template/src/store/reducer.js');
+  __REACT_HOT_LOADER__.register(reducers, 'reducers', '/Users/Declan/coding/template/src/store/reducer.js');
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/reducer.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/store/reducer.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/reducer.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/store/reducer.js');
 }();
 
 ;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4970,14 +5040,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var _effects = __webpack_require__(28);
 
-var req = __webpack_require__(93); // https://github.com/diegohaz/arc/wiki/Sagas
+var req = __webpack_require__(94); // https://github.com/diegohaz/arc/wiki/Sagas
 
 
 var sagas = req.keys().map(function (key) {
   return req(key).default;
 });
 
-var _default = regeneratorRuntime.mark(function _default() {
+var _default = /*#__PURE__*/regeneratorRuntime.mark(function _default() {
   var services = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return regeneratorRuntime.wrap(function _default$(_context) {
     while (1) {
@@ -5004,107 +5074,107 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/tmp/template/src/store/sagas.js');
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/Declan/coding/template/src/store/sagas.js');
 
-  __REACT_HOT_LOADER__.register(sagas, 'sagas', '/Users/Declan/coding/tmp/template/src/store/sagas.js');
+  __REACT_HOT_LOADER__.register(sagas, 'sagas', '/Users/Declan/coding/template/src/store/sagas.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/tmp/template/src/store/sagas.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Declan/coding/template/src/store/sagas.js');
 }();
 
 ;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 184 164\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;\">\n    <g transform=\"matrix(1,0,0,1,-4.49912,-15.1442)\">\n        <g id=\"Symbol\" transform=\"matrix(0.446036,2.31112e-32,2.31112e-32,0.446036,-1.17751,-11.7517)\">\n            <g transform=\"matrix(0.730839,0,0,0.730839,-428.272,-103.233)\">\n                <path d=\"M738.748,372.292C743.056,377.12 743.923,383.318 741.56,389.234C673.786,404.652 629.197,430.744 629.197,460.312C629.197,507.636 743.42,546.057 884.109,546.057C1024.8,546.057 1139.02,507.636 1139.02,460.312C1139.02,431.943 1097.97,406.773 1034.79,391.162C1031.65,385.195 1031.87,378.745 1035.66,373.578C1039.88,374.479 1044.08,375.435 1048.27,376.451C1056.47,378.44 1064.62,380.658 1072.68,383.17C1078.62,385.021 1084.51,387.033 1090.33,389.247C1094.69,390.909 1099.01,392.685 1103.27,394.6C1106.44,396.026 1109.58,397.529 1112.66,399.123C1114.94,400.295 1117.18,401.516 1119.4,402.791C1121.01,403.719 1122.61,404.675 1124.18,405.663C1125.32,406.378 1126.45,407.109 1127.57,407.858C1135.27,413.023 1142.47,419.041 1148.47,426.135C1149.42,427.248 1150.33,428.386 1151.21,429.549C1152.34,431.045 1153.41,432.582 1154.42,434.16C1155.8,436.295 1157.06,438.504 1158.19,440.777C1159.65,443.716 1160.89,446.763 1161.89,449.89C1163.27,454.209 1164.17,458.676 1164.57,463.192C1165.09,469.111 1164.73,475.1 1163.52,480.916C1162.61,485.23 1161.25,489.443 1159.47,493.475C1157.96,496.89 1156.16,500.174 1154.12,503.298C1153.3,504.554 1152.44,505.785 1151.54,506.989C1145.61,514.961 1138.16,521.699 1130.06,527.412C1124.81,531.117 1119.27,534.408 1113.58,537.386C1107.35,540.646 1100.93,543.534 1094.4,546.147C1086.73,549.218 1078.91,551.912 1071.01,554.33C1062.5,556.937 1053.89,559.222 1045.22,561.261C1034.15,563.866 1022.99,566.067 1011.77,567.954C998.741,570.147 985.637,571.914 972.497,573.33C958.469,574.841 944.397,575.95 930.308,576.703C914.923,577.525 899.516,577.923 884.109,577.923C868.703,577.923 853.295,577.525 837.911,576.703C823.821,575.95 809.75,574.841 795.721,573.33C782.582,571.914 769.478,570.147 756.445,567.954C745.232,566.067 734.069,563.866 722.999,561.261C714.332,559.222 705.72,556.937 697.206,554.33C689.308,551.912 681.489,549.218 673.82,546.147C667.293,543.533 660.871,540.646 654.64,537.387C648.947,534.409 643.411,531.117 638.159,527.412C630.061,521.7 622.611,514.963 616.679,506.992C615.783,505.788 614.923,504.557 614.102,503.301C612.059,500.176 610.26,496.891 608.752,493.475C606.973,489.442 605.603,485.227 604.701,480.911C603.486,475.096 603.126,469.11 603.647,463.192C604.044,458.675 604.953,454.205 606.333,449.885C607.331,446.759 608.575,443.712 610.035,440.773C611.163,438.502 612.421,436.296 613.791,434.163C614.805,432.584 615.881,431.046 617.012,429.549C617.892,428.385 618.804,427.246 619.747,426.133C625.754,419.04 632.945,413.022 640.652,407.858C641.77,407.109 642.9,406.377 644.04,405.662C645.613,404.675 647.207,403.719 648.817,402.792C651.033,401.516 653.281,400.295 655.554,399.123C658.643,397.53 661.779,396.026 664.95,394.6C669.208,392.685 673.528,390.909 677.892,389.247C683.705,387.033 689.595,385.022 695.534,383.17C703.595,380.658 711.746,378.44 719.951,376.451C726.188,374.939 732.456,373.558 738.748,372.292Z\" />\n            </g>\n            <g transform=\"matrix(-0.365419,-0.632925,0.632925,-0.365419,244.419,974.764)\">\n                <path d=\"M738.748,372.292C743.056,377.12 743.923,383.318 741.56,389.234C673.786,404.652 629.197,430.744 629.197,460.312C629.197,507.636 743.42,546.057 884.109,546.057C1024.8,546.057 1139.02,507.636 1139.02,460.312C1139.02,431.943 1097.97,406.773 1034.79,391.162C1031.65,385.195 1031.87,378.745 1035.66,373.578C1039.88,374.479 1044.08,375.435 1048.27,376.451C1056.47,378.44 1064.62,380.658 1072.68,383.17C1078.62,385.021 1084.51,387.033 1090.33,389.247C1094.69,390.909 1099.01,392.685 1103.27,394.6C1106.44,396.026 1109.58,397.529 1112.66,399.123C1114.94,400.295 1117.18,401.516 1119.4,402.791C1121.01,403.719 1122.61,404.675 1124.18,405.663C1125.32,406.378 1126.45,407.109 1127.57,407.858C1135.27,413.023 1142.47,419.041 1148.47,426.135C1149.42,427.248 1150.33,428.386 1151.21,429.549C1152.34,431.045 1153.41,432.582 1154.42,434.16C1155.8,436.295 1157.06,438.504 1158.19,440.777C1159.65,443.716 1160.89,446.763 1161.89,449.89C1163.27,454.209 1164.17,458.676 1164.57,463.192C1165.09,469.111 1164.73,475.1 1163.52,480.916C1162.61,485.23 1161.25,489.443 1159.47,493.475C1157.96,496.89 1156.16,500.174 1154.12,503.298C1153.3,504.554 1152.44,505.785 1151.54,506.989C1145.61,514.961 1138.16,521.699 1130.06,527.412C1124.81,531.117 1119.27,534.408 1113.58,537.386C1107.35,540.646 1100.93,543.534 1094.4,546.147C1086.73,549.218 1078.91,551.912 1071.01,554.33C1062.5,556.937 1053.89,559.222 1045.22,561.261C1034.15,563.866 1022.99,566.067 1011.77,567.954C998.741,570.147 985.637,571.914 972.497,573.33C958.469,574.841 944.397,575.95 930.308,576.703C914.923,577.525 899.516,577.923 884.109,577.923C868.703,577.923 853.295,577.525 837.911,576.703C823.821,575.95 809.75,574.841 795.721,573.33C782.582,571.914 769.478,570.147 756.445,567.954C745.232,566.067 734.069,563.866 722.999,561.261C714.332,559.222 705.72,556.937 697.206,554.33C689.308,551.912 681.489,549.218 673.82,546.147C667.293,543.533 660.871,540.646 654.64,537.387C648.947,534.409 643.411,531.117 638.159,527.412C630.061,521.7 622.611,514.963 616.679,506.992C615.783,505.788 614.923,504.557 614.102,503.301C612.059,500.176 610.26,496.891 608.752,493.475C606.973,489.442 605.603,485.227 604.701,480.911C603.486,475.096 603.126,469.11 603.647,463.192C604.044,458.675 604.953,454.205 606.333,449.885C607.331,446.759 608.575,443.712 610.035,440.773C611.163,438.502 612.421,436.296 613.791,434.163C614.805,432.584 615.881,431.046 617.012,429.549C617.892,428.385 618.804,427.246 619.747,426.133C625.754,419.04 632.945,413.022 640.652,407.858C641.77,407.109 642.9,406.377 644.04,405.662C645.613,404.675 647.207,403.719 648.817,402.792C651.033,401.516 653.281,400.295 655.554,399.123C658.643,397.53 661.779,396.026 664.95,394.6C669.208,392.685 673.528,390.909 677.892,389.247C683.705,387.033 689.595,385.022 695.534,383.17C703.595,380.658 711.746,378.44 719.951,376.451C726.188,374.939 732.456,373.558 738.748,372.292Z\"/>\n            </g>\n            <g transform=\"matrix(0.365419,-0.632925,-0.632925,-0.365419,191.319,974.764)\">\n                <path d=\"M738.748,372.292C743.056,377.12 743.923,383.318 741.56,389.234C673.786,404.652 629.197,430.744 629.197,460.312C629.197,507.636 743.42,546.057 884.109,546.057C1024.8,546.057 1139.02,507.636 1139.02,460.312C1139.02,431.943 1097.97,406.773 1034.79,391.162C1031.65,385.195 1031.87,378.745 1035.66,373.578C1039.88,374.479 1044.08,375.435 1048.27,376.451C1056.47,378.44 1064.62,380.658 1072.68,383.17C1078.62,385.021 1084.51,387.033 1090.33,389.247C1094.69,390.909 1099.01,392.685 1103.27,394.6C1106.44,396.026 1109.58,397.529 1112.66,399.123C1114.94,400.295 1117.18,401.516 1119.4,402.791C1121.01,403.719 1122.61,404.675 1124.18,405.663C1125.32,406.378 1126.45,407.109 1127.57,407.858C1135.27,413.023 1142.47,419.041 1148.47,426.135C1149.42,427.248 1150.33,428.386 1151.21,429.549C1152.34,431.045 1153.41,432.582 1154.42,434.16C1155.8,436.295 1157.06,438.504 1158.19,440.777C1159.65,443.716 1160.89,446.763 1161.89,449.89C1163.27,454.209 1164.17,458.676 1164.57,463.192C1165.09,469.111 1164.73,475.1 1163.52,480.916C1162.61,485.23 1161.25,489.443 1159.47,493.475C1157.96,496.89 1156.16,500.174 1154.12,503.298C1153.3,504.554 1152.44,505.785 1151.54,506.989C1145.61,514.961 1138.16,521.699 1130.06,527.412C1124.81,531.117 1119.27,534.408 1113.58,537.386C1107.35,540.646 1100.93,543.534 1094.4,546.147C1086.73,549.218 1078.91,551.912 1071.01,554.33C1062.5,556.937 1053.89,559.222 1045.22,561.261C1034.15,563.866 1022.99,566.067 1011.77,567.954C998.741,570.147 985.637,571.914 972.497,573.33C958.469,574.841 944.397,575.95 930.308,576.703C914.923,577.525 899.516,577.923 884.109,577.923C868.703,577.923 853.295,577.525 837.911,576.703C823.821,575.95 809.75,574.841 795.721,573.33C782.582,571.914 769.478,570.147 756.445,567.954C745.232,566.067 734.069,563.866 722.999,561.261C714.332,559.222 705.72,556.937 697.206,554.33C689.308,551.912 681.489,549.218 673.82,546.147C667.293,543.533 660.871,540.646 654.64,537.387C648.947,534.409 643.411,531.117 638.159,527.412C630.061,521.7 622.611,514.963 616.679,506.992C615.783,505.788 614.923,504.557 614.102,503.301C612.059,500.176 610.26,496.891 608.752,493.475C606.973,489.442 605.603,485.227 604.701,480.911C603.486,475.096 603.126,469.11 603.647,463.192C604.044,458.675 604.953,454.205 606.333,449.885C607.331,446.759 608.575,443.712 610.035,440.773C611.163,438.502 612.421,436.296 613.791,434.163C614.805,432.584 615.881,431.046 617.012,429.549C617.892,428.385 618.804,427.246 619.747,426.133C625.754,419.04 632.945,413.022 640.652,407.858C641.77,407.109 642.9,406.377 644.04,405.662C645.613,404.675 647.207,403.719 648.817,402.792C651.033,401.516 653.281,400.295 655.554,399.123C658.643,397.53 661.779,396.026 664.95,394.6C669.208,392.685 673.528,390.909 677.892,389.247C683.705,387.033 689.595,385.022 695.534,383.17C703.595,380.658 711.746,378.44 719.951,376.451C726.188,374.939 732.456,373.558 738.748,372.292Z\"/>\n            </g>\n            <g transform=\"matrix(0.849949,0,0,0.849949,-532.408,-149.626)\">\n                <circle cx=\"882.732\" cy=\"463.109\" r=\"40.177\"/>\n            </g>\n        </g>\n    </g>\n</svg>\n"
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 module.exports = "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"128.1 125.4 49.2 49.2\" enable-background=\"new 128.1 125.4 49.2 49.2\" xml:space=\"preserve\">\n  <g id=\"atom\">\n  \t<g>\n  \t\t<g>\n  \t\t\t<circle fill=\"none\" stroke-width=\"3\" stroke-miterlimit=\"10\" cx=\"152.7\" cy=\"150\" r=\"21.6\"></circle>\n  \t\t\t<circle stroke=\"none\" fill=\"#BE6700\" cx=\"152.7\" cy=\"150\" r=\"12.4\"></circle>\n  \t\t</g>\n  \t\t<path stroke=\"none\" fill=\"#BE6700\" d=\"M175.1,136.6c0,2.9-2.4,5.3-5.3,5.3s-5.3-2.3-5.3-5.3c0-2.9,2.4-5.3,5.3-5.3\n  \t\t\tC172.7,131.3,175.1,133.7,175.1,136.6z\"></path>\n  \t</g>\n  </g>\n</svg>\n"
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 32 32\" style=\"enable-background:new 0 0 32 32\" xml:space=\"preserve\" fill=\"none\">\n<line style=\"stroke-width:2;stroke-miterlimit:10\" x1=\"8\" y1=\"8\" x2=\"24\" y2=\"24\" fill=\"none\"/>\n<line style=\"stroke-width:2;stroke-miterlimit:10\" x1=\"24\" y1=\"8\" x2=\"8\" y2=\"24\" fill=\"none\"/>\n</svg>\n"
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.0\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 24 24\" enable-background=\"new 0 0 24 24\" xml:space=\"preserve\">\n<g stroke=\"none\">\n\t<path d=\"M18,8v12H9V8H18 M18,6H9C7.9,6,7,6.9,7,8v12c0,1.1,0.9,2,2,2h9c1.1,0,2-0.9,2-2V8C20,6.9,19.1,6,18,6L18,6z\" stroke=\"none\"/>\n</g>\n<path d=\"M5,17V4h10V2H5C3.9,2,3,2.9,3,4v13H5z\" stroke=\"none\"/>\n</svg>\n"
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n<svg version=\"1.0\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\r\n\t viewBox=\"0 0 48 48\" enable-background=\"new 0 0 48 48\" xml:space=\"preserve\">\n<polygon stroke=\"none\" fill=\"#CFD8DC\" points=\"35,36 39,36 39,22 26,22 26,13 22,13 22,22 9,22 9,36 13,36 13,26 22,26 22,36 26,36 26,26 35,26\n\t\"/>\r\n<rect x=\"17\" y=\"6\" stroke=\"none\" fill=\"#3F51B5\" width=\"14\" height=\"10\"/>\n<rect x=\"32\" y=\"32\" stroke=\"none\" fill=\"#00BCD4\" width=\"10\" height=\"10\"/>\n<rect x=\"6\" y=\"32\" stroke=\"none\" fill=\"#00BCD4\" width=\"10\" height=\"10\"/>\n<rect x=\"19\" y=\"32\" stroke=\"none\" fill=\"#00BCD4\" width=\"10\" height=\"10\"/>\n</svg>\r\n"
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports) {
 
 module.exports = "<svg aria-hidden=\"true\" version=\"1.1\" viewBox=\"0 0 16 16\">\n<path fill-rule=\"evenodd\" d=\"M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z\" stroke=\"none\"/>\n</svg>\n"
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" id=\"Слой_1\" x=\"0px\" y=\"0px\" width=\"50px\" height=\"50px\" viewBox=\"0 0 50 50\" enable-background=\"new 0 0 50 50\" xml:space=\"preserve\">\n<path d=\"M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3  c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z\" stroke=\"none\"/>\n</svg>\n"
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 50 50\" enable-background=\"new 0 0 50 50\" xml:space=\"preserve\" stroke=\"none\">\n<path d=\"M25,1C11.8,1,1,11.8,1,25c0,10.2,6.4,18.9,15.3,22.4c0.9-0.2,1.7-1,1.7-2V41h-2.6c-1.9,0-3.5-0.9-4.3-2.3  c-0.2-0.4-0.4-0.9-0.6-1.4c-0.4-1.1-0.9-2.3-1.9-3C8.2,34,8,33.4,8.1,32.9c0.2-0.5,0.7-0.9,1.6-0.8c1,0.1,2.5,1.2,3.4,2.4  c0.8,1,1.4,1.6,2.6,1.6h0.3c0.9,0,3.1,0,3.5-0.4l0,0c0.3-0.4,0.5-0.7,0.8-1c-6-1.2-9.4-4.7-9.4-10c0-1.8,0.5-3.6,1.6-5.2  c-0.4-1.5-1.3-5.4,0.6-7.1l0.3-0.3h0.4c2.6,0,4.5,1.1,5.7,2c3.5-1.3,7.5-1.3,11,0c1.1-0.9,3-2,5.7-2h0.4l0.3,0.3  c1.9,1.8,1,5.6,0.6,7.1c1,1.6,1.6,3.4,1.6,5.2c0,5.3-3.4,8.8-9.3,10c1.5,1.6,2.3,4,2.3,5.9v4.9c0,1,0.7,1.8,1.7,2  C42.6,43.9,49,35.2,49,25C49,11.8,38.2,1,25,1z\" stroke=\"none\"/>\n</svg>\n"
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 24 24\" style=\"enable-background:new 0 0 24 24\" xml:space=\"preserve\" stroke=\"none\">\n<path d=\"M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032  c0-3.331,2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2  C7.021,2,2.543,6.477,2.543,12c0,5.523,4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z\" stroke=\"none\"/>\n</svg>\n"
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg version=\"1.1\" id=\"Слой_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\t width=\"48px\" height=\"48px\" viewBox=\"0 0 48 48\" enable-background=\"new 0 0 48 48\" xml:space=\"preserve\">\n<path fill=\"#FF3D00\" stroke=\"none\" d=\"M32.635,8C29.027,8,25.855,9.828,24,12.597C22.145,9.828,18.973,8,15.365,8C9.641,8,5,12.598,5,18.269\n\tC5,28.487,21.15,33.411,24,40c2.85-6.589,19-11.428,19-21.731C43,12.598,38.359,8,32.635,8\"/>\n</svg>\n"
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"256px\" height=\"283px\" viewBox=\"0 0 256 283\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" preserveAspectRatio=\"xMidYMid\">\n\t<g>\n\t\t<path d=\"M239.972557,139.203 C239.972557,124.669 228.190557,112.887 213.656557,112.887 C212.721557,112.887 211.799557,112.937 210.890557,113.032 L247.035557,6.427 L93.431557,6.427 L129.525557,112.94 C128.996557,112.908 128.464557,112.887 127.926557,112.887 C113.392557,112.887 101.610557,124.669 101.610557,139.203 C101.610557,150.951 109.309557,160.897 119.936557,164.281 C114.323557,174.003 107.261557,182.759 99.243557,190.323 C88.340557,200.609 75.862557,208.408 62.367557,213.214 C46.299557,204.96 38.711557,186.602 45.558557,170.507 C46.331557,168.69 47.120557,166.847 47.875557,165.013 C59.515557,162.296 68.189557,151.86 68.189557,139.392 C68.189557,124.858 56.407557,113.076 41.873557,113.076 C27.338557,113.076 15.556557,124.858 15.556557,139.392 C15.556557,148.305 19.991557,156.176 26.769557,160.937 C20.255557,175.768 10.681557,191.288 7.69855701,209.276 C4.12355701,230.835 7.68755701,253.719 26.332557,266.642 C69.756557,296.738 116.892557,247.985 166.591557,235.729 C184.602557,231.287 204.373557,232.003 220.242557,222.812 C232.159557,215.91 240.015557,204.472 242.245557,191.63 C244.447557,178.944 241.236557,166.313 233.852557,156.071 C237.671557,151.503 239.972557,145.623 239.972557,139.203 L239.972557,139.203 Z M154.240557,139.296 C154.240557,139.265 154.243557,139.234 154.243557,139.203 C154.243557,129.659 149.161557,121.301 141.557557,116.688 L170.285557,58.597 L199.063557,117.304 C191.996557,122.022 187.339557,130.068 187.339557,139.203 C187.339557,139.395 187.350557,139.584 187.354557,139.775 L154.240557,139.296 L154.240557,139.296 Z\" stroke=\"none\" fill=\"#C63D14\"></path>\n\t\t<path d=\"M246.399036,139.203 C246.399036,123.218 234.882036,109.88 219.711036,107.031 L256.000036,0 L84.4660355,0 L120.810036,107.248 C106.167036,110.507 95.1830355,123.593 95.1830355,139.203 C95.1830355,150.926 101.378036,161.223 110.663036,167.009 C106.197036,173.662 100.901036,179.923 94.8320355,185.648 C85.2080355,194.728 74.4850355,201.614 62.9250355,206.144 C51.2820355,198.83 46.3600355,185.038 51.4720355,173.022 L51.8720355,172.082 C52.1220355,171.494 52.3730355,170.904 52.6230355,170.314 C65.4110355,165.855 74.6160355,153.682 74.6160355,139.392 C74.6160355,121.337 59.9270355,106.649 41.8720355,106.649 C23.8170355,106.649 9.12903553,121.337 9.12903553,139.392 C9.12903553,148.505 12.8740355,156.757 18.9020355,162.699 C17.8090355,165.029 16.6600355,167.397 15.4790355,169.823 C9.96703553,181.144 3.72003553,193.976 1.35703553,208.225 C-3.33596447,236.524 4.23303553,259.146 22.6700355,271.924 C33.8580355,279.678 45.2190355,282.728 56.6520355,282.727 C78.1810355,282.726 99.9580355,271.911 121.258036,261.331 C136.599036,253.712 152.461036,245.833 168.130036,241.969 C173.960036,240.531 179.959036,239.666 186.310036,238.75 C198.904036,236.933 211.928036,235.055 223.464036,228.374 C236.835036,220.629 245.989036,207.637 248.577036,192.73 C250.799036,179.933 248.124036,167.117 241.602036,156.247 C244.643036,151.279 246.399036,145.443 246.399036,139.203 L246.399036,139.203 Z M233.545036,139.203 C233.545036,150.17 224.623036,159.093 213.655036,159.093 C202.689036,159.093 193.766036,150.17 193.766036,139.203 C193.766036,128.236 202.689036,119.314 213.655036,119.314 C224.623036,119.314 233.545036,128.236 233.545036,139.203 L233.545036,139.203 Z M238.069036,12.854 L206.024036,107.367 C204.635036,107.7 203.281036,108.12 201.966036,108.625 L170.310036,44.047 L138.562036,108.243 C137.190036,107.77 135.778036,107.381 134.330036,107.093 L102.395036,12.854 L238.069036,12.854 L238.069036,12.854 Z M127.926036,119.314 C138.893036,119.314 147.815036,128.236 147.815036,139.203 C147.815036,150.17 138.893036,159.093 127.926036,159.093 C116.960036,159.093 108.037036,150.17 108.037036,139.203 C108.037036,128.236 116.960036,119.314 127.926036,119.314 L127.926036,119.314 Z M41.8720355,119.503 C52.8400355,119.503 61.7620355,128.425 61.7620355,139.392 C61.7620355,150.359 52.8400355,159.282 41.8720355,159.282 C30.9060355,159.282 21.9830355,150.359 21.9830355,139.392 C21.9830355,128.425 30.9060355,119.503 41.8720355,119.503 L41.8720355,119.503 Z M235.912036,190.531 C233.977036,201.679 227.091036,211.418 217.021036,217.25 C207.634036,222.687 196.385036,224.31 184.475036,226.027 C178.095036,226.947 171.497036,227.899 165.052036,229.489 C148.010036,233.691 131.503036,241.89 115.540036,249.819 C83.5950355,265.686 56.0060355,279.388 29.9930355,261.359 C10.9380355,248.153 11.8180355,223.718 14.0380355,210.328 C16.0950355,197.923 21.6570355,186.498 27.0360355,175.449 C27.9670355,173.537 28.8710355,171.664 29.7580355,169.803 C32.4260355,170.87 35.2630355,171.597 38.2200355,171.927 C32.7450355,189.998 41.3560355,209.646 59.4290355,218.931 L61.9020355,220.202 L64.5220355,219.269 C78.8100355,214.181 91.9750355,206.015 103.653036,194.998 C111.202036,187.877 117.689036,179.998 123.023036,171.579 C124.623036,171.82 126.260036,171.947 127.926036,171.947 C145.981036,171.947 160.670036,157.259 160.670036,139.203 C160.670036,129.493 156.417036,120.761 149.681036,114.759 L170.259036,73.147 L191.046036,115.552 C184.809036,121.518 180.912036,129.911 180.912036,139.203 C180.912036,157.259 195.600036,171.947 213.655036,171.947 C220.592036,171.947 227.027036,169.773 232.327036,166.079 C236.007036,173.612 237.378036,182.088 235.912036,190.531 L235.912036,190.531 Z\" stroke=\"none\" fill=\"#FFFFFF\"></path>\n\t</g>\n</svg>\n"
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 module.exports = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<svg width=\"256px\" height=\"140px\" viewBox=\"0 0 256 140\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" preserveAspectRatio=\"xMidYMid\">\n\t<g>\n\t\t<path d=\"M190.317684,91.214 C185.491684,92.789 180.302684,93.273 175.261684,94.156 C173.889684,94.396 172.442684,94.182 171.056684,94.374 C160.303684,95.866 156.240684,100.173 154.721684,111.623 C153.913684,117.718 152.309684,123.511 148.811684,128.697 C142.901684,137.456 131.420684,141.431 121.594684,138.009 C111.076684,134.346 104.705684,124.759 105.555684,113.874 C106.320684,104.067 114.066684,95.403 124.945684,92.885 C130.038684,91.706 135.323684,91.245 140.549684,90.769 C150.304684,89.882 154.613684,85.605 156.238684,76.013 C157.173684,70.494 156.340684,65.287 155.116684,60.081 C153.247684,52.124 147.453684,48.427 137.726684,47.719 C132.418684,47.332 127.018684,46.562 121.939684,45.036 C111.247684,41.821 105.022684,32.539 105.515684,21.65 C105.947684,12.115 113.712684,2.831 123.039684,0.699 C134.089684,-1.828 145.090684,2.591 149.789684,12.432 C152.255684,17.596 153.610684,23.446 154.575684,29.137 C156.304684,39.341 160.358684,43.3 170.536684,44.406 C177.118684,45.122 183.825684,45.938 190.102684,47.902 C199.634684,50.885 205.360684,59.768 205.358684,69.64 C205.357684,79.297 199.447684,88.235 190.317684,91.214 Z\" stroke=\"none\" fill=\"#CF0920\"></path>\n\t\t<path d=\"M78.0720006,92.782 C65.2940006,92.784 54.8620006,82.355 54.8600006,69.579 C54.8580006,56.802 65.2870006,46.369 78.0630006,46.367 C90.8400006,46.365 101.272001,56.794 101.274001,69.57 C101.276001,82.347 90.8470006,92.78 78.0720006,92.782 Z\" stroke=\"none\" fill=\"#000000\"></path>\n\t\t<path d=\"M23.1300737,139.2 C10.3630737,139.168 -0.0319263159,128.703 7.36840638e-05,115.915 C0.0320736841,103.148 10.4960737,92.753 23.2840737,92.786 C36.0510737,92.817 46.4460737,103.282 46.4140737,116.07 C46.3820737,128.837 35.9180737,139.232 23.1300737,139.2 Z\" stroke=\"none\" fill=\"#000000\"></path>\n\t\t<path d=\"M232.962386,139.2 C220.162386,139.273 209.653386,128.92 209.580386,116.167 C209.507386,103.368 219.860386,92.858 232.613386,92.786 C245.412386,92.712 255.921386,103.064 255.995386,115.818 C256.068386,128.617 245.715386,139.127 232.962386,139.2 Z\" stroke=\"none\" fill=\"#000000\"></path>\n\t</g>\n</svg>\n"
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports) {
 
 module.exports = "<svg xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns=\"http://www.w3.org/2000/svg\" height=\"780.18\" viewBox=\"0 0 875.02936 780.17639\" width=\"875.03\" version=\"1.1\" xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">\n <g stroke=\"none\" fill=\"#61dafb\">\n  <path d=\"m512.45 391.21a76.266 77.855 0 0 1 -76.266 77.855 76.266 77.855 0 0 1 -76.266 -77.855 76.266 77.855 0 0 1 76.266 -77.855 76.266 77.855 0 0 1 76.266 77.855z\"/>\n  <g fill-rule=\"evenodd\">\n   <path d=\"m277.8 477.26a437.52 180.08 59.793 0 1 -61.2 -466.18 437.52 180.08 59.793 0 1 376.3 291.6 437.52 180.08 59.793 0 1 61.2 466.18 437.52 180.08 59.793 0 1 -376.3 -291.6zm34.163-17.99a399.46 141.49 59.831 0 1 -75.73 -414.16 399.46 141.49 59.831 0 1 323.72 277.69 399.46 141.49 59.831 0 1 75.73 414.16 399.46 141.49 59.831 0 1 -323.72 -277.69z\"/>\n   <path d=\"m282.04 297.29a180.08 437.52 29.793 0 1 373.12 -286.09 180.08 437.52 29.793 0 1 -64.38 471.69 180.08 437.52 29.793 0 1 -373.12 286.09 180.08 437.52 29.793 0 1 64.38 -471.69zm32.661 20.591a141.49 399.46 29.831 0 1 320.81 -272.66 141.49 399.46 29.831 0 1 -78.63 419.19 141.49 399.46 29.831 0 1 -320.81 272.66 141.49 399.46 29.831 0 1 78.63 -419.19z\"/>\n   <path d=\"m440.7 210.54a180.08 437.52 89.793 0 1 434.32 180.09 180.08 437.52 89.793 0 1 -440.69 180.08 180.08 437.52 89.793 0 1 -434.32 -180.08 180.08 437.52 89.793 0 1 440.69 -180.09zm-1.5016 38.581a141.49 399.46 89.831 0 1 396.53 141.5 141.49 399.46 89.831 0 1 -402.35 141.5 141.49 399.46 89.831 0 1 -396.53 -141.5 141.49 399.46 89.831 0 1 402.35 -141.5z\"/>\n  </g>\n </g>\n</svg>\n"
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\">\n  <g stroke=\"none\" fill=\"#764ABC\">\n    <path d=\"M65.6 65.4c2.9-.3 5.1-2.8 5-5.8-.1-3-2.6-5.4-5.6-5.4h-.2c-3.1.1-5.5 2.7-5.4 5.8.1 1.5.7 2.8 1.6 3.7-3.4 6.7-8.6 11.6-16.4 15.7-5.3 2.8-10.8 3.8-16.3 3.1-4.5-.6-8-2.6-10.2-5.9-3.2-4.9-3.5-10.2-.8-15.5 1.9-3.8 4.9-6.6 6.8-8-.4-1.3-1-3.5-1.3-5.1-14.5 10.5-13 24.7-8.6 31.4 3.3 5 10 8.1 17.4 8.1 2 0 4-.2 6-.7 12.8-2.5 22.5-10.1 28-21.4z\"/>\n    <path d=\"M83.2 53c-7.6-8.9-18.8-13.8-31.6-13.8H50c-.9-1.8-2.8-3-4.9-3h-.2c-3.1.1-5.5 2.7-5.4 5.8.1 3 2.6 5.4 5.6 5.4h.2c2.2-.1 4.1-1.5 4.9-3.4H52c7.6 0 14.8 2.2 21.3 6.5 5 3.3 8.6 7.6 10.6 12.8 1.7 4.2 1.6 8.3-.2 11.8-2.8 5.3-7.5 8.2-13.7 8.2-4 0-7.8-1.2-9.8-2.1-1.1 1-3.1 2.6-4.5 3.6 4.3 2 8.7 3.1 12.9 3.1 9.6 0 16.7-5.3 19.4-10.6 2.9-5.8 2.7-15.8-4.8-24.3z\"/>\n    <path d=\"M32.4 67.1c.1 3 2.6 5.4 5.6 5.4h.2c3.1-.1 5.5-2.7 5.4-5.8-.1-3-2.6-5.4-5.6-5.4h-.2c-.2 0-.5 0-.7.1-4.1-6.8-5.8-14.2-5.2-22.2.4-6 2.4-11.2 5.9-15.5 2.9-3.7 8.5-5.5 12.3-5.6 10.6-.2 15.1 13 15.4 18.3 1.3.3 3.5 1 5 1.5-1.2-16.2-11.2-24.6-20.8-24.6-9 0-17.3 6.5-20.6 16.1-4.6 12.8-1.6 25.1 4 34.8-.5.7-.8 1.8-.7 2.9z\"/>\n  </g>\n</svg>\n"
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 1200\">\n<title>icon-square-big</title>\n<path stroke=\"none\" fill=\"#FFF\" d=\"M600 0l530.3 300v600L600 1200 69.7 900V300z\"/>\n<path stroke=\"none\" fill=\"#8ED6FB\" class=\"st1\" d=\"M1035.6 879.3l-418.1 236.5V931.6L878 788.3l157.6 91zm28.6-25.9V358.8l-153 88.3V765l153 88.4zm-901.5 25.9l418.1 236.5V931.6L320.3 788.3l-157.6 91zm-28.6-25.9V358.8l153 88.3V765l-153 88.4zM152 326.8L580.8 84.2v178.1L306.1 413.4l-2.1 1.2-152-87.8zm894.3 0L617.5 84.2v178.1l274.7 151.1 2.1 1.2 152-87.8z\"/>\n<path stroke=\"none\" fill=\"#1C78C0\" d=\"M580.8 889.7l-257-141.3v-280l257 148.4v272.9zm36.7 0l257-141.3v-280l-257 148.4v272.9zm-18.3-283.6zM341.2 436l258-141.9 258 141.9-258 149-258-149z\"/>\n</svg>\n"
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -5140,43 +5210,6 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 87;
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./arc.svg": 72,
-	"./atomic-design.svg": 73,
-	"./close.svg": 74,
-	"./copy.svg": 75,
-	"./dist.svg": 76,
-	"./docs.svg": 77,
-	"./facebook.svg": 78,
-	"./github.svg": 79,
-	"./google.svg": 80,
-	"./heart.svg": 81,
-	"./jest.svg": 82,
-	"./react-router.svg": 83,
-	"./react.svg": 84,
-	"./redux.svg": 85,
-	"./webpack.svg": 86
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
 webpackContext.id = 88;
 
 /***/ }),
@@ -5184,13 +5217,21 @@ webpackContext.id = 88;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./LoginForm.js": 56,
-	"./LoginModal.js": 57,
-	"./Modal.js": 58,
-	"./SignupButton.js": 59,
-	"./SignupForm.js": 60,
-	"./SignupModal.js": 61,
-	"./UserButton.js": 62
+	"./arc.svg": 73,
+	"./atomic-design.svg": 74,
+	"./close.svg": 75,
+	"./copy.svg": 76,
+	"./dist.svg": 77,
+	"./docs.svg": 78,
+	"./facebook.svg": 79,
+	"./github.svg": 80,
+	"./google.svg": 81,
+	"./heart.svg": 82,
+	"./jest.svg": 83,
+	"./react-router.svg": 84,
+	"./react.svg": 85,
+	"./redux.svg": 86,
+	"./webpack.svg": 87
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -5213,8 +5254,13 @@ webpackContext.id = 89;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./auth/actions.js": 14,
-	"./modal/actions.js": 20
+	"./LoginForm.js": 57,
+	"./LoginModal.js": 58,
+	"./Modal.js": 59,
+	"./SignupButton.js": 60,
+	"./SignupForm.js": 61,
+	"./SignupModal.js": 62,
+	"./UserButton.js": 63
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -5234,23 +5280,11 @@ webpackContext.id = 90;
 
 /***/ }),
 /* 91 */
-/***/ (function(module, exports) {
-
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 91;
-
-/***/ }),
-/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./auth/reducer.js": 65,
-	"./modal/reducer.js": 69
+	"./auth/actions.js": 14,
+	"./modal/actions.js": 20
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -5266,14 +5300,27 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 92;
+webpackContext.id = 91;
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 92;
 
 /***/ }),
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./auth/sagas.js": 66
+	"./auth/reducer.js": 66,
+	"./modal/reducer.js": 70
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -5296,8 +5343,7 @@ webpackContext.id = 93;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./auth/selectors.js": 19,
-	"./modal/selectors.js": 21
+	"./auth/sagas.js": 67
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -5317,204 +5363,228 @@ webpackContext.id = 94;
 
 /***/ }),
 /* 95 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("babel-polyfill");
+var map = {
+	"./auth/selectors.js": 19,
+	"./modal/selectors.js": 21
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 95;
 
 /***/ }),
 /* 96 */
 /***/ (function(module, exports) {
 
-module.exports = require("bcrypt-nodejs");
+module.exports = require("babel-polyfill");
 
 /***/ }),
 /* 97 */
 /***/ (function(module, exports) {
 
-module.exports = require("body-parser");
+module.exports = require("bcrypt-nodejs");
 
 /***/ }),
 /* 98 */
 /***/ (function(module, exports) {
 
-module.exports = require("compression");
+module.exports = require("body-parser");
 
 /***/ }),
 /* 99 */
 /***/ (function(module, exports) {
 
-module.exports = require("cookie-parser");
+module.exports = require("compression");
 
 /***/ }),
 /* 100 */
 /***/ (function(module, exports) {
 
-module.exports = require("cors");
+module.exports = require("cookie-parser");
 
 /***/ }),
 /* 101 */
 /***/ (function(module, exports) {
 
-module.exports = require("csurf");
+module.exports = require("cors");
 
 /***/ }),
 /* 102 */
 /***/ (function(module, exports) {
 
-module.exports = require("dotenv");
+module.exports = require("csurf");
 
 /***/ }),
 /* 103 */
 /***/ (function(module, exports) {
 
-module.exports = require("express-force-ssl");
+module.exports = require("dotenv");
 
 /***/ }),
 /* 104 */
 /***/ (function(module, exports) {
 
-module.exports = require("express-validator");
+module.exports = require("express-force-ssl");
 
 /***/ }),
 /* 105 */
 /***/ (function(module, exports) {
 
-module.exports = require("isomorphic-fetch");
+module.exports = require("express-validator");
 
 /***/ }),
 /* 106 */
 /***/ (function(module, exports) {
 
-module.exports = require("lodash/camelCase");
+module.exports = require("isomorphic-fetch");
 
 /***/ }),
 /* 107 */
 /***/ (function(module, exports) {
 
-module.exports = require("lodash/upperFirst");
+module.exports = require("lodash/camelCase");
 
 /***/ }),
 /* 108 */
 /***/ (function(module, exports) {
 
-module.exports = require("moment");
+module.exports = require("lodash/upperFirst");
 
 /***/ }),
 /* 109 */
 /***/ (function(module, exports) {
 
-module.exports = require("morgan");
+module.exports = require("moment");
 
 /***/ }),
 /* 110 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("morgan");
 
 /***/ }),
 /* 111 */
 /***/ (function(module, exports) {
 
-module.exports = require("query-string");
+module.exports = require("path");
 
 /***/ }),
 /* 112 */
 /***/ (function(module, exports) {
 
-module.exports = require("querystring");
+module.exports = require("query-string");
 
 /***/ }),
 /* 113 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom/server");
+module.exports = require("querystring");
 
 /***/ }),
 /* 114 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-modal");
+module.exports = require("react-dom/server");
 
 /***/ }),
 /* 115 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router");
+module.exports = require("react-modal");
 
 /***/ }),
 /* 116 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-router");
 
 /***/ }),
 /* 117 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom/Link");
+module.exports = require("react-router-dom");
 
 /***/ }),
 /* 118 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-server");
+module.exports = require("react-router-dom/Link");
 
 /***/ }),
 /* 119 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-saga");
+module.exports = require("react-router-server");
 
 /***/ }),
 /* 120 */
 /***/ (function(module, exports) {
 
-module.exports = require("request");
+module.exports = require("redux-saga");
 
 /***/ }),
 /* 121 */
 /***/ (function(module, exports) {
 
-module.exports = require("serialize-javascript");
+module.exports = require("request");
 
 /***/ }),
 /* 122 */
 /***/ (function(module, exports) {
 
-module.exports = require("styled-theme/composer");
+module.exports = require("serialize-javascript");
 
 /***/ }),
 /* 123 */
 /***/ (function(module, exports) {
 
-module.exports = require("url");
+module.exports = require("styled-theme/composer");
 
 /***/ }),
 /* 124 */
 /***/ (function(module, exports) {
 
-module.exports = require("validator/lib/isEmail");
+module.exports = require("url");
 
 /***/ }),
 /* 125 */
 /***/ (function(module, exports) {
 
-module.exports = require("validator/lib/isIn");
+module.exports = require("validator/lib/isEmail");
 
 /***/ }),
 /* 126 */
 /***/ (function(module, exports) {
 
-module.exports = require("validator/lib/isInt");
+module.exports = require("validator/lib/isIn");
 
 /***/ }),
 /* 127 */
 /***/ (function(module, exports) {
 
-module.exports = require("validator/lib/isURL");
+module.exports = require("validator/lib/isInt");
 
 /***/ }),
 /* 128 */
+/***/ (function(module, exports) {
+
+module.exports = require("validator/lib/isURL");
+
+/***/ }),
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(29);
