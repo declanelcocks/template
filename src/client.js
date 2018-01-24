@@ -16,9 +16,11 @@ import api from 'services/api'
 import App from 'components/App'
 import routes from 'components/routes'
 
+global.api = api.create()
+
 const serverState = window.__SERVER_STATE__
 const initialState = window.__INITIAL_STATE__
-const store = configureStore(initialState, { api: api.create() })
+const store = configureStore(initialState)
 
 const token = cookie.load('token')
 if (initialState.auth.authenticated && token) {

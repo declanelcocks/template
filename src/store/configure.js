@@ -1,6 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Redux-modules
 import { createStore, applyMiddleware, compose } from 'redux'
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware, { END } from 'redux-saga'
 import { isDev, isBrowser } from 'config'
 import middlewares from './middlewares'
 import reducer from './reducer'
@@ -22,6 +22,9 @@ const configureStore = (initialState, services = {}) => {
   ]
 
   const store = createStore(reducer, initialState, compose(...enhancers))
+  store.runSaga = sagaMiddleware.run
+  store.close = () => store.dispatch(END)
+
   let sagaTask = sagaMiddleware.run(sagas, services)
 
   if (module.hot) {

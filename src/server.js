@@ -13,7 +13,8 @@ import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { StaticRouter } from 'react-router'
+import { fork, join, all } from 'redux-saga/effects'
+import { StaticRouter, matchPath } from 'react-router'
 import { renderToString } from 'react-router-server'
 
 import { port, host, basename, mongo } from 'config'
@@ -63,29 +64,57 @@ router.use('/api', cors(), api)
 router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
+  global.api = apiService.create()
+
   const location = req.url
-  const store = configureStore({}, { api: apiService.create() })
+  const store = configureStore({})
   const context = {}
   const sheet = new ServerStyleSheet()
 
   cookie.plugToRequest(req, res)
   const { token } = req.cookies
-
   if (token) store.dispatch(authUser())
 
-  renderApp({ store, context, location, sheet })
-    .then(({ state: serverState, html: content }) => {
-      if (context.status) {
-        res.status(context.status)
-      }
-      if (context.url) {
-        res.redirect(context.url)
-      } else {
-        const initialState = store.getState()
-        res.send(renderHtml({ serverState, initialState, content, sheet }))
-      }
-    })
-    .catch(next)
+  const preloaders = routes.reduce((preloaders, route) => {
+    const match = matchPath(req.url, route.path, route)
+
+    if (match) {
+      return [
+        ...preloaders,
+        ...route.component.preload
+          ? route.component.preload()
+          : Promise.resolve(null),
+      ]
+    }
+
+    return preloaders
+  }, [])
+
+  const waitAll = sagas => function* genTasks() {
+    const tasks = yield all(sagas.map(([saga, ...params]) => fork(saga, ...params)))
+
+    if (tasks.length) yield join(...tasks)
+  }
+
+  const runTasks = store.runSaga(waitAll(preloaders))
+
+  runTasks.done.then(() => {
+    renderApp({ store, context, location, sheet })
+      .then(({ state: serverState, html: content }) => {
+        if (context.status) {
+          res.status(context.status)
+        }
+        if (context.url) {
+          res.redirect(context.url)
+        } else {
+          const initialState = store.getState()
+          res.send(renderHtml({ serverState, initialState, content, sheet }))
+        }
+      })
+      .catch(next)
+  })
+
+  store.close()
 })
 
 router.use((err, req, res, next) => {
