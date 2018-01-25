@@ -11,11 +11,10 @@ import React from 'react'
 import cookie from 'react-cookie'
 import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
-import { renderToStaticMarkup } from 'react-dom/server'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { fork, join, all } from 'redux-saga/effects'
 import { StaticRouter, matchPath } from 'react-router'
-import { renderToString } from 'react-router-server'
 
 import { port, host, basename, mongo } from 'config'
 import configureStore from 'store/configure'
@@ -26,9 +25,7 @@ import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
 
-const renderApp = ({
-  store, context, location, sheet,
-}) => {
+const renderApp = ({ store, context, location, sheet }) => {
   const app = sheet.collectStyles((
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
@@ -36,18 +33,14 @@ const renderApp = ({
       </StaticRouter>
     </Provider>
   ))
+
   return renderToString(app)
 }
 
-const renderHtml = ({
-  serverState, initialState, content, sheet,
-}) => {
+const renderHtml = ({ initialState, content, sheet }) => {
   const styles = sheet.getStyleElement()
   const { assets } = global
-  const state = `
-    window.__SERVER_STATE__ = ${serialize(serverState)};
-    window.__INITIAL_STATE__ = ${serialize(initialState)};
-  `
+  const state = `window.__INITIAL_STATE__ = ${serialize(initialState)};`
   const props = {
     styles, assets, state, content,
   }
@@ -96,23 +89,20 @@ router.use((req, res, next) => {
     if (tasks.length) yield join(...tasks)
   }
 
-  const runTasks = store.runSaga(waitAll(preloaders))
+  const runPreloaders = store.runSaga(waitAll(preloaders))
 
-  runTasks.done.then(() => {
-    renderApp({ store, context, location, sheet })
-      .then(({ state: serverState, html: content }) => {
-        if (context.status) {
-          res.status(context.status)
-        }
-        if (context.url) {
-          res.redirect(context.url)
-        } else {
-          const initialState = store.getState()
-          res.send(renderHtml({ serverState, initialState, content, sheet }))
-        }
-      })
-      .catch(next)
-  })
+  runPreloaders.done.then(() => {
+    const content = renderApp({ store, context, location, sheet })
+
+    if (context.status) res.status(context.status)
+
+    if (context.url) {
+      res.redirect(context.url)
+    } else {
+      const initialState = store.getState()
+      res.send(renderHtml({ initialState, content, sheet }))
+    }
+  }).catch(next)
 
   store.close()
 })
