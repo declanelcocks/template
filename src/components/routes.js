@@ -1,4 +1,4 @@
-import { HomePage } from 'components'
+import { HomePage } from 'containers'
 
 const routes = [
   {

@@ -11,10 +11,10 @@ import React from 'react'
 import cookie from 'react-cookie'
 import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
-import { renderToStaticMarkup } from 'react-dom/server'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { StaticRouter } from 'react-router'
-import { renderToString } from 'react-router-server'
+import { fork, join, all } from 'redux-saga/effects'
+import { StaticRouter, matchPath } from 'react-router'
 
 import { port, host, basename, mongo } from 'config'
 import configureStore from 'store/configure'
@@ -25,9 +25,7 @@ import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
 
-const renderApp = ({
-  store, context, location, sheet,
-}) => {
+const renderApp = ({ store, context, location, sheet }) => {
   const app = sheet.collectStyles((
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
@@ -35,18 +33,14 @@ const renderApp = ({
       </StaticRouter>
     </Provider>
   ))
+
   return renderToString(app)
 }
 
-const renderHtml = ({
-  serverState, initialState, content, sheet,
-}) => {
+const renderHtml = ({ initialState, content, sheet }) => {
   const styles = sheet.getStyleElement()
   const { assets } = global
-  const state = `
-    window.__SERVER_STATE__ = ${serialize(serverState)};
-    window.__INITIAL_STATE__ = ${serialize(initialState)};
-  `
+  const state = `window.__INITIAL_STATE__ = ${serialize(initialState)};`
   const props = {
     styles, assets, state, content,
   }
@@ -63,29 +57,54 @@ router.use('/api', cors(), api)
 router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
+  global.api = apiService.create()
+
   const location = req.url
-  const store = configureStore({}, { api: apiService.create() })
+  const store = configureStore({})
   const context = {}
   const sheet = new ServerStyleSheet()
 
   cookie.plugToRequest(req, res)
   const { token } = req.cookies
-
   if (token) store.dispatch(authUser())
 
-  renderApp({ store, context, location, sheet })
-    .then(({ state: serverState, html: content }) => {
-      if (context.status) {
-        res.status(context.status)
-      }
-      if (context.url) {
-        res.redirect(context.url)
-      } else {
-        const initialState = store.getState()
-        res.send(renderHtml({ serverState, initialState, content, sheet }))
-      }
-    })
-    .catch(next)
+  const preloaders = routes.reduce((preloaders, route) => {
+    const match = matchPath(req.url, route.path, route)
+
+    if (match) {
+      return [
+        ...preloaders,
+        ...route.component.preload
+          ? route.component.preload()
+          : Promise.resolve(null),
+      ]
+    }
+
+    return preloaders
+  }, [])
+
+  const waitAll = sagas => function* genTasks() {
+    const tasks = yield all(sagas.map(([saga, ...params]) => fork(saga, ...params)))
+
+    if (tasks.length) yield join(...tasks)
+  }
+
+  const runPreloaders = store.runSaga(waitAll(preloaders))
+
+  runPreloaders.done.then(() => {
+    const content = renderApp({ store, context, location, sheet })
+
+    if (context.status) res.status(context.status)
+
+    if (context.url) {
+      res.redirect(context.url)
+    } else {
+      const initialState = store.getState()
+      res.send(renderHtml({ initialState, content, sheet }))
+    }
+  }).catch(next)
+
+  store.close()
 })
 
 router.use((err, req, res, next) => {

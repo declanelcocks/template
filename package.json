@@ -7,26 +7,21 @@
     "start": "node .",
     "env:dev": "cross-env NODE_ENV=development",
     "env:prod": "cross-env NODE_ENV=production",
-    "env:example": "cross-env SOURCE=src-example",
     "test": "jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
-    "lint": "eslint src src-example private webpack.config.js",
+    "lint": "eslint src private webpack.config.js",
     "storybook": "start-storybook -p 9001 -c private/storybook",
-    "storybook:example": "npm run env:example -- npm run storybook",
     "predev": "npm run prebuild",
     "dev": "npm run env:dev -- webpack-dev-server",
-    "dev:example": "npm run env:example -- npm run dev",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "npm run env:prod -- webpack",
-    "build:example": "npm run env:example -- npm run build"
+    "build": "npm run env:prod -- webpack"
   },
   "jest": {
     "moduleDirectories": [
       "src",
-      "src-example",
       "node_modules"
     ],
     "moduleNameMapper": {
@@ -115,7 +110,7 @@
     "react-redux": "^5.0.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-router-server": "^4.2.1",
+    "recompose": "^0.26.0",
     "redux": "^3.6.0",
     "redux-form": "^7.0.0",
     "redux-saga": "^0.16.0",
