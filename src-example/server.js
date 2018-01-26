@@ -5,10 +5,9 @@ import express from 'express'
 import React from 'react'
 import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
-import { renderToStaticMarkup } from 'react-dom/server'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
-import { renderToString } from 'react-router-server'
 
 import { port, host, basename } from 'config'
 import configureStore from 'store/configure'
@@ -17,9 +16,7 @@ import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
 
-const renderApp = ({
-  store, context, location, sheet,
-}) => {
+const renderApp = ({ store, context, location, sheet }) => {
   const app = sheet.collectStyles((
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
@@ -30,18 +27,11 @@ const renderApp = ({
   return renderToString(app)
 }
 
-const renderHtml = ({
-  serverState, initialState, content, sheet,
-}) => {
+const renderHtml = ({ initialState, content, sheet }) => {
   const styles = sheet.getStyleElement()
   const { assets } = global
-  const state = `
-    window.__SERVER_STATE__ = ${serialize(serverState)};
-    window.__INITIAL_STATE__ = ${serialize(initialState)};
-  `
-  const props = {
-    styles, assets, state, content,
-  }
+  const state = `window.__INITIAL_STATE__ = ${serialize(initialState)};`
+  const props = { styles, assets, state, content }
   const html = <Html {...props} />
   return `<!doctype html>\n${renderToStaticMarkup(html)}`
 }
@@ -50,27 +40,21 @@ const app = express()
 
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   const location = req.url
   const store = configureStore({}, { api: api.create() })
   const context = {}
   const sheet = new ServerStyleSheet()
 
-  renderApp({
-    store, context, location, sheet,
-  }).then(({ state: serverState, html: content }) => {
-    if (context.status) {
-      res.status(context.status)
-    }
-    if (context.url) {
-      res.redirect(context.url)
-    } else {
-      const initialState = store.getState()
-      res.send(renderHtml({
-        serverState, initialState, content, sheet,
-      }))
-    }
-  }).catch(next)
+  const content = renderApp({ store, context, location, sheet })
+  if (context.status) res.status(context.status)
+
+  if (context.url) {
+    res.redirect(context.url)
+  } else {
+    const initialState = store.getState()
+    res.send(renderHtml({ initialState, content, sheet }))
+  }
 })
 
 app.use((err, req, res, next) => {

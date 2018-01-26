@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchState } from 'react-router-server'
 import { isPending, hasFailed } from 'redux-saga-thunk'
 import { fromEntities, fromResource } from 'store/selectors'
 import { resourceListReadRequest } from 'store/actions'
@@ -57,14 +56,4 @@ const mapDispatchToProps = (dispatch, { limit }) => ({
   readList: () => dispatch(resourceListReadRequest('posts', { _limit: limit })),
 })
 
-const withServerState = fetchState(
-  state => ({
-    hasServerState: !!state.data,
-  }),
-  actions => ({
-    setServerState: data => actions.done({ data }),
-    cleanServerState: () => actions.done(),
-  })
-)
-
-export default withServerState(connect(mapStateToProps, mapDispatchToProps)(PostListContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)
