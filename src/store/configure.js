@@ -2,7 +2,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware, { END } from 'redux-saga'
 import { isDev, isBrowser } from 'config'
-import middlewares from './middlewares'
 import reducer from './reducer'
 import sagas from './sagas'
 
@@ -15,7 +14,6 @@ const configureStore = (initialState, services = {}) => {
 
   const enhancers = [
     applyMiddleware(
-      ...middlewares,
       sagaMiddleware
     ),
     devtools(),

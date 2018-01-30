@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import styled from 'styled-components'
 
-import { ReduxField, Button } from 'components'
+import { Button } from 'components/atoms'
+import { ReduxField } from 'components/organisms'
 
 const Form = styled.form`
   width: 100%;

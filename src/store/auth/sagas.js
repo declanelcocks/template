@@ -171,7 +171,7 @@ export function* signupLocal(data) {
     cookie.save('token', token)
     yield put(actions.authLoginSuccess(user))
   } catch (e) {
-    yield put(actions.authSignupFailure(e))
+    yield put(actions.authLoginFailure(e))
   }
 }
 

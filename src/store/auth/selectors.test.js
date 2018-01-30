@@ -7,12 +7,12 @@ test('initialState', () => {
   })
 })
 
-test('getUser', () => {
-  expect(selectors.getUser()).toEqual(selectors.initialState.user)
-  expect(selectors.getUser(selectors.initialState)).toEqual(selectors.initialState.user)
+test('selectUser', () => {
+  expect(selectors.selectUser()).toEqual(selectors.initialState.user)
+  expect(selectors.selectUser(selectors.initialState)).toEqual(selectors.initialState.user)
 })
 
-test('getAuthenticated', () => {
-  expect(selectors.getAuthenticated()).toEqual(selectors.initialState.authenticated)
-  expect(selectors.getAuthenticated(selectors.initialState)).toEqual(selectors.initialState.authenticated)
+test('selectAuthenticated', () => {
+  expect(selectors.selectAuthenticated()).toEqual(selectors.initialState.authenticated)
+  expect(selectors.selectAuthenticated(selectors.initialState)).toEqual(selectors.initialState.authenticated)
 })

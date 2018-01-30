@@ -3,7 +3,7 @@ export const initialState = {
   posts: null,
 }
 
-export const getPosts = (state = initialState) => {
+export const selectPosts = (state = initialState) => {
   if (!state.posts) return initialState.posts
 
   return state.posts

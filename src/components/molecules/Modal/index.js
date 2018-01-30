@@ -4,7 +4,8 @@ import styled, { css, injectGlobal } from 'styled-components'
 import ReactModal from 'react-modal'
 import { font, palette } from 'styled-theme'
 
-import { Heading, IconButton } from 'components'
+import { Heading } from 'components/atoms'
+import { IconButton } from 'components/molecules'
 
 injectGlobal`
   body.ReactModal__Body--open {

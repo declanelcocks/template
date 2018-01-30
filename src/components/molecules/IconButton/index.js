@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 import { ifProp, prop } from 'styled-tools'
 
-import { Icon, Button } from 'components'
+import { Icon, Button } from 'components/atoms'
 
 const fadeIn = keyframes`
   0% { display: none; opacity: 0; }

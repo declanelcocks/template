@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose, lifecycle, setStatic } from 'recompose'
 
-import { postsFetchRequest } from 'store/actions'
-import { fromPosts } from 'store/selectors'
+import { postsFetchRequest } from 'store/posts/actions'
+import { selectPosts } from 'store/posts/selectors'
 import { getPosts } from 'store/posts/sagas'
-import { HomePage } from 'components'
+import { HomePage } from 'components/pages'
 
 const HomePageContainer = ({ ...props }) => <HomePage {...props} />
 
 const mapStateToProps = state => ({
-  posts: fromPosts.getPosts(state),
+  posts: selectPosts(state.posts),
 })
 
 const mapDispatchToProps = dispatch => ({

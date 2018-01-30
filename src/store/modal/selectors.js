@@ -2,4 +2,4 @@
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#modal
 export const initialState = {}
 
-export const isOpen = (state = initialState, name) => !!state[name]
+export const selectModalOpen = (state = initialState, name) => !!state[name]

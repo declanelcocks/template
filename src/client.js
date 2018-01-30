@@ -10,7 +10,7 @@ import cookie from 'react-cookie'
 
 import { basename } from 'config'
 import configureStore from 'store/configure'
-import { authLoginRequest } from 'store/actions'
+import { authLoginRequest } from 'store/auth/actions'
 import api from 'services/api'
 import App from 'components/App'
 import routes from 'components/routes'

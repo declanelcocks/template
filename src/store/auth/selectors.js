@@ -3,5 +3,5 @@ export const initialState = {
   authenticated: false,
 }
 
-export const getUser = (state = initialState) => state.user
-export const getAuthenticated = (state = initialState) => state.authenticated
+export const selectUser = (state = initialState) => state.user
+export const selectAuthenticated = (state = initialState) => state.authenticated

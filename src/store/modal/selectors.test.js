@@ -6,10 +6,10 @@ test('initialState', () => {
   expect(selectors.initialState).toEqual({})
 })
 
-test('isOpen', () => {
-  expect(selectors.isOpen(undefined, 'test')).toBe(false)
-  expect(selectors.isOpen({}, 'test')).toBe(false)
-  expect(selectors.isOpen(selectors.initialState, 'test')).toBe(false)
-  expect(selectors.isOpen({ test: false }, 'test')).toBe(false)
-  expect(selectors.isOpen({ test: true }, 'test')).toBe(true)
+test('selectModalOpen', () => {
+  expect(selectors.selectModalOpen(undefined, 'test')).toBe(false)
+  expect(selectors.selectModalOpen({}, 'test')).toBe(false)
+  expect(selectors.selectModalOpen(selectors.initialState, 'test')).toBe(false)
+  expect(selectors.selectModalOpen({ test: false }, 'test')).toBe(false)
+  expect(selectors.selectModalOpen({ test: true }, 'test')).toBe(true)
 })

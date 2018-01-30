@@ -18,7 +18,7 @@ import { StaticRouter, matchPath } from 'react-router'
 
 import { port, host, basename, mongo } from 'config'
 import configureStore from 'store/configure'
-import { authUser } from 'store/actions'
+import { authUser } from 'store/auth/actions'
 import apiService from 'services/api'
 import routes from 'components/routes'
 import App from 'components/App'

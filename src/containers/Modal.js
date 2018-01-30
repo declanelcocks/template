@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fromModal } from 'store/selectors'
-import { modalHide } from 'store/actions'
+import { selectModalOpen } from 'store/modal/selectors'
+import { modalHide } from 'store/modal/actions'
 
-import { Modal } from 'components'
+import { Modal } from 'components/molecules'
 
 const ModalContainer = props => <Modal {...props} />
 
@@ -14,7 +14,7 @@ ModalContainer.propTypes = {
 }
 
 const mapStateToProps = (state, { name, isOpen }) => ({
-  isOpen: isOpen || fromModal.isOpen(state, name),
+  isOpen: isOpen || selectModalOpen(state.modal, name),
 })
 
 const mapDispatchToProps = (dispatch, { name }) => ({

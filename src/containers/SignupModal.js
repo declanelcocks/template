@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fromAuth } from 'store/selectors'
-import { modalHide } from 'store/actions'
+import { selectUser } from 'store/auth/selectors'
+import { modalHide } from 'store/modal/actions'
 
-import { SignupModal } from 'components'
+import { SignupModal } from 'components/organisms'
 
 const SignupModalContainer = ({ ...props }) => <SignupModal {...props} />
 
 const mapStateToProps = state => ({
-  user: fromAuth.getUser(state),
+  user: selectUser(state.auth),
 })
 
 const mapDispatchToProps = dispatch => ({

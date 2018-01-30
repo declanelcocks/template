@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fromAuth } from 'store/selectors'
-import { modalShow } from 'store/actions'
+import { selectAuthenticated } from 'store/auth/selectors'
+import { modalShow } from 'store/modal/actions'
 
-import { SignupButton } from 'components'
+import { SignupButton } from 'components/organisms'
 
 const SignupButtonContainer = props => <SignupButton {...props} />
 
 const mapStateToProps = state => ({
-  authenticated: fromAuth.getAuthenticated(state),
+  authenticated: selectAuthenticated(state.auth),
 })
 
 const mapDispatchToProps = dispatch => ({

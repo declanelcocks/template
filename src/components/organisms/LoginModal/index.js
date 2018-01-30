@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { IconButton } from 'components'
+import { IconButton } from 'components/molecules'
 import { LoginForm, Modal } from 'containers'
 
 const Wrapper = styled.div`

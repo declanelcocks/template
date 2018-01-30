@@ -1,9 +1,9 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
-import { authLoginRequest } from 'store/actions'
+import { authLoginRequest } from 'store/auth/actions'
 import { createValidator, required } from 'services/validation'
 
-import { LoginForm } from 'components'
+import { LoginForm } from 'components/organisms'
 
 const LoginFormContainer = props => <LoginForm {...props} />
 
